@@ -1,15 +1,29 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#082f6b"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><title>ARCHCMU VibeQuiz · Live</title><style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#082f6b"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><title>ARCHCMU Global Challenge · Final 30</title><style>
 :root{--navy:#082f6b;--blue:#1260b8;--sky:#4db7e5;--gold:#f4b323;--red:#e44b4b;--green:#33a06f;--purple:#7857c8;--ink:#13223a;--muted:#617087;--bg:#edf3f9;--card:#fff;--line:#d8e3ef;--shadow:0 18px 50px rgba(16,48,88,.15)}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}body{background:radial-gradient(circle at 10% 0%,rgba(77,183,229,.20),transparent 30rem),radial-gradient(circle at 95% 100%,rgba(244,179,35,.18),transparent 30rem),var(--bg)}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}a{color:inherit}.hidden{display:none!important}.app{min-height:100vh;display:flex;flex-direction:column}.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;background:linear-gradient(115deg,var(--navy),var(--blue));color:#fff;box-shadow:0 8px 26px rgba(8,47,107,.22)}.brand{display:flex;align-items:center;gap:10px}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:#fff;color:var(--navy);font-size:22px}.brand b{display:block}.brand small{opacity:.78}.topActions{display:flex;align-items:center;gap:8px}.status{display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.15);font-size:13px}.dot{width:9px;height:9px;border-radius:50%;background:#c4d2e5}.status.live .dot{background:#60e6a4;box-shadow:0 0 0 5px rgba(96,230,164,.16)}.status.offline .dot{background:#ff8585}.topBtn{border:0;border-radius:11px;padding:8px 10px;background:rgba(255,255,255,.14);color:#fff;font-weight:800}.main{width:min(1240px,100%);margin:auto;padding:24px}.card{background:rgba(255,255,255,.98);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:var(--shadow)}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:stretch}.heroCopy{min-height:520px;display:flex;flex-direction:column;justify-content:center}.heroArt{min-height:520px;border-radius:25px;overflow:hidden;background:linear-gradient(145deg,#092f6c,#1260b8);position:relative}.heroArt svg{width:100%;height:100%;display:block}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.17em;font-weight:900;color:var(--blue)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(48px,7.5vw,86px);line-height:.92;letter-spacing:-.06em;margin:15px 0 18px}h2{font-size:clamp(30px,4vw,48px);line-height:1.02;letter-spacing:-.04em;margin-bottom:12px}h3{font-size:21px;margin-bottom:9px}.lead{font-size:18px;line-height:1.65;color:var(--muted);max-width:760px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.btn{border:0;border-radius:15px;padding:13px 18px;font-weight:850;transition:.16s transform,.16s filter,.16s box-shadow}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}.btn:active{transform:translateY(1px)}.primary{background:var(--navy);color:#fff;box-shadow:0 10px 25px rgba(8,47,107,.24)}.gold{background:var(--gold);color:#1f2a39}.soft{background:#eaf3fc;color:var(--navy)}.danger{background:#feecec;color:#bd3535}.success{background:#e4f8ee;color:#217853}.block{width:100%}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:#f4f8fd;border:1px solid var(--line)}.metric b{display:block;font-size:27px;color:var(--navy)}.metric span{font-size:12px;color:var(--muted)}.homeJoin{margin-top:18px;display:grid;grid-template-columns:1fr auto;gap:9px}.homeJoin input,.field input{width:100%;border:1px solid #c8d7e7;border-radius:14px;padding:13px 14px;background:#fff;outline:none}.homeJoin input:focus,.field input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(18,96,184,.12)}.hostGrid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:17px}.side{display:flex;flex-direction:column;gap:13px}.roomCode{font-size:clamp(51px,8vw,94px);font-weight:950;letter-spacing:.08em;color:var(--navy);text-align:center}.qrWrap{min-height:286px;display:grid;place-items:center;padding:18px;background:#fff;border:2px dashed #a9c5df;border-radius:24px}.qrWrap img{width:min(255px,100%);height:auto}.joinLink{font-size:12px;color:var(--muted);word-break:break-all;text-align:center;margin-top:9px}.lobbyNames{display:flex;flex-wrap:wrap;gap:9px}.avatarChip{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#eef6ff;border:1px solid #d4e5f5;font-weight:800}.avatar{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--avatar,#dceafd);font-size:24px;border:3px solid rgba(255,255,255,.9);box-shadow:0 4px 12px rgba(17,54,94,.12)}.avatar.small{width:34px;height:34px;font-size:19px}.avatar.big{width:76px;height:76px;font-size:43px;margin:auto}.hint{padding:12px 14px;border-radius:15px;background:#fff7dc;border:1px solid #edd38b;line-height:1.5}.hint.blue{background:#edf6ff;border-color:#cce3f7}.toolRow{display:grid;grid-template-columns:1fr 1fr;gap:8px}.questionLayout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px}.qCard{padding:0;overflow:hidden}.visual{aspect-ratio:16/8.6;background:linear-gradient(135deg,#0b397e,#1670c7);position:relative;overflow:hidden}.visual svg{width:100%;height:100%;display:block}.qBody{padding:22px}.category{display:inline-flex;padding:7px 11px;border-radius:999px;background:#eaf3fc;color:var(--navy);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.difficulty{display:inline-flex;margin-left:7px;padding:7px 11px;border-radius:999px;background:#fff6dc;color:#9a6500;font-size:12px;font-weight:900}.qTitle{font-size:clamp(28px,4.4vw,48px);line-height:1.08;letter-spacing:-.035em;margin:14px 0 18px}.options{display:grid;grid-template-columns:1fr 1fr;gap:11px}.option{border:0;border-radius:18px;min-height:86px;padding:17px;text-align:left;color:#fff;font-weight:850;display:flex;align-items:center;gap:12px;transition:.15s transform,.15s filter,.15s opacity}.option:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.06)}.option:nth-child(1){background:#dc4747}.option:nth-child(2){background:#256fc0}.option:nth-child(3){background:#d59a16}.option:nth-child(4){background:#2f9b69}.letter{display:grid;place-items:center;min-width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.22)}.option.selected{outline:6px solid rgba(244,179,35,.75);transform:translateY(-2px)}.option.correct{outline:7px solid #5aeba9;animation:pulse .65s ease}.option.wrong{opacity:.35;filter:grayscale(.75)}.option.chosenWrong{opacity:1;outline:7px solid #ff8b8b;animation:shake .42s ease}.timer{width:122px;height:122px;border-radius:50%;display:grid;place-items:center;margin:auto;background:conic-gradient(var(--gold) var(--timer,100%),#dce7f2 0);position:relative}.timer:before{content:"";position:absolute;inset:12px;border-radius:50%;background:#fff}.timer b{position:relative;font-size:37px;color:var(--navy)}.timer.urgent{background:conic-gradient(var(--red) var(--timer,100%),#f2dcdc 0);animation:pulse .75s infinite}.phaseLabel{text-align:center;font-weight:900;color:var(--navy)}.answerNumber{font-size:58px;font-weight:950;color:var(--navy);text-align:center}.leaderboard{display:flex;flex-direction:column;gap:8px}.rankRow{display:grid;grid-template-columns:35px 42px 1fr auto;gap:8px;align-items:center;padding:9px 10px;border:1px solid var(--line);border-radius:14px;background:#fff;transition:.35s transform}.rankNo{font-weight:950;color:var(--navy)}.score{font-weight:900;color:var(--blue)}.resultBox{padding:19px;border-radius:20px;background:#e9f8f0;border:1px solid #b9e5cc;margin-top:14px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}.stat{padding:10px;border-radius:13px;background:#fff;border:1px solid var(--line)}.leaderScene{min-height:530px;display:grid;align-content:center}.leaderBig{max-width:860px;margin:auto;width:100%}.leaderBig .rankRow{padding:14px 16px;font-size:18px;grid-template-columns:46px 52px 1fr auto}.leaderBig .avatar{width:48px;height:48px;font-size:27px}.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;align-items:end;margin-top:22px}.podiumBox{border-radius:24px 24px 0 0;color:#fff;text-align:center;padding:18px 10px}.first{min-height:290px;background:linear-gradient(#f6c340,#d99400)}.second{min-height:225px;background:linear-gradient(#aab8c9,#687d95)}.third{min-height:185px;background:linear-gradient(#d59a70,#9c6039)}.podiumBox b{display:block;font-size:23px;margin:9px 0 4px}.medal{font-size:46px}.joinPanel{max-width:760px;margin:auto}.field{display:block;margin:13px 0}.field span{display:block;font-size:13px;color:var(--muted);font-weight:850;margin-bottom:6px}.avatarPicker{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.avatarPick{border:2px solid transparent;background:#f1f6fb;border-radius:17px;padding:8px;display:grid;place-items:center}.avatarPick.active{border-color:var(--gold);background:#fff8dc}.waitPulse{display:flex;justify-content:center;gap:8px;margin:22px}.waitPulse span{width:13px;height:13px;border-radius:50%;background:var(--blue);animation:bounce 1.1s infinite}.waitPulse span:nth-child(2){animation-delay:.14s}.waitPulse span:nth-child(3){animation-delay:.28s}.playerStatus{text-align:center}.playerScore{font-size:62px;font-weight:950;color:var(--navy)}.correctHero{font-size:70px}.previewGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.previewItem{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff}.previewItem .visual{aspect-ratio:16/8}.previewText{padding:14px}.previewText h3{font-size:17px;line-height:1.28}.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:999}.confetti i{position:absolute;top:-30px;width:10px;height:20px;animation:fall 4s linear forwards}.footer{text-align:center;padding:16px 20px;color:var(--muted);font-size:12px}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}body{background:radial-gradient(circle at 10% 0%,rgba(77,183,229,.20),transparent 30rem),radial-gradient(circle at 95% 100%,rgba(244,179,35,.18),transparent 30rem),var(--bg)}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}a{color:inherit}.hidden{display:none!important}.app{min-height:100vh;display:flex;flex-direction:column}.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;background:linear-gradient(115deg,var(--navy),var(--blue));color:#fff;box-shadow:0 8px 26px rgba(8,47,107,.22)}.brand{display:flex;align-items:center;gap:10px}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:#fff;color:var(--navy);font-size:22px}.brand b{display:block}.brand small{opacity:.78}.topActions{display:flex;align-items:center;gap:8px}.status{display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.15);font-size:13px}.dot{width:9px;height:9px;border-radius:50%;background:#c4d2e5}.status.live .dot{background:#60e6a4;box-shadow:0 0 0 5px rgba(96,230,164,.16)}.status.offline .dot{background:#ff8585}.topBtn{border:0;border-radius:11px;padding:8px 10px;background:rgba(255,255,255,.14);color:#fff;font-weight:800}.main{width:min(1240px,100%);margin:auto;padding:24px}.card{background:rgba(255,255,255,.98);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:var(--shadow)}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:stretch}.heroCopy{min-height:520px;display:flex;flex-direction:column;justify-content:center}.heroArt{min-height:520px;border-radius:25px;overflow:hidden;background:linear-gradient(145deg,#092f6c,#1260b8);position:relative}.heroArt svg{width:100%;height:100%;display:block}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.17em;font-weight:900;color:var(--blue)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(48px,7.5vw,86px);line-height:.92;letter-spacing:-.06em;margin:15px 0 18px}h2{font-size:clamp(30px,4vw,48px);line-height:1.02;letter-spacing:-.04em;margin-bottom:12px}h3{font-size:21px;margin-bottom:9px}.lead{font-size:18px;line-height:1.65;color:var(--muted);max-width:760px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.btn{border:0;border-radius:15px;padding:13px 18px;font-weight:850;transition:.16s transform,.16s filter,.16s box-shadow}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}.btn:active{transform:translateY(1px)}.primary{background:var(--navy);color:#fff;box-shadow:0 10px 25px rgba(8,47,107,.24)}.gold{background:var(--gold);color:#1f2a39}.soft{background:#eaf3fc;color:var(--navy)}.danger{background:#feecec;color:#bd3535}.success{background:#e4f8ee;color:#217853}.block{width:100%}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:#f4f8fd;border:1px solid var(--line)}.metric b{display:block;font-size:27px;color:var(--navy)}.metric span{font-size:12px;color:var(--muted)}.homeJoin{margin-top:18px;display:grid;grid-template-columns:1fr auto;gap:9px}.homeJoin input,.field input{width:100%;border:1px solid #c8d7e7;border-radius:14px;padding:13px 14px;background:#fff;outline:none}.homeJoin input:focus,.field input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(18,96,184,.12)}.hostGrid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:17px}.side{display:flex;flex-direction:column;gap:13px}.roomCode{font-size:clamp(51px,8vw,94px);font-weight:950;letter-spacing:.08em;color:var(--navy);text-align:center}.qrWrap{min-height:286px;display:grid;place-items:center;padding:18px;background:#fff;border:2px dashed #a9c5df;border-radius:24px}.qrWrap svg{width:min(300px,100%);height:auto;display:block}.joinLink{font-size:12px;color:var(--muted);word-break:break-all;text-align:center;margin-top:9px}.lobbyNames{display:flex;flex-wrap:wrap;gap:9px}.avatarChip{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#eef6ff;border:1px solid #d4e5f5;font-weight:800}.avatar{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--avatar,#dceafd);font-size:24px;border:3px solid rgba(255,255,255,.9);box-shadow:0 4px 12px rgba(17,54,94,.12)}.avatar.small{width:34px;height:34px;font-size:19px}.avatar.big{width:76px;height:76px;font-size:43px;margin:auto}.hint{padding:12px 14px;border-radius:15px;background:#fff7dc;border:1px solid #edd38b;line-height:1.5}.hint.blue{background:#edf6ff;border-color:#cce3f7}.toolRow{display:grid;grid-template-columns:1fr 1fr;gap:8px}.questionLayout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px}.qCard{padding:0;overflow:hidden}.visual{aspect-ratio:16/8.6;background:linear-gradient(135deg,#0b397e,#1670c7);position:relative;overflow:hidden}.visual svg{width:100%;height:100%;display:block}.qBody{padding:22px}.category{display:inline-flex;padding:7px 11px;border-radius:999px;background:#eaf3fc;color:var(--navy);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.difficulty{display:inline-flex;margin-left:7px;padding:7px 11px;border-radius:999px;background:#fff6dc;color:#9a6500;font-size:12px;font-weight:900}.qTitle{font-size:clamp(28px,4.4vw,48px);line-height:1.08;letter-spacing:-.035em;margin:14px 0 18px}.options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.option{border:0;border-radius:18px;min-height:86px;padding:17px;text-align:left;color:#fff;font-weight:850;display:flex;align-items:center;gap:12px;transition:.15s transform,.15s filter,.15s opacity}.option:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.06)}.option:nth-child(1){background:#dc4747}.option:nth-child(2){background:#256fc0}.option:nth-child(3){background:#d59a16}.option:nth-child(4){background:#2f9b69}.letter{display:grid;place-items:center;min-width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.22)}.option.selected{outline:6px solid rgba(244,179,35,.75);transform:translateY(-2px)}.option.correct{outline:7px solid #5aeba9;animation:pulse .65s ease}.option.wrong{opacity:.35;filter:grayscale(.75)}.option.chosenWrong{opacity:1;outline:7px solid #ff8b8b;animation:shake .42s ease}.timer{width:122px;height:122px;border-radius:50%;display:grid;place-items:center;margin:auto;background:conic-gradient(var(--gold) var(--timer,100%),#dce7f2 0);position:relative}.timer:before{content:"";position:absolute;inset:12px;border-radius:50%;background:#fff}.timer b{position:relative;font-size:37px;color:var(--navy)}.timer.urgent{background:conic-gradient(var(--red) var(--timer,100%),#f2dcdc 0);animation:pulse .75s infinite}.phaseLabel{text-align:center;font-weight:900;color:var(--navy)}.answerNumber{font-size:58px;font-weight:950;color:var(--navy);text-align:center}.leaderboard{display:flex;flex-direction:column;gap:8px}.rankRow{display:grid;grid-template-columns:35px 42px 1fr auto;gap:8px;align-items:center;padding:9px 10px;border:1px solid var(--line);border-radius:14px;background:#fff;transition:.35s transform}.rankNo{font-weight:950;color:var(--navy)}.score{font-weight:900;color:var(--blue)}.resultBox{padding:19px;border-radius:20px;background:#e9f8f0;border:1px solid #b9e5cc;margin-top:14px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}.stat{padding:10px;border-radius:13px;background:#fff;border:1px solid var(--line)}.leaderScene{min-height:530px;display:grid;align-content:center}.leaderBig{max-width:860px;margin:auto;width:100%}.leaderBig .rankRow{padding:14px 16px;font-size:18px;grid-template-columns:46px 52px 1fr auto}.leaderBig .avatar{width:48px;height:48px;font-size:27px}.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;align-items:end;margin-top:22px}.podiumBox{border-radius:24px 24px 0 0;color:#fff;text-align:center;padding:18px 10px}.first{min-height:290px;background:linear-gradient(#f6c340,#d99400)}.second{min-height:225px;background:linear-gradient(#aab8c9,#687d95)}.third{min-height:185px;background:linear-gradient(#d59a70,#9c6039)}.podiumBox b{display:block;font-size:23px;margin:9px 0 4px}.medal{font-size:46px}.joinPanel{max-width:760px;margin:auto}.field{display:block;margin:13px 0}.field span{display:block;font-size:13px;color:var(--muted);font-weight:850;margin-bottom:6px}.avatarPicker{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.avatarPick{border:2px solid transparent;background:#f1f6fb;border-radius:17px;padding:8px;display:grid;place-items:center}.avatarPick.active{border-color:var(--gold);background:#fff8dc}.waitPulse{display:flex;justify-content:center;gap:8px;margin:22px}.waitPulse span{width:13px;height:13px;border-radius:50%;background:var(--blue);animation:bounce 1.1s infinite}.waitPulse span:nth-child(2){animation-delay:.14s}.waitPulse span:nth-child(3){animation-delay:.28s}.playerStatus{text-align:center}.playerScore{font-size:62px;font-weight:950;color:var(--navy)}.correctHero{font-size:70px}.previewGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.previewItem{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff}.previewItem .visual{aspect-ratio:16/8}.previewText{padding:14px}.previewText h3{font-size:17px;line-height:1.28}.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:999}.confetti span{position:absolute;top:-30px;width:10px;height:20px;animation:fall 4s linear forwards}.footer{text-align:center;padding:16px 20px;color:var(--muted);font-size:12px}
 @keyframes pulse{50%{transform:scale(1.04)}}@keyframes shake{25%{transform:translateX(-7px)}50%{transform:translateX(7px)}75%{transform:translateX(-4px)}}@keyframes bounce{50%{transform:translateY(-10px);opacity:.55}}@keyframes fall{to{transform:translateY(110vh) rotate(680deg)}}
-.oneClickNote{padding:13px 15px;border-radius:16px;background:#edf8f2;border:1px solid #bfe7cf;color:#1f6d48;font-weight:800;line-height:1.45}.qrCaption{text-align:center;margin-top:8px;color:var(--navy);font-weight:900}.subtleCN{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}.loadingRing{width:56px;height:56px;border:7px solid #dce9f5;border-top-color:var(--blue);border-radius:50%;animation:spin .9s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:900px){.hero,.hostGrid,.questionLayout{grid-template-columns:1fr}.heroCopy,.heroArt{min-height:auto}.heroArt{aspect-ratio:16/10}.metrics{grid-template-columns:1fr 1fr}.previewGrid{grid-template-columns:1fr 1fr}.side{order:-1}.questionLayout .side{order:0}}
-@media(max-width:600px){.main{padding:14px}.top{padding:10px 12px}.brand small{display:none}.topActions .topBtn{display:none}.card{padding:18px;border-radius:21px}h1{font-size:51px}.hero{gap:13px}.metrics{grid-template-columns:1fr 1fr}.homeJoin{grid-template-columns:1fr}.options{grid-template-columns:1fr}.option{min-height:74px}.qBody{padding:17px}.qTitle{font-size:29px}.avatarPicker{grid-template-columns:repeat(4,1fr)}.previewGrid{grid-template-columns:1fr}.podium{gap:6px}.podiumBox{padding:12px 5px}.podiumBox b{font-size:15px}.first{min-height:245px}.second{min-height:195px}.third{min-height:165px}.roomCode{font-size:52px}}
+.oneClickNote{padding:13px 15px;border-radius:16px;background:#edf8f2;border:1px solid #bfe7cf;color:#1f6d48;font-weight:800;line-height:1.45}.qrCaption{text-align:center;margin-top:8px;color:var(--navy);font-weight:900}.subtleCN{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}.loadingRing{width:56px;height:56px;border:7px solid #dce9f5;border-top-color:var(--blue);border-radius:50%;animation:spin .9s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.qTitleZh{font-size:clamp(19px,2.3vw,28px);line-height:1.35;color:var(--muted);margin:-8px 0 18px}
+.option{flex-direction:column;align-items:flex-start;justify-content:center}
+.option .en{font-size:16px;line-height:1.3}
+.option .zh{font-size:13px;line-height:1.35;opacity:.9;font-weight:650}
+.metaRow{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.pointBadge{display:inline-flex;padding:7px 11px;border-radius:999px;background:#e8f8ef;color:#217853;font-size:12px;font-weight:900}
+.bilingualExplanation .en{font-size:16px;line-height:1.55}
+.bilingualExplanation .zh{font-size:14px;line-height:1.55;color:var(--muted);margin-top:7px}
+.capacityBadge{display:inline-flex;padding:7px 11px;border-radius:999px;background:#edf6ff;color:var(--navy);font-size:12px;font-weight:900}
+.qrWrap{min-height:330px}
+.qrWrap svg{filter:drop-shadow(0 8px 18px rgba(8,47,107,.12))}
+.testDetails{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.testDetails summary{cursor:pointer;color:var(--muted);font-weight:800}
+@media(max-width:900px){.hero,.hostGrid,.questionLayout{grid-template-columns:1fr}.heroCopy,.heroArt{min-height:auto}.heroArt{aspect-ratio:16/10}.metrics{grid-template-columns:1fr 1fr}.previewGrid{grid-template-columns:1fr 1fr}.side{order:-1}.questionLayout .side{order:0}}
+@media(max-width:600px){.options{grid-template-columns:1fr}.main{padding:14px}.top{padding:10px 12px}.brand small{display:none}.topActions .topBtn{display:none}.card{padding:18px;border-radius:21px}h1{font-size:51px}.hero{gap:13px}.metrics{grid-template-columns:1fr 1fr}.homeJoin{grid-template-columns:1fr}.options{grid-template-columns:1fr}.option{min-height:74px}.qBody{padding:17px}.qTitle{font-size:29px}.avatarPicker{grid-template-columns:repeat(4,1fr)}.previewGrid{grid-template-columns:1fr}.podium{gap:6px}.podiumBox{padding:12px 5px}.podiumBox b{font-size:15px}.first{min-height:245px}.second{min-height:195px}.third{min-height:165px}.roomCode{font-size:52px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 
-.footer{padding:16px;text-align:center;color:var(--muted);font-size:12px}.qrCaption{font-weight:950;color:var(--navy);letter-spacing:.12em;margin-top:8px}.subtleCN{font-size:13px;color:var(--muted);margin-top:4px;text-align:center}.joinState{margin:12px 0;padding:12px 14px;border-radius:14px;background:#edf6ff;border:1px solid #cce3f7;color:var(--navy)}.joinState.good{background:#e8f8ef;border-color:#bde5cd;color:#217853}.joinState.bad{background:#fff0f0;border-color:#efc5c5;color:#ad3434}.miniStatus{display:flex;align-items:center;gap:8px;font-weight:800}.miniStatus i{display:block;width:10px;height:10px;border-radius:50%;background:#f4b323}.miniStatus.good i{background:#33a06f}.miniStatus.bad i{background:#e44b4b}.hostNote{font-size:13px;color:var(--muted);line-height:1.5}.ackPulse{animation:pulse .8s ease 2}.status.connecting .dot{background:#f4b323;animation:pulse .8s infinite}.status.idle .dot{background:#c4d2e5}.answerAck{margin-top:12px;text-align:center}.connectionHelp{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}.qrWrap img{display:block}.countdownLabel{text-align:center;font-size:13px;color:var(--muted);margin-top:8px}.autoPill{display:inline-flex;padding:6px 10px;border-radius:999px;background:#e8f8ef;color:#217853;font-size:12px;font-weight:900}.hostControls{display:grid;gap:8px}.hostControls .btn{width:100%}
+.footer{padding:16px;text-align:center;color:var(--muted);font-size:12px}.qrCaption{font-weight:950;color:var(--navy);letter-spacing:.12em;margin-top:8px}.subtleCN{font-size:13px;color:var(--muted);margin-top:4px;text-align:center}.joinState{margin:12px 0;padding:12px 14px;border-radius:14px;background:#edf6ff;border:1px solid #cce3f7;color:var(--navy)}.joinState.good{background:#e8f8ef;border-color:#bde5cd;color:#217853}.joinState.bad{background:#fff0f0;border-color:#efc5c5;color:#ad3434}.miniStatus{display:flex;align-items:center;gap:8px;font-weight:800}.miniStatus i{display:block;width:10px;height:10px;border-radius:50%;background:#f4b323}.miniStatus.good i{background:#33a06f}.miniStatus.bad i{background:#e44b4b}.hostNote{font-size:13px;color:var(--muted);line-height:1.5}.ackPulse{animation:pulse .8s ease 2}.status.connecting .dot{background:#f4b323;animation:pulse .8s infinite}.status.idle .dot{background:#c4d2e5}.answerAck{margin-top:12px;text-align:center}.connectionHelp{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}.qrWrap svg{display:block}.countdownLabel{text-align:center;font-size:13px;color:var(--muted);margin-top:8px}.autoPill{display:inline-flex;padding:6px 10px;border-radius:999px;background:#e8f8ef;color:#217853;font-size:12px;font-weight:900}.hostControls{display:grid;gap:8px}.hostControls .btn{width:100%}
 </style></head>
-<body><div class="app"><header class="top"><div class="brand"><div class="logo">🏛️</div><div><b>ARCHCMU VibeQuiz</b><small>Architecture × Chiang Mai</small></div></div><div class="topActions"><div class="status idle" id="status"><span class="dot"></span><span id="statusText">Ready</span></div><button class="topBtn" id="soundBtn" type="button">🔊</button><button class="topBtn" id="homeBtn" type="button">New Room</button></div></header><main class="main" id="main"></main><footer class="footer">Open page → scan QR → type name → Join → Start Game</footer></div><div class="confetti" id="confetti"></div><script>const QUESTIONS=[{"id":1,"category":"Architecture · Studio Life","question":"Which filename looks most like an architecture student's truly ‘final’ submission?","answers":["Final_Submission.pdf","Project_Complete_v1.pdf","FINAL_v8_really_final_USE_THIS_ONE_render_fixed.pdf","Untitled-1.pdf"],"correctIndex":2,"timeLimit":15,"explanation":"A light-hearted studio joke: architecture files often accumulate increasingly dramatic version names as deadlines approach.","visual":"finalfile","difficulty":"Warm-up"},{"id":2,"category":"Architecture · Studio Life","question":"Which hand tool is most closely associated with cutting card and basswood for physical models?","answers":["Craft knife / X-Acto knife","Concrete mixer","Angle grinder","Paint roller"],"correctIndex":0,"timeLimit":15,"explanation":"A sharp craft knife is a standard model-making tool. It should always be used with a cutting mat, metal ruler and safe hand position.","visual":"knife","difficulty":"Warm-up"},{"id":3,"category":"Architecture · Studio Life","question":"In the classic architecture-studio joke, what might ‘This is… interesting’ mean during a jury?","answers":["The project automatically receives full marks","The critic is being politely non-committal","The critic wants to buy the model","The presentation is already published"],"correctIndex":1,"timeLimit":15,"explanation":"This is a humorous studio-language question, not a formal assessment rule: ‘interesting’ is often used when a critic is still deciding how to respond.","visual":"jury","difficulty":"Warm-up"},{"id":4,"category":"Architecture · History","question":"Le Corbusier famously described a house as what?","answers":["A machine for living in","A monument without function","A box of dreams","A landscape in miniature"],"correctIndex":0,"timeLimit":18,"explanation":"Le Corbusier's well-known modernist phrase presents the house as an efficient instrument organised around everyday life.","visual":"machinehouse","difficulty":"Medium"},{"id":5,"category":"Architecture · History","question":"Which architect is most closely associated with the motto ‘Less is more’?","answers":["Antoni Gaudí","Ludwig Mies van der Rohe","Robert Venturi","Frank Gehry"],"correctIndex":1,"timeLimit":18,"explanation":"Mies van der Rohe used ‘Less is more’ to express a disciplined modernist approach based on clarity, proportion and restraint.","visual":"lessmore","difficulty":"Medium"},{"id":6,"category":"Architecture · History","question":"How did Robert Venturi famously challenge the phrase ‘Less is more’?","answers":["Form follows finance","More is never enough","Less is a bore","Space is the machine"],"correctIndex":2,"timeLimit":18,"explanation":"Venturi's ‘Less is a bore’ defended complexity, contradiction and richer visual communication against strict modernist reduction.","visual":"lessbore","difficulty":"Medium"},{"id":7,"category":"Architecture · Theory","question":"Which set gives Vitruvius' three classical principles of architecture?","answers":["Form, colour, texture","Firmitas, utilitas, venustas","Structure, façade, landscape","Cheap, fast, good"],"correctIndex":1,"timeLimit":20,"explanation":"Firmitas, utilitas and venustas are commonly translated as firmness, commodity and delight: strength, usefulness and beauty.","visual":"vitruvius","difficulty":"Challenge"},{"id":8,"category":"Architecture · History","question":"The name ‘Brutalism’ is primarily connected to which expression?","answers":["Brutal urban politics","Béton brut — raw concrete","A fictional architect called Brutus","Buildings designed for military use"],"correctIndex":1,"timeLimit":18,"explanation":"The term is linked to the French expression béton brut, meaning raw concrete, rather than simply to the English word ‘brutal’.","visual":"brutalism","difficulty":"Medium"},{"id":9,"category":"Architecture · History","question":"What was the practical function of many gargoyles on Gothic buildings?","answers":["To support stained glass","To direct rainwater away from walls","To carry bells","To ventilate crypts"],"correctIndex":1,"timeLimit":18,"explanation":"A true gargoyle is a projecting water spout. It throws rainwater away from masonry walls while also serving a decorative role.","visual":"gargoyle","difficulty":"Medium"},{"id":10,"category":"Architecture · Tropical Urbanism","question":"What is the main environmental purpose of the ‘Five-Foot Way’ found along many Southeast Asian shophouses?","answers":["A private storage strip","A sheltered pedestrian route from sun and rain","An earthquake separation joint","A dedicated rickshaw parking bay"],"correctIndex":1,"timeLimit":20,"explanation":"The continuous covered walkway supports comfortable pedestrian movement in hot, sunny and rainy tropical conditions.","visual":"fivefoot","difficulty":"Challenge"},{"id":11,"category":"Architecture · Adaptive Reuse","question":"Which statement best defines adaptive reuse?","answers":["Demolishing an old building and copying its façade","Giving an existing building a new use while retaining significant fabric","Restoring every building to its first historical condition","Changing only the furniture in a room"],"correctIndex":1,"timeLimit":20,"explanation":"Adaptive reuse extends the life of an existing building by accommodating a new programme while retaining and adapting valuable existing fabric.","visual":"reuse","difficulty":"Challenge"},{"id":12,"category":"Architecture · Representation","question":"What does an architectural section reveal especially well?","answers":["Only property ownership","Vertical spatial relationships and levels","Only the exterior colour palette","The construction budget"],"correctIndex":1,"timeLimit":18,"explanation":"A section cuts vertically through a building, making heights, floor relationships, voids, structure and light paths easier to understand.","visual":"section","difficulty":"Medium"},{"id":13,"category":"Architecture · Environmental Design","question":"Why is external shading usually more effective than an internal blind for reducing direct solar heat gain?","answers":["It blocks solar radiation before it reaches the glazing","It increases the glass temperature","It eliminates all daylight","It makes walls structurally stronger"],"correctIndex":0,"timeLimit":20,"explanation":"External shading intercepts direct solar radiation before it passes through the glass, reducing heat gain while allowing controlled daylight.","visual":"shading","difficulty":"Challenge"},{"id":14,"category":"Architecture · Field Research","question":"What does behavioural mapping normally record?","answers":["Only building ownership","Where people move, stop, sit and interact","Only the age of a building","Concrete compressive strength"],"correctIndex":1,"timeLimit":18,"explanation":"Behavioural mapping connects observable activities to specific locations and times, helping researchers understand how space is actually used.","visual":"behavior","difficulty":"Medium"},{"id":15,"category":"Architecture · Circular Design","question":"Which connection is generally easiest to dismantle and reuse later?","answers":["A bolted dry connection","A permanently welded joint","A fully glued composite joint","A cast-in-place monolithic connection"],"correctIndex":0,"timeLimit":20,"explanation":"Bolted and other dry connections can often be disassembled with less damage, supporting reversibility, repair and material reuse.","visual":"reversible","difficulty":"Challenge"},{"id":16,"category":"Chiang Mai · History","question":"What does the name ‘Chiang Mai’ literally mean?","answers":["Golden Mountain","New City","Northern River","City of Temples"],"correctIndex":1,"timeLimit":15,"explanation":"Chiang Mai literally means ‘New City’, reflecting its establishment as a new political centre of the Lanna Kingdom.","visual":"newcity","difficulty":"Warm-up"},{"id":17,"category":"Chiang Mai · History","question":"In which year was Chiang Mai founded by King Mangrai?","answers":["AD 996","AD 1296","AD 1496","AD 1767"],"correctIndex":1,"timeLimit":15,"explanation":"Chiang Mai was founded in AD 1296 and developed as the political, economic and cultural centre of Lanna.","visual":"timeline","difficulty":"Warm-up"},{"id":18,"category":"Chiang Mai · History","question":"Chiang Mai became the capital of which historical kingdom?","answers":["Ayutthaya","Sukhothai","Lanna","Khmer"],"correctIndex":2,"timeLimit":15,"explanation":"Chiang Mai was established as the capital of the Lanna Kingdom, whose art, architecture and cultural traditions remain visible today.","visual":"lanna","difficulty":"Warm-up"},{"id":19,"category":"Chiang Mai · Landscape","question":"Approximately how high is Doi Inthanon, Thailand's highest mountain?","answers":["1,565 metres","2,565 metres","3,565 metres","4,565 metres"],"correctIndex":1,"timeLimit":18,"explanation":"Doi Inthanon rises to approximately 2,565 metres above sea level and is the highest mountain in Thailand.","visual":"inthanon","difficulty":"Medium"},{"id":20,"category":"Chiang Mai · Doi Suthep","question":"How many steps are on the famous seven-headed Naga staircase at Wat Phra That Doi Suthep?","answers":["206","306","406","506"],"correctIndex":1,"timeLimit":15,"explanation":"The well-known Naga staircase has 306 steps, with a cable car available as an alternative route.","visual":"steps","difficulty":"Warm-up"},{"id":21,"category":"Chiang Mai · Urban Form","question":"Which physical elements most clearly define Chiang Mai’s historic old-city core?","answers":["A moat, walls and gates","A coastal seawall","A radial motorway system","A single royal avenue"],"correctIndex":0,"timeLimit":18,"explanation":"Chiang Mai’s historic core is strongly identified by its moats, surviving walls, city gates and fortified corners.","visual":"moat","difficulty":"Medium"},{"id":22,"category":"Chiang Mai · Sacred Landscape","question":"Which mythical creature flanks the staircase leading to Wat Phra That Doi Suthep?","answers":["Garuda","Naga serpent","Kinnari","Guardian elephant"],"correctIndex":1,"timeLimit":15,"explanation":"The staircase is bordered by a long Naga, a semi-divine serpent associated with water, protection and sacred Buddhist spaces.","visual":"naga","difficulty":"Warm-up"},{"id":23,"category":"Chiang Mai · Temple Architecture","question":"What is the name of the upward-pointing finial at the end of many Thai temple roofs?","answers":["Kalae","Chofa","Chedi","Sala"],"correctIndex":1,"timeLimit":18,"explanation":"The chofa is a distinctive decorative finial placed at the ends of temple and palace roof ridges.","visual":"chofa","difficulty":"Medium"},{"id":24,"category":"Chiang Mai · Lanna Architecture","question":"What is the V-shaped decorative element at the roof apex of a traditional Lanna house called?","answers":["Kalae","Chofa","Naga","Mondop"],"correctIndex":0,"timeLimit":18,"explanation":"Kalae are paired, projecting decorative boards associated with traditional Lanna domestic architecture.","visual":"kalae","difficulty":"Medium"},{"id":25,"category":"Chiang Mai · Vernacular Design","question":"Why are many traditional Thai houses raised above the ground?","answers":["Only to appear taller","To help with seasonal flooding and airflow","To create a stone basement","To reduce the roof span"],"correctIndex":1,"timeLimit":20,"explanation":"Raised floors help protect living areas from seasonal water and allow air to move beneath the house in a monsoon climate.","visual":"stilt","difficulty":"Challenge"},{"id":26,"category":"Chiang Mai · Materials","question":"Which materials are strongly associated with traditional Northern Thai vernacular houses?","answers":["Teak and bamboo","Marble and steel","Adobe and slate","Glass and aluminium"],"correctIndex":0,"timeLimit":18,"explanation":"Timber—especially teak in higher-status construction—and bamboo have long been important materials in Northern Thai building traditions.","visual":"materials","difficulty":"Medium"},{"id":27,"category":"Chiang Mai · Temple Architecture","question":"In Thai temple architecture, what is a chedi?","answers":["A monk's bedroom","A stupa that may enshrine sacred relics","A covered market","A temple kitchen"],"correctIndex":1,"timeLimit":18,"explanation":"A chedi is a stupa, often a major sacred focus within a wat and frequently associated with relics or commemorative meaning.","visual":"chedi","difficulty":"Medium"},{"id":28,"category":"Chiang Mai · Temple Architecture","question":"What does the Thai word ‘wat’ normally refer to?","answers":["A Buddhist temple or monastic complex","A city gate","A royal residence","A street market"],"correctIndex":0,"timeLimit":15,"explanation":"A wat is a Buddhist sacred and monastic complex that can contain structures such as a viharn, ubosot, chedi and monks' quarters.","visual":"wat","difficulty":"Warm-up"},{"id":29,"category":"Chiang Mai · Food Culture","question":"Which dish is especially associated with Chiang Mai and Northern Thailand?","answers":["Khao Soi","Pad Thai","Som Tam","Tom Yum Goong"],"correctIndex":0,"timeLimit":15,"explanation":"Khao Soi is a Northern Thai curry noodle dish widely associated with Chiang Mai and the region's layered trade and cultural histories.","visual":"khaosoi","difficulty":"Warm-up"},{"id":30,"category":"Chiang Mai · Living Heritage","question":"In which year was ‘Songkran in Thailand’ inscribed on UNESCO's Representative List of Intangible Cultural Heritage?","answers":["2018","2021","2023","2025"],"correctIndex":2,"timeLimit":18,"explanation":"UNESCO inscribed ‘Songkran in Thailand, traditional Thai New Year festival’ in 2023.","visual":"songkran","difficulty":"Finale"}];
+<body><div class="app"><header class="top"><div class="brand"><div class="logo">🏛️</div><div><b>ARCHCMU Global Challenge</b><small>Chiang Mai · Thailand · Architecture · PhD Research</small></div></div><div class="topActions"><div class="status idle" id="status"><span class="dot"></span><span id="statusText">Ready</span></div><button class="topBtn" id="soundBtn" type="button">🔊</button><button class="topBtn" id="homeBtn" type="button">New Room</button></div></header><main class="main" id="main"></main><footer class="footer">Open page → scan QR → choose avatar → type name → Join → Start</footer></div><div class="confetti" id="confetti"></div><script>const QUESTIONS=[{"id":1,"points":1,"questionZh":"建筑学生在最终提交前，最可能出现的“最终版”文件名是哪一个？","questionEn":"Which file name most realistically belongs to an architecture student’s “final” submission?","answers":[{"letter":"A","zh":"Final_Submission.pdf","en":"Final_Submission.pdf"},{"letter":"B","zh":"Project_Complete_v1.pdf","en":"Project_Complete_v1.pdf"},{"letter":"C","zh":"FINAL_v8_really_final_USE_THIS_ONE_render_fixed.pdf","en":"FINAL_v8_really_final_USE_THIS_ONE_render_fixed.pdf"}],"correctIndex":2,"explanationZh":"这是一道热身趣味题，不是学术事实。建筑设计常经历大量修改，“最终版”文件名往往会不断变长。","explanationEn":"This is a warm-up joke rather than an academic fact. Architecture files often acquire increasingly desperate names after many revisions.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"finalfile"},{"id":2,"points":1,"questionZh":"开始一项博士研究时，最重要的第一步通常是什么？","questionEn":"When beginning a PhD study, what is usually the most important first step?","answers":[{"letter":"A","zh":"提出一个清晰、聚焦且可研究的问题","en":"Formulate a clear, focused, and researchable question"},{"letter":"B","zh":"在没有问题的情况下尽可能收集数据","en":"Collect as much data as possible without a question"},{"letter":"C","zh":"先决定统计软件，再选择研究主题","en":"Choose statistical software before selecting a topic"}],"correctIndex":0,"explanationZh":"清晰的研究问题会引导文献综述、研究设计、数据收集与分析。","explanationEn":"A clear research question guides the literature review, research design, data collection, and analysis.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"question"},{"id":3,"points":1,"questionZh":"“Chiang Mai（清迈）”在泰语中的字面意思是什么？","questionEn":"What does “Chiang Mai” literally mean in Thai?","answers":[{"letter":"A","zh":"古老首都","en":"Old Capital"},{"letter":"B","zh":"北方山城","en":"Northern Mountain City"},{"letter":"C","zh":"新城","en":"New City"}],"correctIndex":2,"explanationZh":"“Chiang”意为城市，“Mai”意为新的，因此 Chiang Mai 即“新城”。","explanationEn":"“Chiang” means city and “Mai” means new, so Chiang Mai means “New City.”","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"newcity"},{"id":4,"points":2,"questionZh":"根据维特鲁威（Vitruvius），建筑的三个基本原则是什么？","questionEn":"According to Vitruvius, what are the three fundamental principles of architecture?","answers":[{"letter":"A","zh":"形式、空间、光线","en":"Form, Space, and Light"},{"letter":"B","zh":"坚固、实用、美观（Firmitas, Utilitas, Venustas）","en":"Firmitas, Utilitas, and Venustas"},{"letter":"C","zh":"便宜、快速、优质","en":"Cheap, Fast, and Good"}],"correctIndex":1,"explanationZh":"通常译为坚固或稳定、实用或功能、美观或愉悦，是经典建筑评价框架。","explanationEn":"The triad is commonly translated as firmness, utility, and beauty or delight.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"vitruvius"},{"id":5,"points":1,"questionZh":"博士论文中的文献综述最主要的作用是什么？","questionEn":"What is the main purpose of a literature review in a PhD thesis?","answers":[{"letter":"A","zh":"完全替代实地调查","en":"Completely replace fieldwork"},{"letter":"B","zh":"梳理已有知识、识别研究空白并定位本研究","en":"Map existing knowledge, identify a gap, and position the study"},{"letter":"C","zh":"保证研究一定能够提出全新理论","en":"Guarantee that the study will produce an entirely new theory"}],"correctIndex":1,"explanationZh":"文献综述不是资料堆积，而是说明已有研究做了什么、还缺什么，以及你的研究为何必要。","explanationEn":"A literature review shows what is known, what remains unresolved, and why the new study is needed.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"literature"},{"id":6,"points":2,"questionZh":"泰国最高峰茵他侬山（Doi Inthanon）的海拔约为多少？","questionEn":"Approximately how high is Doi Inthanon, Thailand’s highest peak?","answers":[{"letter":"A","zh":"1,565 米","en":"1,565 metres"},{"letter":"B","zh":"2,165 米","en":"2,165 metres"},{"letter":"C","zh":"2,565 米","en":"2,565 metres"}],"correctIndex":2,"explanationZh":"茵他侬山海拔约 2,565 米，位于清迈府，是泰国最高点。","explanationEn":"Doi Inthanon rises to about 2,565 metres in Chiang Mai Province and is Thailand’s highest point.","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"inthanon"},{"id":7,"points":2,"questionZh":"东南亚传统店屋中的“五脚基（Five-Foot Way）”最主要的环境功能是什么？","questionEn":"What is the main environmental function of the Five-Foot Way in Southeast Asian shophouses?","answers":[{"letter":"A","zh":"为行人提供遮阳避雨的连续有顶通道","en":"Provide a continuous sheltered walkway protected from sun and rain"},{"letter":"B","zh":"作为人力车专用停车位","en":"Serve as dedicated rickshaw parking"},{"letter":"C","zh":"作为抵抗地震的结构缓冲带","en":"Act as a structural earthquake buffer"}],"correctIndex":0,"explanationZh":"连续骑楼空间改善了热带气候下的步行舒适性，并连接街道与店铺。","explanationEn":"The covered arcade improves pedestrian comfort in a tropical climate and links shops with the street.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"fivefoot"},{"id":8,"points":1,"questionZh":"以下哪一种属于定量数据？","questionEn":"Which of the following is quantitative data?","answers":[{"letter":"A","zh":"30 名参与者以厘米记录的身高","en":"The heights of 30 participants recorded in centimetres"},{"letter":"B","zh":"参与者讲述的居住经历","en":"Participants’ stories about their living experiences"},{"letter":"C","zh":"研究者的现场观察笔记","en":"The researcher’s field observation notes"}],"correctIndex":0,"explanationZh":"定量数据以数值形式表达，可进行统计描述和分析。","explanationEn":"Quantitative data are expressed numerically and can be statistically described and analysed.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"quantitative"},{"id":9,"points":1,"questionZh":"泰国泼水节（Songkran）主要在每年的哪个月份庆祝？","questionEn":"In which month is Songkran mainly celebrated each year?","answers":[{"letter":"A","zh":"一月","en":"January"},{"letter":"B","zh":"四月","en":"April"},{"letter":"C","zh":"十一月","en":"November"}],"correctIndex":1,"explanationZh":"宋干节通常在四月中旬举行，是泰国传统新年庆典。","explanationEn":"Songkran is normally celebrated in mid-April as the traditional Thai New Year.","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"songkran"},{"id":10,"points":2,"questionZh":"在 1:100 的建筑模型中，现实中 3 米的高度应做成多少厘米？","questionEn":"In a 1:100 architectural model, how many centimetres represent a real height of 3 metres?","answers":[{"letter":"A","zh":"0.3 厘米","en":"0.3 cm"},{"letter":"B","zh":"30 厘米","en":"30 cm"},{"letter":"C","zh":"3 厘米","en":"3 cm"}],"correctIndex":2,"explanationZh":"3 米等于 300 厘米；300 ÷ 100 = 3 厘米。","explanationEn":"Three metres equals 300 centimetres; 300 divided by 100 equals 3 centimetres.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"scale"},{"id":11,"points":2,"questionZh":"开展试点研究（pilot study）的主要目的是什么？","questionEn":"What is the main purpose of conducting a pilot study?","answers":[{"letter":"A","zh":"测试研究流程、工具、招募和现场执行是否可行","en":"Test whether procedures, tools, recruitment, and implementation are feasible"},{"letter":"B","zh":"最终证明研究假设","en":"Definitively prove the research hypothesis"},{"letter":"C","zh":"完全替代正式研究","en":"Completely replace the full study"}],"correctIndex":0,"explanationZh":"试点研究用于发现流程问题并改进正式研究，而不是直接得出最终结论。","explanationEn":"A pilot identifies practical problems and improves the main study rather than producing final conclusions.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"pilot"},{"id":12,"points":1,"questionZh":"清迈曾经是哪一个古代王国的首都？","questionEn":"Chiang Mai was historically the capital of which kingdom?","answers":[{"letter":"A","zh":"素可泰王国","en":"Sukhothai Kingdom"},{"letter":"B","zh":"兰纳王国","en":"Lanna Kingdom"},{"letter":"C","zh":"大城王国","en":"Ayutthaya Kingdom"}],"correctIndex":1,"explanationZh":"清迈于 1296 年建立，并成为兰纳王国的重要首都。","explanationEn":"Chiang Mai was founded in 1296 and became the principal capital of the Lanna Kingdom.","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"lanna"},{"id":13,"points":3,"questionZh":"以下哪一项最准确地描述“适应性再利用（adaptive reuse）”？","questionEn":"Which statement best defines adaptive reuse?","answers":[{"letter":"A","zh":"拆除旧建筑，并按原样复制一栋新建筑","en":"Demolish an old building and construct a replica"},{"letter":"B","zh":"所有旧建筑都只能改为博物馆","en":"Convert every old building into a museum"},{"letter":"C","zh":"在保留重要建筑特征与价值的同时，为既有建筑赋予新的适宜用途","en":"Give an existing building a suitable new use while retaining significant fabric and values"}],"correctIndex":2,"explanationZh":"适应性再利用强调既有建筑的持续使用、新功能与遗产价值之间的协调。","explanationEn":"Adaptive reuse balances continued use, a new function, and the retention of significant architectural or heritage values.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"困难","difficultyEn":"Hard","timeLimit":20,"visual":"reuse"},{"id":14,"points":1,"questionZh":"什么是混合研究方法（mixed methods research）？","questionEn":"What is mixed methods research?","answers":[{"letter":"A","zh":"只使用两种不同的定性方法","en":"Using only two different qualitative methods"},{"letter":"B","zh":"在同一研究中整合定量与定性方法和结果","en":"Integrating quantitative and qualitative methods and findings in one study"},{"letter":"C","zh":"同时使用两种统计软件","en":"Using two statistical software packages"}],"correctIndex":1,"explanationZh":"关键不只是同时收集两类数据，还要在研究设计、分析或解释阶段进行整合。","explanationEn":"The key is not merely collecting both kinds of data, but integrating them in design, analysis, or interpretation.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"mixed"},{"id":15,"points":2,"questionZh":"按照常见的行政统计口径，将曼谷这一特别行政区计算在内，泰国共有多少个府级行政区？","questionEn":"In the commonly used administrative count, including Bangkok’s special administrative status, how many province-level areas does Thailand have?","answers":[{"letter":"A","zh":"77 个","en":"77"},{"letter":"B","zh":"76 个","en":"76"},{"letter":"C","zh":"78 个","en":"78"}],"correctIndex":0,"explanationZh":"泰国有 76 个府；曼谷具有特别行政地位，常与其合计为 77 个府级行政区。","explanationEn":"Thailand has 76 provinces; Bangkok has special administrative status and is commonly included for a total of 77 province-level areas.","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"provinces"},{"id":16,"points":1,"questionZh":"哪位建筑师最常与“Less is more（少即是多）”这句话联系在一起？","questionEn":"Which architect is most closely associated with the phrase “Less is more”?","answers":[{"letter":"A","zh":"扎哈·哈迪德","en":"Zaha Hadid"},{"letter":"B","zh":"罗伯特·文丘里","en":"Robert Venturi"},{"letter":"C","zh":"路德维希·密斯·凡·德·罗","en":"Ludwig Mies van der Rohe"}],"correctIndex":2,"explanationZh":"这句话被广泛用于概括密斯的现代主义与极简设计思想。","explanationEn":"The phrase is widely associated with Mies’s modernist and minimalist design approach.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"lessmore"},{"id":17,"points":2,"questionZh":"若研究者希望样本更能代表明确界定的目标总体，以下哪一种做法通常最好？","questionEn":"If a researcher wants a sample to better represent a clearly defined target population, which approach is generally best?","answers":[{"letter":"A","zh":"只选择最容易接触到的人","en":"Select only the easiest people to reach"},{"letter":"B","zh":"只邀请意见最强烈的志愿者","en":"Invite only volunteers with the strongest opinions"},{"letter":"C","zh":"从清晰的抽样框中采用适当的概率随机抽样","en":"Use an appropriate probability sample from a clearly defined sampling frame"}],"correctIndex":2,"explanationZh":"概率抽样不能自动消除所有偏差，但通常比便利抽样更有利于总体代表性。","explanationEn":"Probability sampling does not eliminate every bias, but it generally supports representativeness better than convenience sampling.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"sampling"},{"id":18,"points":2,"questionZh":"通往清迈素贴山双龙寺的著名纳迦阶梯大约有多少级台阶？","questionEn":"Approximately how many steps are on the famous Naga staircase leading to Wat Phra That Doi Suthep?","answers":[{"letter":"A","zh":"300 级","en":"300 steps"},{"letter":"B","zh":"306 级","en":"306 steps"},{"letter":"C","zh":"360 级","en":"360 steps"}],"correctIndex":1,"explanationZh":"这条由纳迦护卫的阶梯通常被记载为 306 级，是双龙寺最具辨识度的到达路径之一。","explanationEn":"The Naga-flanked staircase is commonly recorded as having 306 steps and is one of the temple’s most recognisable approaches.","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"steps"},{"id":19,"points":2,"questionZh":"传统泰式高脚屋采用架空地面的主要环境原因是什么？","questionEn":"What is the main environmental reason for raising the floors of traditional Thai houses?","answers":[{"letter":"A","zh":"主要为了装饰","en":"Mainly for decoration"},{"letter":"B","zh":"减轻洪水影响并促进地板下方通风","en":"Reduce flood impact and improve airflow beneath the floor"},{"letter":"C","zh":"只为了让房屋显得更高","en":"Only to make the house appear taller"}],"correctIndex":1,"explanationZh":"架空设计适应热带季风环境，同时还能形成阴凉、通风的半室外使用空间。","explanationEn":"Raised construction responds to monsoon conditions and can also create shaded, ventilated semi-outdoor space.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"stilt"},{"id":20,"points":2,"questionZh":"一个测量工具在相似条件下反复使用时能够产生相近结果，这主要说明它具有较高的什么？","questionEn":"If a measurement tool produces similar results under similar conditions, what quality does it primarily demonstrate?","answers":[{"letter":"A","zh":"信度（Reliability）","en":"Reliability"},{"letter":"B","zh":"效度（Validity）","en":"Validity"},{"letter":"C","zh":"反思性（Reflexivity）","en":"Reflexivity"}],"correctIndex":0,"explanationZh":"信度关注测量结果的一致性与可重复性；效度则关注是否测到了想测的概念。","explanationEn":"Reliability concerns consistency and reproducibility; validity concerns whether the intended concept is actually measured.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"reliability"},{"id":21,"points":2,"questionZh":"“泰国宋干节（Songkran in Thailand）”于哪一年被列入联合国教科文组织人类非物质文化遗产代表作名录？","questionEn":"In which year was “Songkran in Thailand” inscribed on UNESCO’s Representative List of the Intangible Cultural Heritage of Humanity?","answers":[{"letter":"A","zh":"2018 年","en":"2018"},{"letter":"B","zh":"2021 年","en":"2021"},{"letter":"C","zh":"2023 年","en":"2023"}],"correctIndex":2,"explanationZh":"“Songkran in Thailand”于 2023 年被列入该名录。","explanationEn":"“Songkran in Thailand” was inscribed on the UNESCO list in 2023.","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"songkran"},{"id":22,"points":1,"questionZh":"在泰国寺庙建筑中，“Chedi（佛塔）”通常指什么？","questionEn":"In Thai temple architecture, what is a chedi?","answers":[{"letter":"A","zh":"通常用于供奉圣物的佛塔或窣堵坡","en":"A stupa or reliquary structure that commonly contains sacred relics"},{"letter":"B","zh":"僧侣宿舍","en":"Monks’ living quarters"},{"letter":"C","zh":"寺庙市场亭","en":"A temple market pavilion"}],"correctIndex":0,"explanationZh":"Chedi 是泰国佛寺建筑群中的重要宗教构筑物，常与圣物供奉和纪念功能相关。","explanationEn":"A chedi is a major sacred structure in a Thai temple complex, commonly associated with relics and commemoration.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"简单","difficultyEn":"Easy","timeLimit":15,"visual":"chedi"},{"id":23,"points":3,"questionZh":"若一份“空间归属感”问卷能够准确测量研究者所定义的空间归属感，而不是测量一般满意度，这主要体现了什么？","questionEn":"If a “sense of place” questionnaire accurately measures the defined construct rather than general satisfaction, what does this primarily demonstrate?","answers":[{"letter":"A","zh":"所有参与者的答案完全相同","en":"All participants give identical answers"},{"letter":"B","zh":"样本量足够大","en":"The sample is sufficiently large"},{"letter":"C","zh":"较高的效度（Validity）","en":"High validity"}],"correctIndex":2,"explanationZh":"效度关注工具是否真正测量了目标概念；仅有一致性或大样本并不能证明效度。","explanationEn":"Validity concerns whether an instrument measures the intended construct; consistency or a large sample alone does not establish validity.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"困难","difficultyEn":"Hard","timeLimit":20,"visual":"validity"},{"id":24,"points":3,"questionZh":"泰国与多少个国家拥有陆地边界？","questionEn":"How many countries share a land border with Thailand?","answers":[{"letter":"A","zh":"4 个","en":"4"},{"letter":"B","zh":"5 个","en":"5"},{"letter":"C","zh":"6 个","en":"6"}],"correctIndex":0,"explanationZh":"泰国的陆地邻国是缅甸、老挝、柬埔寨和马来西亚，共 4 个。","explanationEn":"Thailand shares land borders with Myanmar, Laos, Cambodia, and Malaysia: four countries.","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"困难","difficultyEn":"Hard","timeLimit":20,"visual":"borders"},{"id":25,"points":3,"questionZh":"兰纳传统住宅屋脊顶部常见的 V 形交叉木构装饰叫什么？","questionEn":"What is the V-shaped crossed timber ornament commonly seen at the roof apex of traditional Lanna houses called?","answers":[{"letter":"A","zh":"Kalae（กาแล）","en":"Kalae"},{"letter":"B","zh":"Chedi","en":"Chedi"},{"letter":"C","zh":"Five-Foot Way","en":"Five-Foot Way"}],"correctIndex":0,"explanationZh":"Kalae 是兰纳传统住宅最具辨识度的屋顶构件与装饰之一，不应与寺庙屋顶的 Chofa 混淆。","explanationEn":"Kalae is a distinctive roof feature of traditional Lanna houses and should not be confused with the chofa used on temple roofs.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"困难","difficultyEn":"Hard","timeLimit":20,"visual":"kalae"},{"id":26,"points":3,"questionZh":"研究中的“三角互证（triangulation）”通常指什么？","questionEn":"What does triangulation usually mean in research?","answers":[{"letter":"A","zh":"把样本平均分成三个小组","en":"Divide the sample into three equal groups"},{"letter":"B","zh":"把同一份问卷重复发放三次","en":"Administer the same questionnaire three times"},{"letter":"C","zh":"使用多种方法、数据来源或研究者，对发现进行相互验证和深化解释","en":"Use multiple methods, data sources, or researchers to corroborate findings and deepen interpretation"}],"correctIndex":2,"explanationZh":"三角互证并不要求不同资料完全一致，也可用于发现矛盾、补充视角并提高解释的可信度。","explanationEn":"Triangulation need not produce perfect agreement; it can reveal contradictions, add perspectives, and strengthen interpretation.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"困难","difficultyEn":"Hard","timeLimit":20,"visual":"triangulation"},{"id":27,"points":3,"questionZh":"泰国第一座国家公园是哪一个？","questionEn":"Which was Thailand’s first national park?","answers":[{"letter":"A","zh":"考艾国家公园（Khao Yai National Park）","en":"Khao Yai National Park"},{"letter":"B","zh":"爱侣湾国家公园（Erawan National Park）","en":"Erawan National Park"},{"letter":"C","zh":"茵他侬国家公园（Doi Inthanon National Park）","en":"Doi Inthanon National Park"}],"correctIndex":0,"explanationZh":"考艾国家公园于 1962 年设立，被认定为泰国第一座国家公园。","explanationEn":"Khao Yai was established in 1962 and is recognised as Thailand’s first national park.","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"困难","difficultyEn":"Hard","timeLimit":20,"visual":"park"},{"id":28,"points":3,"questionZh":"若希望一个房间形成有效的自然穿堂风，以下哪种开口布置通常最有利？","questionEn":"Which opening arrangement generally best supports effective natural cross-ventilation in a room?","answers":[{"letter":"A","zh":"在相对或适当不同的立面设置进风口与出风口，形成连续气流路径","en":"Provide inlet and outlet openings on opposite or appropriately different sides to create a continuous airflow path"},{"letter":"B","zh":"封闭全部窗户并使用厚窗帘","en":"Seal all windows and use heavy curtains"},{"letter":"C","zh":"只设置一个没有其他出口的天窗","en":"Use only one skylight with no other outlet"}],"correctIndex":0,"explanationZh":"穿堂风需要明确的空气进入与排出路径；开口大小、位置、风向和室内阻挡也会影响效果。","explanationEn":"Cross-ventilation requires a clear inlet-to-outlet path; opening size, position, wind direction, and interior obstructions also matter.","categoryZh":"建筑学与学生生活","categoryEn":"Architecture & Student Life","difficultyZh":"困难","difficultyEn":"Hard","timeLimit":20,"visual":"ventilation"},{"id":29,"points":3,"questionZh":"在人类参与者研究中，取得知情同意的正确时间通常是什么？","questionEn":"In research involving human participants, when should informed consent normally be obtained?","answers":[{"letter":"A","zh":"完成数据收集之后","en":"After data collection is complete"},{"letter":"B","zh":"只有参与者主动询问时才需要","en":"Only when a participant specifically asks for it"},{"letter":"C","zh":"参与研究之前；除非伦理审查机构正式批准豁免或变更","en":"Before participation, unless an ethics body has formally approved a waiver or alteration"}],"correctIndex":2,"explanationZh":"参与者应在了解研究目的、程序、风险、权益与退出方式后，自愿决定是否参加。","explanationEn":"Participants should voluntarily decide after receiving information about the purpose, procedures, risks, rights, and withdrawal.","categoryZh":"博士研究方法","categoryEn":"PhD Research Methods","difficultyZh":"困难","difficultyEn":"Hard","timeLimit":20,"visual":"ethics"},{"id":30,"points":2,"questionZh":"公历 2026 年对应泰国佛历哪一年？","questionEn":"Which Thai Buddhist Era year corresponds to Gregorian year 2026?","answers":[{"letter":"A","zh":"佛历 2569 年","en":"B.E. 2569"},{"letter":"B","zh":"佛历 2026 年","en":"B.E. 2026"},{"letter":"C","zh":"佛历 2069 年","en":"B.E. 2069"}],"correctIndex":0,"explanationZh":"泰国常用佛历年份通常比公历多 543 年，因此 2026 + 543 = 2569。","explanationEn":"The Thai Buddhist Era is generally 543 years ahead of the Gregorian calendar, so 2026 + 543 = 2569.","categoryZh":"清迈与泰国","categoryEn":"Chiang Mai & Thailand","difficultyZh":"中等","difficultyEn":"Medium","timeLimit":18,"visual":"calendar"}];
 const AVATARS=[
  {e:'🐘',n:'Lanna Elephant',c:'#d9efff'},{e:'🐼',n:'Studio Panda',c:'#f2e8ff'},{e:'🐯',n:'Teak Tiger',c:'#ffe2cf'},
  {e:'🦉',n:'Research Owl',c:'#e5e8ff'},{e:'🐱',n:'Model Cat',c:'#ffe4ed'},{e:'🦊',n:'Urban Fox',c:'#ffe9d2'},
@@ -51,17 +65,1318 @@ function visualSVG(theme,id){const bg=`<defs><linearGradient id="g${id}" x1="0" 
   case'wat':x=`<path d="M90 385V240h220v145M590 385V240h220v145" fill="${white}"/><path d="M55 240l145-105 145 105M555 240l145-105 145 105" fill="none" stroke="${gold}" stroke-width="25"/><path d="M355 385h190l-25-50H380z" fill="${white}"/><path d="M395 335c0-85 110-85 110 0z" fill="${gold}"/><path d="M450 255v-115" stroke="${white}" stroke-width="15"/><path d="M430 185h40" stroke="${gold}" stroke-width="12"/>`;break;
   case'khaosoi':x=`<ellipse cx="450" cy="315" rx="280" ry="95" fill="${white}" filter="url(#s${id})"/><path d="M190 300c20 170 500 170 520 0" fill="#f0a83a"/><path d="M260 245c45-80 80 50 125-25s85 55 130-20 90 60 140-25" fill="none" stroke="#ffd86a" stroke-width="24" stroke-linecap="round"/><g fill="${green}"><circle cx="335" cy="290" r="22"/><circle cx="540" cy="285" r="22"/></g><path d="M610 90l-120 190" stroke="${red}" stroke-width="16"/><path d="M660 105L535 285" stroke="${red}" stroke-width="16"/>`;break;
   case'songkran':x=`<g fill="${white}"><circle cx="250" cy="285" r="65"/><circle cx="450" cy="250" r="75"/><circle cx="650" cy="285" r="65"/></g><path d="M250 350v75M450 325v100M650 350v75" stroke="${white}" stroke-width="28" stroke-linecap="round"/><path d="M140 100c35 35 35 70 0 105-35-35-35-70 0-105zM740 70c40 42 40 84 0 126-40-42-40-84 0-126zM520 55c28 30 28 60 0 90-28-30-28-60 0-90z" fill="${blue}"/><path d="M100 360l170-125M800 360L630 235" stroke="${red}" stroke-width="28" stroke-linecap="round"/><path d="M220 250l-80-40M680 250l80-40" stroke="${blue}" stroke-width="18" stroke-linecap="round"/>`;break;
+
+  case'question':x=`<g filter="url(#s${id})"><rect x="160" y="75" width="580" height="330" rx="30" fill="${white}"/><circle cx="450" cy="200" r="80" fill="${gold}"/><path d="M420 175c0-45 75-55 95-16 22 43-38 56-52 88" fill="none" stroke="${navy}" stroke-width="24" stroke-linecap="round"/><circle cx="458" cy="300" r="15" fill="${navy}"/><path d="M215 130h110M575 130h110M215 350h145M540 350h145" stroke="${blue}" stroke-width="16" stroke-linecap="round"/></g>`;break;
+  case'literature':x=`<g filter="url(#s${id})"><rect x="130" y="95" width="250" height="300" rx="20" fill="${white}"/><rect x="520" y="95" width="250" height="300" rx="20" fill="${white}"/><path d="M185 150h140M185 200h110M185 250h145M575 150h140M575 200h115M575 250h145" stroke="${navy}" stroke-width="16" stroke-linecap="round"/><path d="M400 245h100" stroke="${gold}" stroke-width="24" stroke-linecap="round"/><path d="M475 215l35 30-35 30" fill="none" stroke="${gold}" stroke-width="18"/></g>`;break;
+  case'quantitative':x=`<rect x="120" y="80" width="660" height="330" rx="26" fill="${white}"/><path d="M185 350V140M185 350h525" stroke="${navy}" stroke-width="16"/><rect x="245" y="245" width="85" height="105" rx="8" fill="${blue}"/><rect x="385" y="185" width="85" height="165" rx="8" fill="${gold}"/><rect x="525" y="125" width="85" height="225" rx="8" fill="${green}"/><circle cx="670" cy="165" r="45" fill="${red}" opacity=".9"/>`;break;
+  case'scale':x=`<g filter="url(#s${id})"><rect x="120" y="120" width="660" height="250" rx="22" fill="${white}"/><path d="M180 285h520" stroke="${navy}" stroke-width="22" stroke-linecap="round"/><g stroke="${gold}" stroke-width="12"><path d="M200 255v60M280 265v40M360 255v60M440 265v40M520 255v60M600 265v40M680 255v60"/></g><path d="M230 190h440" stroke="${blue}" stroke-width="10" stroke-dasharray="22 15"/><path d="M230 170v40M670 170v40" stroke="${red}" stroke-width="10"/></g>`;break;
+  case'pilot':x=`<g filter="url(#s${id})"><circle cx="230" cy="240" r="105" fill="${white}"/><circle cx="670" cy="240" r="105" fill="${white}"/><path d="M335 240h230" stroke="${gold}" stroke-width="26" stroke-linecap="round"/><path d="M535 205l45 35-45 35" fill="none" stroke="${gold}" stroke-width="20"/><path d="M190 240l30 30 60-75" fill="none" stroke="${green}" stroke-width="22" stroke-linecap="round"/><path d="M625 190h90M625 240h90M625 290h65" stroke="${navy}" stroke-width="16" stroke-linecap="round"/></g>`;break;
+  case'mixed':x=`<circle cx="325" cy="240" r="140" fill="${blue}" opacity=".85"/><circle cx="575" cy="240" r="140" fill="${gold}" opacity=".85"/><path d="M450 115c65 40 105 112 105 125s-40 85-105 125c-65-40-105-112-105-125s40-85 105-125z" fill="${green}" opacity=".95"/><path d="M265 240h120M515 240h120" stroke="${white}" stroke-width="18" stroke-linecap="round"/>`;break;
+  case'provinces':x=`<rect x="115" y="75" width="670" height="335" rx="28" fill="${white}"/><g fill="${blue}" opacity=".85"><rect x="160" y="115" width="48" height="48" rx="10"/><rect x="232" y="115" width="48" height="48" rx="10"/><rect x="304" y="115" width="48" height="48" rx="10"/><rect x="376" y="115" width="48" height="48" rx="10"/><rect x="448" y="115" width="48" height="48" rx="10"/><rect x="520" y="115" width="48" height="48" rx="10"/><rect x="592" y="115" width="48" height="48" rx="10"/><rect x="664" y="115" width="48" height="48" rx="10"/><rect x="160" y="187" width="48" height="48" rx="10"/><rect x="232" y="187" width="48" height="48" rx="10"/><rect x="304" y="187" width="48" height="48" rx="10"/><rect x="376" y="187" width="48" height="48" rx="10"/><rect x="448" y="187" width="48" height="48" rx="10"/><rect x="520" y="187" width="48" height="48" rx="10"/><rect x="592" y="187" width="48" height="48" rx="10"/><rect x="664" y="187" width="48" height="48" rx="10"/><rect x="160" y="259" width="48" height="48" rx="10"/><rect x="232" y="259" width="48" height="48" rx="10"/><rect x="304" y="259" width="48" height="48" rx="10"/><rect x="376" y="259" width="48" height="48" rx="10"/><rect x="448" y="259" width="48" height="48" rx="10"/><rect x="520" y="259" width="48" height="48" rx="10"/><rect x="592" y="259" width="48" height="48" rx="10"/><rect x="664" y="259" width="48" height="48" rx="10"/><rect x="160" y="331" width="48" height="48" rx="10"/><rect x="232" y="331" width="48" height="48" rx="10"/><rect x="304" y="331" width="48" height="48" rx="10"/><rect x="376" y="331" width="48" height="48" rx="10"/><rect x="448" y="331" width="48" height="48" rx="10"/><rect x="520" y="331" width="48" height="48" rx="10"/><rect x="592" y="331" width="48" height="48" rx="10"/><rect x="664" y="331" width="48" height="48" rx="10"/></g><circle cx="710" cy="345" r="38" fill="${red}"/><path d="M690 345h40M710 325v40" stroke="${white}" stroke-width="10"/>`;break;
+  case'sampling':x=`<g filter="url(#s${id})"><circle cx="450" cy="240" r="155" fill="${white}"/><g fill="${blue}"><circle cx="370" cy="180" r="28"/><circle cx="450" cy="155" r="28"/><circle cx="530" cy="180" r="28"/><circle cx="350" cy="270" r="28"/><circle cx="450" cy="255" r="28"/><circle cx="550" cy="270" r="28"/><circle cx="400" cy="335" r="28"/><circle cx="500" cy="335" r="28"/></g><g fill="none" stroke="${gold}" stroke-width="10"><circle cx="370" cy="180" r="40"/><circle cx="550" cy="270" r="40"/><circle cx="450" cy="255" r="40"/></g></g>`;break;
+  case'reliability':x=`<g filter="url(#s${id})"><circle cx="315" cy="240" r="135" fill="${white}"/><circle cx="585" cy="240" r="135" fill="${white}"/><g stroke="${navy}" stroke-width="18" fill="none"><circle cx="315" cy="240" r="80"/><circle cx="315" cy="240" r="35"/><circle cx="585" cy="240" r="80"/><circle cx="585" cy="240" r="35"/></g><g fill="${red}"><circle cx="305" cy="230" r="12"/><circle cx="325" cy="250" r="12"/><circle cx="315" cy="245" r="12"/><circle cx="575" cy="232" r="12"/><circle cx="595" cy="248" r="12"/><circle cx="585" cy="242" r="12"/></g></g>`;break;
+  case'validity':x=`<g filter="url(#s${id})"><circle cx="450" cy="240" r="165" fill="${white}"/><circle cx="450" cy="240" r="115" fill="#dcecff"/><circle cx="450" cy="240" r="65" fill="${gold}"/><circle cx="450" cy="240" r="22" fill="${red}"/><path d="M245 90l160 115" stroke="${green}" stroke-width="20" stroke-linecap="round"/><path d="M395 175l35 55-65-8" fill="${green}"/></g>`;break;
+  case'borders':x=`<path d="M220 80l170 35 95 80 135-45 90 95-60 145-150 25-105-70-155 35-65-120z" fill="${white}" filter="url(#s${id})"/><g fill="${gold}"><circle cx="225" cy="150" r="26"/><circle cx="655" cy="190" r="26"/><circle cx="610" cy="365" r="26"/><circle cx="270" cy="350" r="26"/></g><path d="M225 150L390 220 655 190M390 220L610 365M390 220L270 350" stroke="${blue}" stroke-width="12" stroke-dasharray="18 12"/>`;break;
+  case'triangulation':x=`<path d="M450 70L760 390H140z" fill="${white}" opacity=".96" filter="url(#s${id})"/><circle cx="450" cy="145" r="55" fill="${blue}"/><circle cx="245" cy="335" r="55" fill="${gold}"/><circle cx="655" cy="335" r="55" fill="${green}"/><path d="M450 200L300 310M450 200l150 110M300 335h300" stroke="${navy}" stroke-width="16"/><circle cx="450" cy="285" r="34" fill="${red}"/>`;break;
+  case'park':x=`<path d="M0 400L180 250l100 70 170-220 170 210 95-90 185 180v80H0z" fill="#dcecff"/><path d="M300 400L450 100l170 300z" fill="${white}"/><g fill="${green}"><path d="M160 400l55-125 55 125z"/><path d="M660 400l65-150 65 150z"/><path d="M510 400l45-105 45 105z"/></g><circle cx="735" cy="105" r="58" fill="${gold}"/><path d="M90 410h720" stroke="${green}" stroke-width="28"/>`;break;
+  case'ventilation':x=`<rect x="170" y="90" width="560" height="310" rx="22" fill="${white}"/><rect x="170" y="180" width="80" height="130" fill="${blue}"/><rect x="650" y="180" width="80" height="130" fill="${blue}"/><path d="M80 245h520" stroke="${green}" stroke-width="25" stroke-linecap="round"/><path d="M560 210l55 35-55 35" fill="none" stroke="${green}" stroke-width="20"/><path d="M300 145c75-45 160-45 235 0M300 345c75 45 160 45 235 0" fill="none" stroke="${gold}" stroke-width="14" stroke-linecap="round"/>`;break;
+  case'ethics':x=`<g filter="url(#s${id})"><rect x="215" y="70" width="470" height="340" rx="24" fill="${white}"/><rect x="335" y="45" width="230" height="70" rx="18" fill="${gold}"/><path d="M285 170h250M285 230h190M285 290h230" stroke="${navy}" stroke-width="17" stroke-linecap="round"/><circle cx="600" cy="300" r="70" fill="${green}"/><path d="M565 300l28 28 55-70" fill="none" stroke="${white}" stroke-width="18" stroke-linecap="round"/></g>`;break;
+  case'calendar':x=`<g filter="url(#s${id})"><rect x="185" y="80" width="530" height="330" rx="26" fill="${white}"/><rect x="185" y="80" width="530" height="90" rx="26" fill="${red}"/><path d="M300 55v70M600 55v70" stroke="${gold}" stroke-width="22" stroke-linecap="round"/><g fill="${blue}"><rect x="250" y="205" width="65" height="48" rx="10"/><rect x="360" y="205" width="65" height="48" rx="10"/><rect x="470" y="205" width="65" height="48" rx="10"/><rect x="580" y="205" width="65" height="48" rx="10"/><rect x="250" y="285" width="65" height="48" rx="10"/><rect x="360" y="285" width="65" height="48" rx="10"/><rect x="470" y="285" width="65" height="48" rx="10"/><rect x="580" y="285" width="65" height="48" rx="10"/></g><circle cx="650" cy="330" r="54" fill="${gold}"/></g>`;break;
+
   default:x=`<circle cx="450" cy="240" r="140" fill="${white}"/><path d="M390 240l45 45 85-110" fill="none" stroke="${green}" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>`;
  }
  return `<svg viewBox="0 0 900 480" role="img" aria-label="Visual illustration for question ${id}">${bg}${x}${end}`;
 }
 
-const APP_ID='archcmu-vibequiz-v8-one-tap';
+
+const __mods={},__cache={};
+__mods["QRMode"]=function(module,exports,require){
+module.exports = {
+    MODE_NUMBER :       1 << 0,
+    MODE_ALPHA_NUM :    1 << 1,
+    MODE_8BIT_BYTE :    1 << 2,
+    MODE_KANJI :        1 << 3
+};
+
+};
+__mods["QRErrorCorrectLevel"]=function(module,exports,require){
+module.exports = {
+	L : 1,
+	M : 0,
+	Q : 3,
+	H : 2
+};
+
+
+};
+__mods["QRMaskPattern"]=function(module,exports,require){
+module.exports = {
+	PATTERN000 : 0,
+	PATTERN001 : 1,
+	PATTERN010 : 2,
+	PATTERN011 : 3,
+	PATTERN100 : 4,
+	PATTERN101 : 5,
+	PATTERN110 : 6,
+	PATTERN111 : 7
+};
+
+};
+__mods["QRMath"]=function(module,exports,require){
+var QRMath = {
+
+	glog : function(n) {
+	
+		if (n < 1) {
+			throw new Error("glog(" + n + ")");
+		}
+		
+		return QRMath.LOG_TABLE[n];
+	},
+	
+	gexp : function(n) {
+	
+		while (n < 0) {
+			n += 255;
+		}
+	
+		while (n >= 256) {
+			n -= 255;
+		}
+	
+		return QRMath.EXP_TABLE[n];
+	},
+	
+	EXP_TABLE : new Array(256),
+	
+	LOG_TABLE : new Array(256)
+
+};
+	
+for (var i = 0; i < 8; i++) {
+	QRMath.EXP_TABLE[i] = 1 << i;
+}
+for (var i = 8; i < 256; i++) {
+	QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4]
+		^ QRMath.EXP_TABLE[i - 5]
+		^ QRMath.EXP_TABLE[i - 6]
+		^ QRMath.EXP_TABLE[i - 8];
+}
+for (var i = 0; i < 255; i++) {
+	QRMath.LOG_TABLE[QRMath.EXP_TABLE[i] ] = i;
+}
+
+module.exports = QRMath;
+
+};
+__mods["QRPolynomial"]=function(module,exports,require){
+var QRMath = require('./QRMath');
+
+function QRPolynomial(num, shift) {
+	if (num.length === undefined) {
+		throw new Error(num.length + "/" + shift);
+	}
+
+	var offset = 0;
+
+	while (offset < num.length && num[offset] === 0) {
+		offset++;
+	}
+
+	this.num = new Array(num.length - offset + shift);
+	for (var i = 0; i < num.length - offset; i++) {
+		this.num[i] = num[i + offset];
+	}
+}
+
+QRPolynomial.prototype = {
+
+	get : function(index) {
+		return this.num[index];
+	},
+	
+	getLength : function() {
+		return this.num.length;
+	},
+	
+	multiply : function(e) {
+	
+		var num = new Array(this.getLength() + e.getLength() - 1);
+	
+		for (var i = 0; i < this.getLength(); i++) {
+			for (var j = 0; j < e.getLength(); j++) {
+				num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i) ) + QRMath.glog(e.get(j) ) );
+			}
+		}
+	
+		return new QRPolynomial(num, 0);
+	},
+	
+	mod : function(e) {
+	
+		if (this.getLength() - e.getLength() < 0) {
+			return this;
+		}
+	
+		var ratio = QRMath.glog(this.get(0) ) - QRMath.glog(e.get(0) );
+	
+		var num = new Array(this.getLength() );
+		
+		for (var i = 0; i < this.getLength(); i++) {
+			num[i] = this.get(i);
+		}
+		
+		for (var x = 0; x < e.getLength(); x++) {
+			num[x] ^= QRMath.gexp(QRMath.glog(e.get(x) ) + ratio);
+		}
+	
+		// recursive call
+		return new QRPolynomial(num, 0).mod(e);
+	}
+};
+
+module.exports = QRPolynomial;
+
+};
+__mods["QRRSBlock"]=function(module,exports,require){
+var QRErrorCorrectLevel = require('./QRErrorCorrectLevel');
+
+function QRRSBlock(totalCount, dataCount) {
+	this.totalCount = totalCount;
+	this.dataCount  = dataCount;
+}
+
+QRRSBlock.RS_BLOCK_TABLE = [
+
+	// L
+	// M
+	// Q
+	// H
+
+	// 1
+	[1, 26, 19],
+	[1, 26, 16],
+	[1, 26, 13],
+	[1, 26, 9],
+	
+	// 2
+	[1, 44, 34],
+	[1, 44, 28],
+	[1, 44, 22],
+	[1, 44, 16],
+
+	// 3
+	[1, 70, 55],
+	[1, 70, 44],
+	[2, 35, 17],
+	[2, 35, 13],
+
+	// 4		
+	[1, 100, 80],
+	[2, 50, 32],
+	[2, 50, 24],
+	[4, 25, 9],
+	
+	// 5
+	[1, 134, 108],
+	[2, 67, 43],
+	[2, 33, 15, 2, 34, 16],
+	[2, 33, 11, 2, 34, 12],
+	
+	// 6
+	[2, 86, 68],
+	[4, 43, 27],
+	[4, 43, 19],
+	[4, 43, 15],
+	
+	// 7		
+	[2, 98, 78],
+	[4, 49, 31],
+	[2, 32, 14, 4, 33, 15],
+	[4, 39, 13, 1, 40, 14],
+	
+	// 8
+	[2, 121, 97],
+	[2, 60, 38, 2, 61, 39],
+	[4, 40, 18, 2, 41, 19],
+	[4, 40, 14, 2, 41, 15],
+	
+	// 9
+	[2, 146, 116],
+	[3, 58, 36, 2, 59, 37],
+	[4, 36, 16, 4, 37, 17],
+	[4, 36, 12, 4, 37, 13],
+	
+	// 10		
+	[2, 86, 68, 2, 87, 69],
+	[4, 69, 43, 1, 70, 44],
+	[6, 43, 19, 2, 44, 20],
+	[6, 43, 15, 2, 44, 16],
+
+	// 11
+	[4, 101, 81],
+	[1, 80, 50, 4, 81, 51],
+	[4, 50, 22, 4, 51, 23],
+	[3, 36, 12, 8, 37, 13],
+
+	// 12
+	[2, 116, 92, 2, 117, 93],
+	[6, 58, 36, 2, 59, 37],
+	[4, 46, 20, 6, 47, 21],
+	[7, 42, 14, 4, 43, 15],
+
+	// 13
+	[4, 133, 107],
+	[8, 59, 37, 1, 60, 38],
+	[8, 44, 20, 4, 45, 21],
+	[12, 33, 11, 4, 34, 12],
+
+	// 14
+	[3, 145, 115, 1, 146, 116],
+	[4, 64, 40, 5, 65, 41],
+	[11, 36, 16, 5, 37, 17],
+	[11, 36, 12, 5, 37, 13],
+
+	// 15
+	[5, 109, 87, 1, 110, 88],
+	[5, 65, 41, 5, 66, 42],
+	[5, 54, 24, 7, 55, 25],
+	[11, 36, 12],
+
+	// 16
+	[5, 122, 98, 1, 123, 99],
+	[7, 73, 45, 3, 74, 46],
+	[15, 43, 19, 2, 44, 20],
+	[3, 45, 15, 13, 46, 16],
+
+	// 17
+	[1, 135, 107, 5, 136, 108],
+	[10, 74, 46, 1, 75, 47],
+	[1, 50, 22, 15, 51, 23],
+	[2, 42, 14, 17, 43, 15],
+
+	// 18
+	[5, 150, 120, 1, 151, 121],
+	[9, 69, 43, 4, 70, 44],
+	[17, 50, 22, 1, 51, 23],
+	[2, 42, 14, 19, 43, 15],
+
+	// 19
+	[3, 141, 113, 4, 142, 114],
+	[3, 70, 44, 11, 71, 45],
+	[17, 47, 21, 4, 48, 22],
+	[9, 39, 13, 16, 40, 14],
+
+	// 20
+	[3, 135, 107, 5, 136, 108],
+	[3, 67, 41, 13, 68, 42],
+	[15, 54, 24, 5, 55, 25],
+	[15, 43, 15, 10, 44, 16],
+
+	// 21
+	[4, 144, 116, 4, 145, 117],
+	[17, 68, 42],
+	[17, 50, 22, 6, 51, 23],
+	[19, 46, 16, 6, 47, 17],
+
+	// 22
+	[2, 139, 111, 7, 140, 112],
+	[17, 74, 46],
+	[7, 54, 24, 16, 55, 25],
+	[34, 37, 13],
+
+	// 23
+	[4, 151, 121, 5, 152, 122],
+	[4, 75, 47, 14, 76, 48],
+	[11, 54, 24, 14, 55, 25],
+	[16, 45, 15, 14, 46, 16],
+
+	// 24
+	[6, 147, 117, 4, 148, 118],
+	[6, 73, 45, 14, 74, 46],
+	[11, 54, 24, 16, 55, 25],
+	[30, 46, 16, 2, 47, 17],
+
+	// 25
+	[8, 132, 106, 4, 133, 107],
+	[8, 75, 47, 13, 76, 48],
+	[7, 54, 24, 22, 55, 25],
+	[22, 45, 15, 13, 46, 16],
+
+	// 26
+	[10, 142, 114, 2, 143, 115],
+	[19, 74, 46, 4, 75, 47],
+	[28, 50, 22, 6, 51, 23],
+	[33, 46, 16, 4, 47, 17],
+
+	// 27
+	[8, 152, 122, 4, 153, 123],
+	[22, 73, 45, 3, 74, 46],
+	[8, 53, 23, 26, 54, 24],
+	[12, 45, 15, 28, 46, 16],
+
+	// 28
+	[3, 147, 117, 10, 148, 118],
+	[3, 73, 45, 23, 74, 46],
+	[4, 54, 24, 31, 55, 25],
+	[11, 45, 15, 31, 46, 16],
+
+	// 29
+	[7, 146, 116, 7, 147, 117],
+	[21, 73, 45, 7, 74, 46],
+	[1, 53, 23, 37, 54, 24],
+	[19, 45, 15, 26, 46, 16],
+
+	// 30
+	[5, 145, 115, 10, 146, 116],
+	[19, 75, 47, 10, 76, 48],
+	[15, 54, 24, 25, 55, 25],
+	[23, 45, 15, 25, 46, 16],
+
+	// 31
+	[13, 145, 115, 3, 146, 116],
+	[2, 74, 46, 29, 75, 47],
+	[42, 54, 24, 1, 55, 25],
+	[23, 45, 15, 28, 46, 16],
+
+	// 32
+	[17, 145, 115],
+	[10, 74, 46, 23, 75, 47],
+	[10, 54, 24, 35, 55, 25],
+	[19, 45, 15, 35, 46, 16],
+
+	// 33
+	[17, 145, 115, 1, 146, 116],
+	[14, 74, 46, 21, 75, 47],
+	[29, 54, 24, 19, 55, 25],
+	[11, 45, 15, 46, 46, 16],
+
+	// 34
+	[13, 145, 115, 6, 146, 116],
+	[14, 74, 46, 23, 75, 47],
+	[44, 54, 24, 7, 55, 25],
+	[59, 46, 16, 1, 47, 17],
+
+	// 35
+	[12, 151, 121, 7, 152, 122],
+	[12, 75, 47, 26, 76, 48],
+	[39, 54, 24, 14, 55, 25],
+	[22, 45, 15, 41, 46, 16],
+
+	// 36
+	[6, 151, 121, 14, 152, 122],
+	[6, 75, 47, 34, 76, 48],
+	[46, 54, 24, 10, 55, 25],
+	[2, 45, 15, 64, 46, 16],
+
+	// 37
+	[17, 152, 122, 4, 153, 123],
+	[29, 74, 46, 14, 75, 47],
+	[49, 54, 24, 10, 55, 25],
+	[24, 45, 15, 46, 46, 16],
+
+	// 38
+	[4, 152, 122, 18, 153, 123],
+	[13, 74, 46, 32, 75, 47],
+	[48, 54, 24, 14, 55, 25],
+	[42, 45, 15, 32, 46, 16],
+
+	// 39
+	[20, 147, 117, 4, 148, 118],
+	[40, 75, 47, 7, 76, 48],
+	[43, 54, 24, 22, 55, 25],
+	[10, 45, 15, 67, 46, 16],
+
+	// 40
+	[19, 148, 118, 6, 149, 119],
+	[18, 75, 47, 31, 76, 48],
+	[34, 54, 24, 34, 55, 25],
+	[20, 45, 15, 61, 46, 16]
+];
+
+QRRSBlock.getRSBlocks = function(typeNumber, errorCorrectLevel) {
+	
+	var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
+	
+	if (rsBlock === undefined) {
+		throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
+	}
+
+	var length = rsBlock.length / 3;
+	
+	var list = [];
+	
+	for (var i = 0; i < length; i++) {
+
+		var count = rsBlock[i * 3 + 0];
+		var totalCount = rsBlock[i * 3 + 1];
+		var dataCount  = rsBlock[i * 3 + 2];
+
+		for (var j = 0; j < count; j++) {
+			list.push(new QRRSBlock(totalCount, dataCount) );	
+		}
+	}
+	
+	return list;
+};
+
+QRRSBlock.getRsBlockTable = function(typeNumber, errorCorrectLevel) {
+
+	switch(errorCorrectLevel) {
+	case QRErrorCorrectLevel.L :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+	case QRErrorCorrectLevel.M :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+	case QRErrorCorrectLevel.Q :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+	case QRErrorCorrectLevel.H :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+	default :
+		return undefined;
+	}
+};
+
+module.exports = QRRSBlock;
+
+};
+__mods["QRBitBuffer"]=function(module,exports,require){
+function QRBitBuffer() {
+	this.buffer = [];
+	this.length = 0;
+}
+
+QRBitBuffer.prototype = {
+
+	get : function(index) {
+		var bufIndex = Math.floor(index / 8);
+		return ( (this.buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+	},
+	
+	put : function(num, length) {
+		for (var i = 0; i < length; i++) {
+			this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+		}
+	},
+	
+	getLengthInBits : function() {
+		return this.length;
+	},
+	
+	putBit : function(bit) {
+	
+		var bufIndex = Math.floor(this.length / 8);
+		if (this.buffer.length <= bufIndex) {
+			this.buffer.push(0);
+		}
+	
+		if (bit) {
+			this.buffer[bufIndex] |= (0x80 >>> (this.length % 8) );
+		}
+	
+		this.length++;
+	}
+};
+
+module.exports = QRBitBuffer;
+
+};
+__mods["QR8bitByte"]=function(module,exports,require){
+var QRMode = require('./QRMode');
+
+function QR8bitByte(data) {
+	this.mode = QRMode.MODE_8BIT_BYTE;
+	this.data = data;
+}
+
+QR8bitByte.prototype = {
+
+	getLength : function() {
+		return this.data.length;
+	},
+	
+	write : function(buffer) {
+		for (var i = 0; i < this.data.length; i++) {
+			// not JIS ...
+			buffer.put(this.data.charCodeAt(i), 8);
+		}
+	}
+};
+
+module.exports = QR8bitByte;
+
+};
+__mods["QRUtil"]=function(module,exports,require){
+var QRMode = require('./QRMode');
+var QRPolynomial = require('./QRPolynomial');
+var QRMath = require('./QRMath');
+var QRMaskPattern = require('./QRMaskPattern');
+
+var QRUtil = {
+
+    PATTERN_POSITION_TABLE : [
+        [],
+        [6, 18],
+        [6, 22],
+        [6, 26],
+        [6, 30],
+        [6, 34],
+        [6, 22, 38],
+        [6, 24, 42],
+        [6, 26, 46],
+        [6, 28, 50],
+        [6, 30, 54],        
+        [6, 32, 58],
+        [6, 34, 62],
+        [6, 26, 46, 66],
+        [6, 26, 48, 70],
+        [6, 26, 50, 74],
+        [6, 30, 54, 78],
+        [6, 30, 56, 82],
+        [6, 30, 58, 86],
+        [6, 34, 62, 90],
+        [6, 28, 50, 72, 94],
+        [6, 26, 50, 74, 98],
+        [6, 30, 54, 78, 102],
+        [6, 28, 54, 80, 106],
+        [6, 32, 58, 84, 110],
+        [6, 30, 58, 86, 114],
+        [6, 34, 62, 90, 118],
+        [6, 26, 50, 74, 98, 122],
+        [6, 30, 54, 78, 102, 126],
+        [6, 26, 52, 78, 104, 130],
+        [6, 30, 56, 82, 108, 134],
+        [6, 34, 60, 86, 112, 138],
+        [6, 30, 58, 86, 114, 142],
+        [6, 34, 62, 90, 118, 146],
+        [6, 30, 54, 78, 102, 126, 150],
+        [6, 24, 50, 76, 102, 128, 154],
+        [6, 28, 54, 80, 106, 132, 158],
+        [6, 32, 58, 84, 110, 136, 162],
+        [6, 26, 54, 82, 110, 138, 166],
+        [6, 30, 58, 86, 114, 142, 170]
+    ],
+
+    G15 : (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0),
+    G18 : (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0),
+    G15_MASK : (1 << 14) | (1 << 12) | (1 << 10)    | (1 << 4) | (1 << 1),
+
+    getBCHTypeInfo : function(data) {
+        var d = data << 10;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+            d ^= (QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) ) );    
+        }
+        return ( (data << 10) | d) ^ QRUtil.G15_MASK;
+    },
+
+    getBCHTypeNumber : function(data) {
+        var d = data << 12;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+            d ^= (QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) ) );    
+        }
+        return (data << 12) | d;
+    },
+
+    getBCHDigit : function(data) {
+
+        var digit = 0;
+
+        while (data !== 0) {
+            digit++;
+            data >>>= 1;
+        }
+
+        return digit;
+    },
+
+    getPatternPosition : function(typeNumber) {
+        return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+    },
+
+    getMask : function(maskPattern, i, j) {
+        
+        switch (maskPattern) {
+            
+        case QRMaskPattern.PATTERN000 : return (i + j) % 2 === 0;
+        case QRMaskPattern.PATTERN001 : return i % 2 === 0;
+        case QRMaskPattern.PATTERN010 : return j % 3 === 0;
+        case QRMaskPattern.PATTERN011 : return (i + j) % 3 === 0;
+        case QRMaskPattern.PATTERN100 : return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 === 0;
+        case QRMaskPattern.PATTERN101 : return (i * j) % 2 + (i * j) % 3 === 0;
+        case QRMaskPattern.PATTERN110 : return ( (i * j) % 2 + (i * j) % 3) % 2 === 0;
+        case QRMaskPattern.PATTERN111 : return ( (i * j) % 3 + (i + j) % 2) % 2 === 0;
+
+        default :
+            throw new Error("bad maskPattern:" + maskPattern);
+        }
+    },
+
+    getErrorCorrectPolynomial : function(errorCorrectLength) {
+
+        var a = new QRPolynomial([1], 0);
+
+        for (var i = 0; i < errorCorrectLength; i++) {
+            a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0) );
+        }
+
+        return a;
+    },
+
+    getLengthInBits : function(mode, type) {
+
+        if (1 <= type && type < 10) {
+
+            // 1 - 9
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 10;
+            case QRMode.MODE_ALPHA_NUM  : return 9;
+            case QRMode.MODE_8BIT_BYTE  : return 8;
+            case QRMode.MODE_KANJI      : return 8;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 27) {
+
+            // 10 - 26
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 12;
+            case QRMode.MODE_ALPHA_NUM  : return 11;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 10;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 41) {
+
+            // 27 - 40
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 14;
+            case QRMode.MODE_ALPHA_NUM  : return 13;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 12;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else {
+            throw new Error("type:" + type);
+        }
+    },
+
+    getLostPoint : function(qrCode) {
+        
+        var moduleCount = qrCode.getModuleCount();
+        var lostPoint = 0;
+        var row = 0; 
+        var col = 0;
+
+        
+        // LEVEL1
+        
+        for (row = 0; row < moduleCount; row++) {
+
+            for (col = 0; col < moduleCount; col++) {
+
+                var sameCount = 0;
+                var dark = qrCode.isDark(row, col);
+
+                for (var r = -1; r <= 1; r++) {
+
+                    if (row + r < 0 || moduleCount <= row + r) {
+                        continue;
+                    }
+
+                    for (var c = -1; c <= 1; c++) {
+
+                        if (col + c < 0 || moduleCount <= col + c) {
+                            continue;
+                        }
+
+                        if (r === 0 && c === 0) {
+                            continue;
+                        }
+
+                        if (dark === qrCode.isDark(row + r, col + c) ) {
+                            sameCount++;
+                        }
+                    }
+                }
+
+                if (sameCount > 5) {
+                    lostPoint += (3 + sameCount - 5);
+                }
+            }
+        }
+
+        // LEVEL2
+
+        for (row = 0; row < moduleCount - 1; row++) {
+            for (col = 0; col < moduleCount - 1; col++) {
+                var count = 0;
+                if (qrCode.isDark(row,     col    ) ) count++;
+                if (qrCode.isDark(row + 1, col    ) ) count++;
+                if (qrCode.isDark(row,     col + 1) ) count++;
+                if (qrCode.isDark(row + 1, col + 1) ) count++;
+                if (count === 0 || count === 4) {
+                    lostPoint += 3;
+                }
+            }
+        }
+
+        // LEVEL3
+
+        for (row = 0; row < moduleCount; row++) {
+            for (col = 0; col < moduleCount - 6; col++) {
+                if (qrCode.isDark(row, col) && 
+                        !qrCode.isDark(row, col + 1) && 
+                         qrCode.isDark(row, col + 2) && 
+                         qrCode.isDark(row, col + 3) && 
+                         qrCode.isDark(row, col + 4) && 
+                        !qrCode.isDark(row, col + 5) && 
+                         qrCode.isDark(row, col + 6) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount - 6; row++) {
+                if (qrCode.isDark(row, col) &&
+                        !qrCode.isDark(row + 1, col) &&
+                         qrCode.isDark(row + 2, col) &&
+                         qrCode.isDark(row + 3, col) &&
+                         qrCode.isDark(row + 4, col) &&
+                        !qrCode.isDark(row + 5, col) &&
+                         qrCode.isDark(row + 6, col) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        // LEVEL4
+        
+        var darkCount = 0;
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount; row++) {
+                if (qrCode.isDark(row, col) ) {
+                    darkCount++;
+                }
+            }
+        }
+        
+        var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+        lostPoint += ratio * 10;
+
+        return lostPoint;       
+    }
+
+};
+
+module.exports = QRUtil;
+
+};
+__mods["index"]=function(module,exports,require){
+//---------------------------------------------------------------------
+// QRCode for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//   http://www.opensource.org/licenses/mit-license.php
+//
+// The word "QR Code" is registered trademark of 
+// DENSO WAVE INCORPORATED
+//   http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+// Modified to work in node for this project (and some refactoring)
+//---------------------------------------------------------------------
+
+var QR8bitByte = require('./QR8bitByte');
+var QRUtil = require('./QRUtil');
+var QRPolynomial = require('./QRPolynomial');
+var QRRSBlock = require('./QRRSBlock');
+var QRBitBuffer = require('./QRBitBuffer');
+
+function QRCode(typeNumber, errorCorrectLevel) {
+	this.typeNumber = typeNumber;
+	this.errorCorrectLevel = errorCorrectLevel;
+	this.modules = null;
+	this.moduleCount = 0;
+	this.dataCache = null;
+	this.dataList = [];
+}
+
+QRCode.prototype = {
+	
+	addData : function(data) {
+		var newData = new QR8bitByte(data);
+		this.dataList.push(newData);
+		this.dataCache = null;
+	},
+	
+	isDark : function(row, col) {
+		if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+			throw new Error(row + "," + col);
+		}
+		return this.modules[row][col];
+	},
+
+	getModuleCount : function() {
+		return this.moduleCount;
+	},
+	
+	make : function() {
+		// Calculate automatically typeNumber if provided is < 1
+		if (this.typeNumber < 1 ){
+			var typeNumber = 1;
+			for (typeNumber = 1; typeNumber < 40; typeNumber++) {
+				var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
+
+				var buffer = new QRBitBuffer();
+				var totalDataCount = 0;
+				for (var i = 0; i < rsBlocks.length; i++) {
+					totalDataCount += rsBlocks[i].dataCount;
+				}
+
+				for (var x = 0; x < this.dataList.length; x++) {
+					var data = this.dataList[x];
+					buffer.put(data.mode, 4);
+					buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+					data.write(buffer);
+				}
+				if (buffer.getLengthInBits() <= totalDataCount * 8)
+					break;
+			}
+			this.typeNumber = typeNumber;
+		}
+		this.makeImpl(false, this.getBestMaskPattern() );
+	},
+	
+	makeImpl : function(test, maskPattern) {
+		
+		this.moduleCount = this.typeNumber * 4 + 17;
+		this.modules = new Array(this.moduleCount);
+		
+		for (var row = 0; row < this.moduleCount; row++) {
+			
+			this.modules[row] = new Array(this.moduleCount);
+			
+			for (var col = 0; col < this.moduleCount; col++) {
+				this.modules[row][col] = null;//(col + row) % 3;
+			}
+		}
+	
+		this.setupPositionProbePattern(0, 0);
+		this.setupPositionProbePattern(this.moduleCount - 7, 0);
+		this.setupPositionProbePattern(0, this.moduleCount - 7);
+		this.setupPositionAdjustPattern();
+		this.setupTimingPattern();
+		this.setupTypeInfo(test, maskPattern);
+		
+		if (this.typeNumber >= 7) {
+			this.setupTypeNumber(test);
+		}
+	
+		if (this.dataCache === null) {
+			this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
+		}
+	
+		this.mapData(this.dataCache, maskPattern);
+	},
+
+	setupPositionProbePattern : function(row, col)  {
+		
+		for (var r = -1; r <= 7; r++) {
+			
+			if (row + r <= -1 || this.moduleCount <= row + r) continue;
+			
+			for (var c = -1; c <= 7; c++) {
+				
+				if (col + c <= -1 || this.moduleCount <= col + c) continue;
+				
+				if ( (0 <= r && r <= 6 && (c === 0 || c === 6) ) || 
+                     (0 <= c && c <= 6 && (r === 0 || r === 6) ) || 
+                     (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+					this.modules[row + r][col + c] = true;
+				} else {
+					this.modules[row + r][col + c] = false;
+				}
+			}		
+		}		
+	},
+	
+	getBestMaskPattern : function() {
+	
+		var minLostPoint = 0;
+		var pattern = 0;
+	
+		for (var i = 0; i < 8; i++) {
+			
+			this.makeImpl(true, i);
+	
+			var lostPoint = QRUtil.getLostPoint(this);
+	
+			if (i === 0 || minLostPoint >  lostPoint) {
+				minLostPoint = lostPoint;
+				pattern = i;
+			}
+		}
+	
+		return pattern;
+	},
+	
+	createMovieClip : function(target_mc, instance_name, depth) {
+	
+		var qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
+		var cs = 1;
+	
+		this.make();
+
+		for (var row = 0; row < this.modules.length; row++) {
+			
+			var y = row * cs;
+			
+			for (var col = 0; col < this.modules[row].length; col++) {
+	
+				var x = col * cs;
+				var dark = this.modules[row][col];
+			
+				if (dark) {
+					qr_mc.beginFill(0, 100);
+					qr_mc.moveTo(x, y);
+					qr_mc.lineTo(x + cs, y);
+					qr_mc.lineTo(x + cs, y + cs);
+					qr_mc.lineTo(x, y + cs);
+					qr_mc.endFill();
+				}
+			}
+		}
+		
+		return qr_mc;
+	},
+
+	setupTimingPattern : function() {
+		
+		for (var r = 8; r < this.moduleCount - 8; r++) {
+			if (this.modules[r][6] !== null) {
+				continue;
+			}
+			this.modules[r][6] = (r % 2 === 0);
+		}
+	
+		for (var c = 8; c < this.moduleCount - 8; c++) {
+			if (this.modules[6][c] !== null) {
+				continue;
+			}
+			this.modules[6][c] = (c % 2 === 0);
+		}
+	},
+	
+	setupPositionAdjustPattern : function() {
+	
+		var pos = QRUtil.getPatternPosition(this.typeNumber);
+		
+		for (var i = 0; i < pos.length; i++) {
+		
+			for (var j = 0; j < pos.length; j++) {
+			
+				var row = pos[i];
+				var col = pos[j];
+				
+				if (this.modules[row][col] !== null) {
+					continue;
+				}
+				
+				for (var r = -2; r <= 2; r++) {
+				
+					for (var c = -2; c <= 2; c++) {
+					
+						if (Math.abs(r) === 2 || 
+                            Math.abs(c) === 2 ||
+                            (r === 0 && c === 0) ) {
+							this.modules[row + r][col + c] = true;
+						} else {
+							this.modules[row + r][col + c] = false;
+						}
+					}
+				}
+			}
+		}
+	},
+	
+	setupTypeNumber : function(test) {
+	
+		var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+        var mod;
+	
+		for (var i = 0; i < 18; i++) {
+			mod = (!test && ( (bits >> i) & 1) === 1);
+			this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+		}
+	
+		for (var x = 0; x < 18; x++) {
+			mod = (!test && ( (bits >> x) & 1) === 1);
+			this.modules[x % 3 + this.moduleCount - 8 - 3][Math.floor(x / 3)] = mod;
+		}
+	},
+	
+	setupTypeInfo : function(test, maskPattern) {
+	
+		var data = (this.errorCorrectLevel << 3) | maskPattern;
+		var bits = QRUtil.getBCHTypeInfo(data);
+        var mod;
+	
+		// vertical		
+		for (var v = 0; v < 15; v++) {
+	
+			mod = (!test && ( (bits >> v) & 1) === 1);
+	
+			if (v < 6) {
+				this.modules[v][8] = mod;
+			} else if (v < 8) {
+				this.modules[v + 1][8] = mod;
+			} else {
+				this.modules[this.moduleCount - 15 + v][8] = mod;
+			}
+		}
+	
+		// horizontal
+		for (var h = 0; h < 15; h++) {
+	
+			mod = (!test && ( (bits >> h) & 1) === 1);
+			
+			if (h < 8) {
+				this.modules[8][this.moduleCount - h - 1] = mod;
+			} else if (h < 9) {
+				this.modules[8][15 - h - 1 + 1] = mod;
+			} else {
+				this.modules[8][15 - h - 1] = mod;
+			}
+		}
+	
+		// fixed module
+		this.modules[this.moduleCount - 8][8] = (!test);
+	
+	},
+	
+	mapData : function(data, maskPattern) {
+		
+		var inc = -1;
+		var row = this.moduleCount - 1;
+		var bitIndex = 7;
+		var byteIndex = 0;
+		
+		for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+	
+			if (col === 6) col--;
+	
+			while (true) {
+	
+				for (var c = 0; c < 2; c++) {
+					
+					if (this.modules[row][col - c] === null) {
+						
+						var dark = false;
+	
+						if (byteIndex < data.length) {
+							dark = ( ( (data[byteIndex] >>> bitIndex) & 1) === 1);
+						}
+	
+						var mask = QRUtil.getMask(maskPattern, row, col - c);
+	
+						if (mask) {
+							dark = !dark;
+						}
+						
+						this.modules[row][col - c] = dark;
+						bitIndex--;
+	
+						if (bitIndex === -1) {
+							byteIndex++;
+							bitIndex = 7;
+						}
+					}
+				}
+								
+				row += inc;
+	
+				if (row < 0 || this.moduleCount <= row) {
+					row -= inc;
+					inc = -inc;
+					break;
+				}
+			}
+		}
+		
+	}
+
+};
+
+QRCode.PAD0 = 0xEC;
+QRCode.PAD1 = 0x11;
+
+QRCode.createData = function(typeNumber, errorCorrectLevel, dataList) {
+	
+	var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+	
+	var buffer = new QRBitBuffer();
+	
+	for (var i = 0; i < dataList.length; i++) {
+		var data = dataList[i];
+		buffer.put(data.mode, 4);
+		buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+		data.write(buffer);
+	}
+
+	// calc num max data.
+	var totalDataCount = 0;
+	for (var x = 0; x < rsBlocks.length; x++) {
+		totalDataCount += rsBlocks[x].dataCount;
+	}
+
+	if (buffer.getLengthInBits() > totalDataCount * 8) {
+		throw new Error("code length overflow. (" + 
+            buffer.getLengthInBits() + 
+            ">" +  
+            totalDataCount * 8 + 
+            ")");
+	}
+
+	// end code
+	if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+		buffer.put(0, 4);
+	}
+
+	// padding
+	while (buffer.getLengthInBits() % 8 !== 0) {
+		buffer.putBit(false);
+	}
+
+	// padding
+	while (true) {
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD0, 8);
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD1, 8);
+	}
+
+	return QRCode.createBytes(buffer, rsBlocks);
+};
+
+QRCode.createBytes = function(buffer, rsBlocks) {
+
+	var offset = 0;
+	
+	var maxDcCount = 0;
+	var maxEcCount = 0;
+	
+	var dcdata = new Array(rsBlocks.length);
+	var ecdata = new Array(rsBlocks.length);
+	
+	for (var r = 0; r < rsBlocks.length; r++) {
+
+		var dcCount = rsBlocks[r].dataCount;
+		var ecCount = rsBlocks[r].totalCount - dcCount;
+
+		maxDcCount = Math.max(maxDcCount, dcCount);
+		maxEcCount = Math.max(maxEcCount, ecCount);
+		
+		dcdata[r] = new Array(dcCount);
+		
+		for (var i = 0; i < dcdata[r].length; i++) {
+			dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+		}
+		offset += dcCount;
+		
+		var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+		var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+		var modPoly = rawPoly.mod(rsPoly);
+		ecdata[r] = new Array(rsPoly.getLength() - 1);
+		for (var x = 0; x < ecdata[r].length; x++) {
+            var modIndex = x + modPoly.getLength() - ecdata[r].length;
+			ecdata[r][x] = (modIndex >= 0)? modPoly.get(modIndex) : 0;
+		}
+
+	}
+	
+	var totalCodeCount = 0;
+	for (var y = 0; y < rsBlocks.length; y++) {
+		totalCodeCount += rsBlocks[y].totalCount;
+	}
+
+	var data = new Array(totalCodeCount);
+	var index = 0;
+
+	for (var z = 0; z < maxDcCount; z++) {
+		for (var s = 0; s < rsBlocks.length; s++) {
+			if (z < dcdata[s].length) {
+				data[index++] = dcdata[s][z];
+			}
+		}
+	}
+
+	for (var xx = 0; xx < maxEcCount; xx++) {
+		for (var t = 0; t < rsBlocks.length; t++) {
+			if (xx < ecdata[t].length) {
+				data[index++] = ecdata[t][xx];
+			}
+		}
+	}
+
+	return data;
+
+};
+
+module.exports = QRCode;
+
+};
+function __req(name){
+  name=String(name).replace(/^\.\//,'');
+  if(__cache[name]) return __cache[name].exports;
+  if(!__mods[name]) throw new Error('QR module missing: '+name);
+  const module={exports:{}}; __cache[name]=module;
+  __mods[name](module,module.exports,__req);
+  return module.exports;
+}
+const QRCodeCore=__req('index');
+const QRErrorCorrectLevel=__req('QRErrorCorrectLevel');
+function qrSvg(text,size=340){
+  const q=new QRCodeCore(-1,QRErrorCorrectLevel.M);
+  q.addData(String(text)); q.make();
+  const n=q.getModuleCount(), quiet=4, total=n+quiet*2, cell=size/total;
+  let d='';
+  for(let r=0;r<n;r++){
+    for(let c=0;c<n;c++){
+      if(q.isDark(r,c)){
+        const x=(c+quiet)*cell, y=(r+quiet)*cell;
+        d+=`M${x.toFixed(3)} ${y.toFixed(3)}h${cell.toFixed(3)}v${cell.toFixed(3)}h-${cell.toFixed(3)}z`;
+      }
+    }
+  }
+  return `<svg viewBox="0 0 ${size} ${size}" role="img" aria-label="QR code to join"><rect width="${size}" height="${size}" fill="#fff"/><path d="${d}" fill="#082f6b"/></svg>`;
+}
+
+const APP_ID='archcmu-homeroom-final30-v9';
 const PUBNUB_ORIGINS=['https://ps.pndsn.com','https://pubsub.pubnub.com'];
 const main=document.getElementById('main'),statusEl=document.getElementById('status'),statusText=document.getElementById('statusText');
 function makeSafeStore(name){const mem={};let raw=null;try{raw=window[name];raw.setItem('__arch_probe','1');raw.removeItem('__arch_probe')}catch{raw=null}return{getItem:k=>{try{return raw?raw.getItem(k):(Object.prototype.hasOwnProperty.call(mem,k)?mem[k]:null)}catch{return Object.prototype.hasOwnProperty.call(mem,k)?mem[k]:null}},setItem:(k,v)=>{try{if(raw)raw.setItem(k,String(v));else mem[k]=String(v)}catch{mem[k]=String(v)}},removeItem:k=>{try{if(raw)raw.removeItem(k);else delete mem[k]}catch{delete mem[k]}}}}
 const SS=makeSafeStore('sessionStorage'),LS=makeSafeStore('localStorage');
-const params=new URLSearchParams(location.search);const TEST=params.get('test')==='1';
+const params=new URLSearchParams(location.search);const TEST=params.get('test')==='1';const FAST=TEST&&params.get('fast')==='1';
 let mode=params.has('join')?'player':'host',room=(params.get('join')||params.get('host')||'').replace(/[^A-Za-z0-9_-]/g,''),hostKey=params.get('key')||'';
 let socket=null,transportOpen=false,connectSeq=0,reconnectTimer=null,stateTimer=null,clockTimer=null,autoTimer=null,joinRetry=null,answerRetry=null;
 let state=null,answers={},soundOn=true,selectedAvatar=Number(SS.getItem('arch_avatar')||Math.floor(Math.random()*AVATARS.length));
@@ -78,7 +1393,7 @@ function playTone(f=600,d=.1){if(!soundOn)return;try{const C=window.AudioContext
 function rankPlayers(){return Object.entries(state?.players||{}).map(([id,p])=>({id,...p})).sort((a,b)=>(b.score||0)-(a.score||0)||(b.correct||0)-(a.correct||0)||(a.totalTime||0)-(b.totalTime||0)||(a.joinedAt||0)-(b.joinedAt||0))}
 function myRank(){const i=rankPlayers().findIndex(p=>p.id===pid);return i<0?'—':i+1}
 function leaderboardHTML(limit=10){const list=rankPlayers().slice(0,limit);return `<div class="leaderboard">${list.length?list.map((p,i)=>`<div class="rankRow"><div class="rankNo">#${i+1}</div>${avatarHTML(p.avatar,'small')}<div><b>${esc(p.name)}</b><small style="display:block;color:var(--muted)">${p.correct||0} correct</small></div><div class="score">${p.score||0}</div></div>`).join(''):'<p>No players yet.</p>'}</div>`}
-function validateGame(){return QUESTIONS.length===30&&QUESTIONS.every(q=>q.answers?.length===4&&Number.isInteger(q.correctIndex)&&q.correctIndex>=0&&q.correctIndex<4&&q.timeLimit>=15&&q.timeLimit<=20)}
+function validateGame(){return QUESTIONS.length===30&&QUESTIONS.every(q=>q.answers?.length===3&&Number.isInteger(q.correctIndex)&&q.correctIndex>=0&&q.correctIndex<3&&q.timeLimit>=15&&q.timeLimit<=20)}
 function confetti(){const box=document.getElementById('confetti');box.innerHTML='';for(let i=0;i<100;i++){const s=document.createElement('span');s.style.left=Math.random()*100+'%';s.style.background=['#f4b323','#1260b8','#33a06f','#e44b4b'][i%4];s.style.animationDelay=Math.random()*1.5+'s';box.appendChild(s)}setTimeout(()=>box.innerHTML='',5200)}
 
 class LocalBus{constructor(channel,onMessage,onOpen,onClose){this.bc=new BroadcastChannel(channel);this.bc.onmessage=e=>onMessage(e.data);setTimeout(()=>onOpen(),40);this.onClose=onClose}send(m){this.bc.postMessage(m)}close(){this.bc.close();this.onClose?.()}}
@@ -100,37 +1415,37 @@ class PubNubBus{
  send(m){if(this.closed)return;const payload=encodeURIComponent(JSON.stringify(m));const url=`${this.origin()}/publish/demo/demo/0/${encodeURIComponent(this.channel)}/0/${payload}?store=0&uuid=${encodeURIComponent(pid)}&pnsdk=ARCHCMU-VibeQuiz-8`;fetch(url,{cache:'no-store',mode:'cors'}).then(r=>{if(!r.ok)throw new Error(`Publish ${r.status}`)}).catch(e=>this.onError(e))}
  close(){this.closed=true;try{this.controller?.abort()}catch{}}
 }
-function connect(){const seq=++connectSeq;clearTimeout(reconnectTimer);transportOpen=false;setStatus('connecting',mode==='host'?'Preparing your room…':'Connecting…');try{socket?.close()}catch{};const channel='archcmu-'+room;const onOpen=()=>{if(seq!==connectSeq)return;transportOpen=true;setStatus('live','Live');if(mode==='host'){broadcastState();clearInterval(stateTimer);stateTimer=setInterval(broadcastState,1000)}else{if(document.getElementById('joinStateText')&&!pendingJoin)updateJoinMessage('Connected. Enter your name and tap Join.','good');if(pendingJoin)sendJoin()}};const onClose=()=>{if(seq!==connectSeq)return;transportOpen=false;setStatus('offline','Reconnecting…');if(mode==='player'&&document.getElementById('joinStateText'))updateJoinMessage('Reconnecting… your typed name is safe.','bad');reconnectTimer=setTimeout(connect,1800)};const onError=()=>{if(seq!==connectSeq)return;transportOpen=false;setStatus('offline','Reconnecting…');if(mode==='player'&&document.getElementById('joinStateText'))updateJoinMessage('Connection interrupted. Retrying automatically…','bad')};socket=TEST?new LocalBus(channel,onMessage,onOpen,onClose):new PubNubBus(channel,onMessage,onOpen,onClose,onError)}
+function connect(){const seq=++connectSeq;clearTimeout(reconnectTimer);transportOpen=false;setStatus('connecting',mode==='host'?'Preparing your room…':'Connecting…');try{socket?.close()}catch{};const channel='archcmu-'+room;const onOpen=()=>{if(seq!==connectSeq)return;transportOpen=true;setStatus('live','Live');if(mode==='host'){broadcastState();clearInterval(stateTimer);stateTimer=setInterval(broadcastState,1400)}else{if(document.getElementById('joinStateText')&&!pendingJoin)updateJoinMessage('Connected. Enter your name and tap Join.','good');if(pendingJoin)sendJoin()}};const onClose=()=>{if(seq!==connectSeq)return;transportOpen=false;setStatus('offline','Reconnecting…');if(mode==='player'&&document.getElementById('joinStateText'))updateJoinMessage('Reconnecting… your typed name is safe.','bad');reconnectTimer=setTimeout(connect,1800)};const onError=()=>{if(seq!==connectSeq)return;transportOpen=false;setStatus('offline','Reconnecting…');if(mode==='player'&&document.getElementById('joinStateText'))updateJoinMessage('Connection interrupted. Retrying automatically…','bad')};socket=TEST?new LocalBus(channel,onMessage,onOpen,onClose):new PubNubBus(channel,onMessage,onOpen,onClose,onError)}
 function send(m){if(!transportOpen)return false;socket.send({app:APP_ID,room,...m,at:Date.now()});return true}
 function broadcastState(){if(mode!=='host'||!state)return;send({type:'state',state})}
 function onMessage(m){if(!m||m.room!==room)return;if(mode==='host')onHostMessage(m);else onPlayerMessage(m)}
-function onHostMessage(m){if(m.type==='join'){const p=m.player;if(!p?.pid)return;const old=state.players[p.pid]||{};state.players[p.pid]={name:cleanName(p.name)||old.name||'Player',avatar:Number.isInteger(p.avatar)?p.avatar:(old.avatar||0),score:old.score||0,correct:old.correct||0,incorrect:old.incorrect||0,totalTime:old.totalTime||0,joinedAt:old.joinedAt||Date.now(),answeredQ:old.answeredQ??-1,lastPoints:old.lastPoints||0,lastCorrect:old.lastCorrect||false,lastChoice:old.lastChoice??null};send({type:'ack',pid:p.pid,state});broadcastState();renderHost()}else if(m.type==='answer'&&state.phase==='question'&&m.q===state.questionIndex&&state.players[m.pid]){answers[m.q]??={};if(!answers[m.q][m.pid]){answers[m.q][m.pid]={choice:Number(m.choice),receivedAt:Date.now()};state.players[m.pid].answeredQ=m.q;state.players[m.pid].lastChoice=Number(m.choice);state.answerCount=Object.keys(answers[m.q]).length;send({type:'answer-ack',pid:m.pid,q:m.q});broadcastState();renderHostDynamic()}}else if(m.type==='state-request')broadcastState()}
-function onPlayerMessage(m){if(m.type==='ack'&&m.pid===pid){state=m.state;pendingJoin=false;clearInterval(joinRetry);setStatus('live','Joined');renderPlayer()}else if(m.type==='answer-ack'&&m.pid===pid&&pendingAnswer?.q===m.q){clearInterval(answerRetry)}else if(m.type==='state'&&m.state){state=m.state;if(state.ended)return renderEnded();if(pendingJoin&&!state.players?.[pid])sendJoin();else if(state.players?.[pid]){pendingJoin=false;clearInterval(joinRetry);renderPlayer()}}}
+function onHostMessage(m){if(m.type==='join'){const p=m.player;if(!p?.pid)return;if(!state.players[p.pid]&&Object.keys(state.players).length>=40){send({type:'room-full',pid:p.pid});return}const old=state.players[p.pid]||{};state.players[p.pid]={name:cleanName(p.name)||old.name||'Player',avatar:Number.isInteger(p.avatar)?p.avatar:(old.avatar||0),score:old.score||0,correct:old.correct||0,incorrect:old.incorrect||0,totalTime:old.totalTime||0,joinedAt:old.joinedAt||Date.now(),answeredQ:old.answeredQ??-1,lastPoints:old.lastPoints||0,lastCorrect:old.lastCorrect||false,lastChoice:old.lastChoice??null};send({type:'ack',pid:p.pid,state});broadcastState();renderHost()}else if(m.type==='answer'&&state.phase==='question'&&m.q===state.questionIndex&&state.players[m.pid]){answers[m.q]??={};if(!answers[m.q][m.pid]){answers[m.q][m.pid]={choice:Number(m.choice),receivedAt:Date.now()};state.players[m.pid].answeredQ=m.q;state.players[m.pid].lastChoice=Number(m.choice);state.answerCount=Object.keys(answers[m.q]).length;send({type:'answer-ack',pid:m.pid,q:m.q});broadcastState();renderHostDynamic()}}else if(m.type==='state-request')broadcastState()}
+function onPlayerMessage(m){if(m.type==='room-full'&&m.pid===pid){pendingJoin=false;clearInterval(joinRetry);updateJoinMessage('Room is full. Please ask the host.','bad');return}else if(m.type==='ack'&&m.pid===pid){state=m.state;pendingJoin=false;clearInterval(joinRetry);setStatus('live','Joined');renderPlayer()}else if(m.type==='answer-ack'&&m.pid===pid&&pendingAnswer?.q===m.q){clearInterval(answerRetry)}else if(m.type==='state'&&m.state){state=m.state;if(state.ended)return renderEnded();if(pendingJoin&&!state.players?.[pid])sendJoin();else if(state.players?.[pid]){pendingJoin=false;clearInterval(joinRetry);renderPlayer()}}}
 
 function currentJoinURL(){const base=location.origin==='null'?location.href.split('?')[0]:location.origin+location.pathname;return `${base}?join=${encodeURIComponent(room)}${TEST?'&test=1':''}`}
-function drawQR(el,text){const p='https://quickchart.io/qr?size=340&margin=2&ecLevel=M&text='+encodeURIComponent(text),b='https://api.qrserver.com/v1/create-qr-code/?size=340x340&margin=12&ecc=M&data='+encodeURIComponent(text);el.innerHTML=`<img id="joinQR" src="${p}" alt="Scan to join"><div class="qrCaption">SCAN TO JOIN</div><div class="subtleCN">扫码后直接输入名字</div>`;const img=document.getElementById('joinQR');img.onerror=()=>{if(img.dataset.backup!=='1'){img.dataset.backup='1';img.src=b}else el.innerHTML=`<div class="hint">QR image blocked.<br><span style="word-break:break-all">${esc(text)}</span></div>`}}
+function drawQR(el,text){el.innerHTML=`${qrSvg(text,340)}<div class="qrCaption">SCAN TO JOIN</div><div class="subtleCN">扫码后直接选择头像并输入名字</div>`}
 function copyLink(){const t=currentJoinURL();navigator.clipboard?.writeText(t).then(()=>alert('Join link copied')).catch(()=>prompt('Copy this link:',t))}
 
 function createHost(){mode='host';room=rand(24);hostKey=rand(20);state={room,code:visibleCode(room),createdAt:Date.now(),expiresAt:Date.now()+4*3600*1000,phase:'lobby',questionIndex:-1,deadline:0,players:{},answerCount:0,stats:null,ended:false};answers={};LS.setItem('arch_host_'+room,JSON.stringify(state));safeURL(`${location.pathname}?host=${room}&key=${hostKey}${TEST?'&test=1':''}`);renderHost();connect()}
 function restoreHost(){const saved=LS.getItem('arch_host_'+room);try{state=saved?JSON.parse(saved):null}catch{state=null}if(!state||state.expiresAt<Date.now())state={room,code:visibleCode(room),createdAt:Date.now(),expiresAt:Date.now()+4*3600*1000,phase:'lobby',questionIndex:-1,deadline:0,players:{},answerCount:0,stats:null,ended:false};answers={};renderHost();connect()}
 function persistHost(){if(mode==='host'&&state)LS.setItem('arch_host_'+room,JSON.stringify(state))}
 function renderHost(){persistHost();if(state.phase==='lobby')renderHostLobby();else if(state.phase==='question')renderHostQuestion();else if(state.phase==='results')renderHostResults();else if(state.phase==='leaderboard')renderHostLeaderboard();else if(state.phase==='finished')renderHostFinal()}
-function renderHostLobby(){const list=rankPlayers(),ready=transportOpen&&list.length>0;shell(`<section class="hostGrid"><div class="card" style="text-align:center"><div class="eyebrow">LIVE ROOM</div><div class="roomCode">${state.code}</div><div class="qrWrap" id="qr"></div><div class="joinLink">${esc(currentJoinURL())}</div><div class="actions" style="justify-content:center"><button class="btn soft" id="copyBtn">Copy join link</button><button class="btn soft" id="reconnectBtn">Reconnect</button></div><div class="joinState ${transportOpen?'good':'bad'}"><div class="miniStatus ${transportOpen?'good':'bad'}"><i></i>${transportOpen?'Room is live. Ask everyone to scan.':'Connecting…'}</div></div><h2>${list.length} joined</h2><div class="lobbyNames">${list.map(p=>`<span class="avatarChip">${avatarHTML(p.avatar,'small')}${esc(p.name)}</span>`).join('')||'<span class="hostNote">Names will appear here after participants tap Join.</span>'}</div><div class="actions" style="justify-content:center"><button class="btn gold" id="startBtn" ${ready?'':'disabled'}>Start Game</button><button class="btn primary" id="demoBtn">Add 6 Demo Players</button></div><p class="hostNote">Start becomes active when the connection says Live and at least one name has joined.</p></div><aside class="side"><div class="card"><h3>Automatic game</h3><p>15–20 seconds per question, automatic answer reveal, automatic next question, leaderboard every five questions.</p><span class="autoPill">AUTO MODE ON</span></div><div class="card"><h3>Awards</h3><p>🥇 Architecture & Culture Champion<br>🥈 Spatial Thinker<br>🥉 Community Connector</p></div></aside></section>`);drawQR(document.getElementById('qr'),currentJoinURL());copyBtn.onclick=copyLink;reconnectBtn.onclick=connect;startBtn.onclick=()=>startQuestion(0);demoBtn.onclick=addDemoPlayers}
-function addDemoPlayers(){['Mali','Niran','Lin','Pim','Ken','Aya'].forEach((n,i)=>{const id='demo-'+i;state.players[id]??={name:n,avatar:i,score:0,correct:0,incorrect:0,totalTime:0,joinedAt:Date.now()+i,answeredQ:-1,lastPoints:0,lastCorrect:false,lastChoice:null,demo:true}});broadcastState();renderHost()}
-function startQuestion(i){clearTimeout(autoTimer);answers[i]={};state.phase='question';state.questionIndex=i;state.deadline=Date.now()+QUESTIONS[i].timeLimit*1000;state.answerCount=0;state.stats=null;Object.values(state.players).forEach(p=>{p.lastPoints=0;p.lastCorrect=false;p.lastChoice=null;p.answeredQ=-1});broadcastState();renderHost();playTone(700,.12);autoTimer=setTimeout(revealQuestion,QUESTIONS[i].timeLimit*1000+100)}
-function revealQuestion(){if(state.phase!=='question')return;const q=QUESTIONS[state.questionIndex],a=answers[state.questionIndex]||{},stats=[0,0,0,0];Object.values(a).forEach(x=>{if(x.choice>=0&&x.choice<4)stats[x.choice]++});for(const [id,p] of Object.entries(state.players)){let ans=a[id];if(p.demo&&!ans){const choice=Math.random()<.72?q.correctIndex:Math.floor(Math.random()*4);ans={choice,receivedAt:state.deadline-Math.floor(Math.random()*q.timeLimit*700)};stats[choice]++}let points=0,ok=false,rt=q.timeLimit*1000;if(ans){rt=Math.max(0,Math.min(q.timeLimit*1000,ans.receivedAt-(state.deadline-q.timeLimit*1000)));ok=ans.choice===q.correctIndex;if(ok)points=500+Math.round(500*(1-rt/(q.timeLimit*1000)));p.lastChoice=ans.choice}if(ok){p.correct=(p.correct||0)+1;p.score=(p.score||0)+points}else p.incorrect=(p.incorrect||0)+1;p.totalTime=(p.totalTime||0)+rt;p.lastPoints=points;p.lastCorrect=ok}state.phase='results';state.stats=stats;state.deadline=Date.now()+5000;broadcastState();renderHost();autoTimer=setTimeout(afterResults,5100)}
-function afterResults(){if(state.questionIndex===29)return finishGame();if((state.questionIndex+1)%5===0){state.phase='leaderboard';state.deadline=Date.now()+6000;broadcastState();renderHost();autoTimer=setTimeout(()=>startQuestion(state.questionIndex+1),6100)}else startQuestion(state.questionIndex+1)}
+function renderHostLobby(){const list=rankPlayers(),ready=transportOpen&&list.length>0;shell(`<section class="hostGrid"><div class="card" style="text-align:center"><div class="eyebrow">PHD HOMEROOM · FINAL 30</div><div class="roomCode">${state.code}</div><div class="qrWrap" id="qr"></div><div class="joinLink">${esc(currentJoinURL())}</div><div class="actions" style="justify-content:center"><button class="btn soft" id="copyBtn">Copy join link</button><button class="btn soft" id="reconnectBtn">Reconnect</button></div><div class="joinState ${transportOpen?'good':'bad'}"><div class="miniStatus ${transportOpen?'good':'bad'}"><i></i>${transportOpen?'Room is live — ready for 20–30 participants.':'Connecting to the live room…'}</div></div><div class="metaRow" style="justify-content:center;margin:14px 0"><span class="capacityBadge">Capacity target: 30</span><span class="pointBadge">10 Chiang Mai + 10 Architecture + 10 Research</span></div><h2>${list.length} joined</h2><div class="lobbyNames">${list.map(p=>`<span class="avatarChip">${avatarHTML(p.avatar,'small')}${esc(p.name)}</span>`).join('')||'<span class="hostNote">Names appear here after participants tap Join.</span>'}</div><div class="actions" style="justify-content:center"><button class="btn gold" id="startBtn" ${ready?'':'disabled'}>Start 30-Question Challenge</button></div><details class="testDetails"><summary>Technical test</summary><div class="actions" style="justify-content:center"><button class="btn soft" id="demoBtn">Simulate 30 participants</button></div></details><p class="hostNote">Start becomes active when the room is Live and at least one participant has joined.</p></div><aside class="side"><div class="card"><h3>Automatic game</h3><p>15–20 seconds per question, automatic reveal, automatic next question, leaderboard every five questions.</p><span class="autoPill">AUTO MODE ON</span></div><div class="card"><h3>Difficulty scoring</h3><p>Easy ×1 · Medium ×2 · Hard ×3, with a speed bonus for correct answers.</p></div><div class="card"><h3>Awards</h3><p>🥇 Architecture & Culture Champion<br>🥈 Spatial Thinker<br>🥉 Research Connector</p></div></aside></section>`);drawQR(document.getElementById('qr'),currentJoinURL());copyBtn.onclick=copyLink;reconnectBtn.onclick=connect;startBtn.onclick=()=>startQuestion(0);demoBtn.onclick=addDemoPlayers}
+function addDemoPlayers(){if(!confirm('Add 30 demo participants for a capacity test?'))return;const names=['Mali','Niran','Lin','Pim','Ken','Aya','Arun','Mei','Noah','Fah','Jin','Beam','Mint','Korn','Sara','Tao','June','Aom','Leo','Yuki','Nok','Ben','Rin','Ploy','Max','Mew','Kim','Nan','Jay','Dao'];names.forEach((n,i)=>{const id='demo-'+i;state.players[id]??={name:n,avatar:i%AVATARS.length,score:0,correct:0,incorrect:0,totalTime:0,joinedAt:Date.now()+i,answeredQ:-1,lastPoints:0,lastCorrect:false,lastChoice:null,demo:true}});broadcastState();renderHost()}
+function startQuestion(i){clearTimeout(autoTimer);answers[i]={};state.phase='question';state.questionIndex=i;state.durationMs=FAST?450:QUESTIONS[i].timeLimit*1000;state.deadline=Date.now()+state.durationMs;state.answerCount=0;state.stats=null;Object.values(state.players).forEach(p=>{p.lastPoints=0;p.lastCorrect=false;p.lastChoice=null;p.answeredQ=-1});broadcastState();renderHost();playTone(700,.12);autoTimer=setTimeout(revealQuestion,state.durationMs+100)}
+function revealQuestion(){if(state.phase!=='question')return;const q=QUESTIONS[state.questionIndex],a=answers[state.questionIndex]||{},stats=[0,0,0];Object.values(a).forEach(x=>{if(x.choice>=0&&x.choice<3)stats[x.choice]++});for(const [id,p] of Object.entries(state.players)){let ans=a[id];if(p.demo&&!ans){const choice=Math.random()<.72?q.correctIndex:Math.floor(Math.random()*3);ans={choice,receivedAt:state.deadline-Math.floor(Math.random()*Math.max(100,state.durationMs*.7))};stats[choice]++}let points=0,ok=false,rt=state.durationMs||q.timeLimit*1000;if(ans){rt=Math.max(0,Math.min(state.durationMs||q.timeLimit*1000,ans.receivedAt-(state.deadline-(state.durationMs||q.timeLimit*1000))));ok=ans.choice===q.correctIndex;if(ok){const ratio=1-rt/Math.max(1,(state.durationMs||q.timeLimit*1000));points=q.points*(700+Math.round(300*ratio))}p.lastChoice=ans.choice}if(ok){p.correct=(p.correct||0)+1;p.score=(p.score||0)+points}else p.incorrect=(p.incorrect||0)+1;p.totalTime=(p.totalTime||0)+rt;p.lastPoints=points;p.lastCorrect=ok}state.phase='results';state.stats=stats;state.durationMs=FAST?300:5500;state.deadline=Date.now()+state.durationMs;broadcastState();renderHost();autoTimer=setTimeout(afterResults,state.durationMs+100)}
+function afterResults(){if(state.questionIndex===29)return finishGame();if((state.questionIndex+1)%5===0){state.phase='leaderboard';state.durationMs=FAST?300:6000;state.deadline=Date.now()+state.durationMs;broadcastState();renderHost();autoTimer=setTimeout(()=>startQuestion(state.questionIndex+1),state.durationMs+100)}else startQuestion(state.questionIndex+1)}
 function renderHostQuestion(){const q=QUESTIONS[state.questionIndex];shell(`<section class="questionLayout"><div>${qCard(q,false)}</div><aside class="side"><div class="card"><div class="timer" id="timer"><b id="timerText">${Math.ceil((state.deadline-Date.now())/1000)}</b></div><div class="countdownLabel">Automatic reveal</div></div><div class="card"><div class="answerNumber" id="answerNumber">${state.answerCount}</div><p style="text-align:center">answers received</p></div><button class="btn gold" id="revealBtn">Reveal now</button><button class="btn danger" id="endBtn">End game</button></aside></section>`);document.querySelectorAll('.option').forEach(b=>b.disabled=true);revealBtn.onclick=revealQuestion;endBtn.onclick=finishGame;runClock()}
 function renderHostDynamic(){const n=document.getElementById('answerNumber');if(n)n.textContent=state.answerCount}
-function qCard(q,reveal=false,chosen=null){return `<article class="card qCard"><div class="visual">${visualSVG(q.visual,q.id)}</div><div class="qBody"><span class="category">${esc(q.category)}</span><span class="difficulty">${esc(q.difficulty)}</span><h2 class="qTitle">${esc(q.question)}</h2><div class="options">${q.answers.map((a,i)=>{let c='';if(reveal)c=i===q.correctIndex?'correct':chosen===i?'chosenWrong':'wrong';else if(chosen===i)c='selected';return `<button class="option ${c}" data-choice="${i}" ${reveal?'disabled':''}><span class="letter">${'ABCD'[i]}</span><span>${esc(a)}</span></button>`}).join('')}</div></div></article>`}
-function renderHostResults(){const q=QUESTIONS[state.questionIndex];shell(`<section class="questionLayout"><div>${qCard(q,true)}<div class="resultBox"><h3>Correct: ${esc(q.answers[q.correctIndex])}</h3><p>${esc(q.explanation)}</p><div class="stats">${q.answers.map((x,i)=>`<div class="stat"><b>${'ABCD'[i]} · ${state.stats?.[i]||0}</b><br><small>${esc(x)}</small></div>`).join('')}</div></div></div><aside class="side"><div class="card"><h3>Live ranking</h3>${leaderboardHTML(8)}</div><div class="card"><div class="timer" id="timer"><b id="timerText">5</b></div><div class="countdownLabel">Next screen automatically</div></div></aside></section>`);runClock()}
+function qCard(q,reveal=false,chosen=null){return `<article class="card qCard"><div class="visual">${visualSVG(q.visual,q.id)}</div><div class="qBody"><div class="metaRow"><span class="category">${esc(q.categoryEn)}</span><span class="difficulty">${esc(q.difficultyEn)} · ${q.timeLimit}s</span><span class="pointBadge">×${q.points} score</span></div><h2 class="qTitle">${esc(q.questionEn)}</h2><div class="qTitleZh">${esc(q.questionZh)}</div><div class="options">${q.answers.map((a,i)=>{let c='';if(reveal)c=i===q.correctIndex?'correct':chosen===i?'chosenWrong':'wrong';else if(chosen===i)c='selected';return `<button class="option ${c}" data-choice="${i}" ${reveal?'disabled':''}><span class="letter">${'ABC'[i]}</span><span class="en">${esc(a.en)}</span>${a.zh!==a.en?`<span class="zh">${esc(a.zh)}</span>`:''}</button>`}).join('')}</div></div></article>`}
+function renderHostResults(){const q=QUESTIONS[state.questionIndex],correct=q.answers[q.correctIndex];shell(`<section class="questionLayout"><div>${qCard(q,true)}<div class="resultBox bilingualExplanation"><h3>Correct: ${esc(correct.en)}${correct.zh!==correct.en?` / ${esc(correct.zh)}`:''}</h3><div class="en">${esc(q.explanationEn)}</div><div class="zh">${esc(q.explanationZh)}</div><div class="stats">${q.answers.map((x,i)=>`<div class="stat"><b>${'ABC'[i]} · ${state.stats?.[i]||0}</b><br><small>${esc(x.en)}</small></div>`).join('')}</div></div></div><aside class="side"><div class="card"><h3>Live ranking</h3>${leaderboardHTML(8)}</div><div class="card"><div class="timer" id="timer"><b id="timerText">${FAST?'0':'6'}</b></div><div class="countdownLabel">Next screen automatically</div></div></aside></section>`);runClock()}
 function renderHostLeaderboard(){shell(`<section class="card leaderScene"><div class="leaderBig"><div class="eyebrow" style="text-align:center">CHECKPOINT ${state.questionIndex+1} / 30</div><h2 style="text-align:center">Live Leaderboard</h2>${leaderboardHTML(10)}<div class="timer" id="timer" style="margin-top:18px"><b id="timerText">6</b></div></div></section>`);runClock()}
 function finishGame(){clearTimeout(autoTimer);state.phase='finished';state.deadline=0;broadcastState();renderHost();confetti()}
-function renderHostFinal(){const r=rankPlayers(),p=i=>r[i]||{name:'—',avatar:i,score:0,correct:0};shell(`<section class="card" style="text-align:center"><div class="eyebrow">FINAL AWARDS</div><h2>ARCHCMU VibeQuiz Champions</h2><div class="podium"><div class="podiumBox second"><div class="medal">🥈</div>${avatarHTML(p(1).avatar,'big')}<b>${esc(p(1).name)}</b><span>${p(1).score} pts</span><br><small>Spatial Thinker</small></div><div class="podiumBox first"><div class="medal">🥇</div>${avatarHTML(p(0).avatar,'big')}<b>${esc(p(0).name)}</b><span>${p(0).score} pts</span><br><small>Architecture & Culture Champion</small></div><div class="podiumBox third"><div class="medal">🥉</div>${avatarHTML(p(2).avatar,'big')}<b>${esc(p(2).name)}</b><span>${p(2).score} pts</span><br><small>Community Connector</small></div></div><div class="actions" style="justify-content:center"><button class="btn primary" id="csvBtn">Download Results CSV</button><button class="btn gold" id="againBtn">Play Again</button></div></section>`);csvBtn.onclick=downloadCSV;againBtn.onclick=()=>{for(const p of Object.values(state.players)){p.score=0;p.correct=0;p.incorrect=0;p.totalTime=0}state.phase='lobby';state.questionIndex=-1;broadcastState();renderHost()}}
+function renderHostFinal(){const r=rankPlayers(),p=i=>r[i]||{name:'—',avatar:i,score:0,correct:0};shell(`<section class="card" style="text-align:center"><div class="eyebrow">FINAL AWARDS</div><h2>ARCHCMU VibeQuiz Champions</h2><div class="podium"><div class="podiumBox second"><div class="medal">🥈</div>${avatarHTML(p(1).avatar,'big')}<b>${esc(p(1).name)}</b><span>${p(1).score} pts</span><br><small>Spatial Thinker</small></div><div class="podiumBox first"><div class="medal">🥇</div>${avatarHTML(p(0).avatar,'big')}<b>${esc(p(0).name)}</b><span>${p(0).score} pts</span><br><small>Architecture & Culture Champion</small></div><div class="podiumBox third"><div class="medal">🥉</div>${avatarHTML(p(2).avatar,'big')}<b>${esc(p(2).name)}</b><span>${p(2).score} pts</span><br><small>Research Connector</small></div></div><div class="actions" style="justify-content:center"><button class="btn primary" id="csvBtn">Download Results CSV</button><button class="btn gold" id="againBtn">Play Again</button></div></section>`);csvBtn.onclick=downloadCSV;againBtn.onclick=()=>{for(const p of Object.values(state.players)){p.score=0;p.correct=0;p.incorrect=0;p.totalTime=0}state.phase='lobby';state.questionIndex=-1;broadcastState();renderHost()}}
 function downloadCSV(){const rows=[['Rank','Name','Score','Correct','Incorrect'],...rankPlayers().map((p,i)=>[i+1,p.name,p.score||0,p.correct||0,p.incorrect||0])];const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n'),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='ARCHCMU_VibeQuiz_Results.csv';a.click()}
 
 function initPlayer(){mode='player';if(!room){location.href=location.pathname;return}renderJoinForm();connect();setTimeout(()=>send({type:'state-request'}),500)}
-function renderJoinForm(message='Connecting to the room…',kind=''){shell(`<section class="card joinPanel"><div class="eyebrow">SCAN COMPLETE</div><h2>Join the game</h2><div class="joinState ${kind}" id="joinState"><div class="miniStatus ${kind}"><i></i><span id="joinStateText">${esc(message)}</span></div></div><label class="field"><span>Your display name</span><input id="nameInput" maxlength="28" placeholder="e.g. Derick" value="${esc(playerName)}" autocomplete="off"></label><div class="field"><span>Choose one avatar</span><div class="avatarPicker">${AVATARS.map((a,i)=>`<button class="avatarPick ${i===selectedAvatar?'active':''}" data-avatar="${i}" type="button">${avatarHTML(i)}</button>`).join('')}</div></div><button class="btn gold block" id="joinBtn" type="button">Join Now — One Tap</button><p class="connectionHelp">You can type your name immediately. The page will not refresh or erase it while connecting.</p></section>`);const input=document.getElementById('nameInput');input.addEventListener('input',()=>{playerName=cleanName(input.value);SS.setItem('arch_name',playerName)});document.querySelectorAll('.avatarPick').forEach(b=>b.onclick=()=>{selectedAvatar=Number(b.dataset.avatar);SS.setItem('arch_avatar',selectedAvatar);document.querySelectorAll('.avatarPick').forEach(x=>x.classList.toggle('active',x===b))});joinBtn.onclick=()=>{playerName=cleanName(input.value);if(!playerName)return alert('Please enter your name.');SS.setItem('arch_name',playerName);pendingJoin=true;updateJoinMessage(transportOpen?'Joining…':'Name saved. Connecting…','');sendJoin();clearInterval(joinRetry);joinRetry=setInterval(sendJoin,1000)};input.addEventListener('keydown',e=>{if(e.key==='Enter')joinBtn.click()})}
+function renderJoinForm(message='Connecting to the room…',kind=''){shell(`<section class="card joinPanel"><div class="eyebrow">SCAN COMPLETE</div><h2>Join the game<br><small style="font-size:.52em;color:var(--muted)">加入竞赛</small></h2><div class="joinState ${kind}" id="joinState"><div class="miniStatus ${kind}"><i></i><span id="joinStateText">${esc(message)}</span></div></div><label class="field"><span>Your display name / 你的名字</span><input id="nameInput" maxlength="28" placeholder="e.g. Derick" value="${esc(playerName)}" autocomplete="off"></label><div class="field"><span>Choose one avatar / 选择头像</span><div class="avatarPicker">${AVATARS.map((a,i)=>`<button class="avatarPick ${i===selectedAvatar?'active':''}" data-avatar="${i}" type="button">${avatarHTML(i)}</button>`).join('')}</div></div><button class="btn gold block" id="joinBtn" type="button">Join Now / 点击加入</button><p class="connectionHelp">One tap to join. This room is designed for up to 40 participants.</p></section>`);const input=document.getElementById('nameInput');input.addEventListener('input',()=>{playerName=cleanName(input.value);SS.setItem('arch_name',playerName)});document.querySelectorAll('.avatarPick').forEach(b=>b.onclick=()=>{selectedAvatar=Number(b.dataset.avatar);SS.setItem('arch_avatar',selectedAvatar);document.querySelectorAll('.avatarPick').forEach(x=>x.classList.toggle('active',x===b))});joinBtn.onclick=()=>{playerName=cleanName(input.value);if(!playerName)return alert('Please enter your name.');SS.setItem('arch_name',playerName);pendingJoin=true;updateJoinMessage(transportOpen?'Joining…':'Name saved. Connecting…','');sendJoin();clearInterval(joinRetry);joinRetry=setInterval(sendJoin,1000)};input.addEventListener('keydown',e=>{if(e.key==='Enter')joinBtn.click()})}
 function updateJoinMessage(text,kind=''){const box=document.getElementById('joinState'),tx=document.getElementById('joinStateText');if(box){box.className='joinState '+kind;box.querySelector('.miniStatus').className='miniStatus '+kind}if(tx)tx.textContent=text}
 function sendJoin(){if(!playerName)return;const ok=send({type:'join',player:{pid,name:playerName,avatar:selectedAvatar}});if(ok)updateJoinMessage('Joining room…','');else updateJoinMessage('Name saved. Still connecting…','')}
 function renderPlayer(){if(!state)return;if(state.ended)return renderEnded();const key=`${state.phase}-${state.questionIndex}-${state.deadline}-${state.players?.[pid]?.score||0}-${state.players?.[pid]?.answeredQ??-1}`;if(key===lastRenderKey){updatePlayerDynamic();return}lastRenderKey=key;if(state.phase==='lobby')renderWaiting();else if(state.phase==='question')renderPlayerQuestion();else if(state.phase==='results')renderPlayerResult();else if(state.phase==='leaderboard')renderPlayerLeaderboard();else if(state.phase==='finished')renderPlayerFinal()}
@@ -138,13 +1453,13 @@ function renderWaiting(){const me=state.players?.[pid];shell(`<section class="ca
 function renderPlayerQuestion(){const q=QUESTIONS[state.questionIndex],me=state.players?.[pid]||{},chosen=me.answeredQ===state.questionIndex?me.lastChoice:null;shell(`<section class="joinPanel"><div class="card" style="margin-bottom:12px"><div style="display:flex;align-items:center;justify-content:space-between"><span class="category">Question ${state.questionIndex+1}/30</span><span>${avatarHTML(me.avatar??selectedAvatar,'small')} <b>${me.score||0} pts</b></span></div><div class="timer" id="timer" style="margin-top:12px"><b id="timerText">${Math.ceil((state.deadline-Date.now())/1000)}</b></div></div>${qCard(q,false,chosen)}<div class="hint blue answerAck ${chosen===null?'hidden':''}" id="answerAck">Answer received. Wait for the reveal.</div></section>`);document.querySelectorAll('.option').forEach(b=>{b.disabled=chosen!==null;b.onclick=()=>submitAnswer(Number(b.dataset.choice))});runClock()}
 function submitAnswer(choice){if(!state||state.phase!=='question'||Date.now()>state.deadline)return;const me=state.players?.[pid];if(me?.answeredQ===state.questionIndex)return;pendingAnswer={q:state.questionIndex,choice};sendAnswer();clearInterval(answerRetry);answerRetry=setInterval(sendAnswer,650);document.querySelectorAll('.option').forEach(b=>{b.disabled=true;b.classList.toggle('selected',Number(b.dataset.choice)===choice)});const ack=document.getElementById('answerAck');if(ack){ack.classList.remove('hidden');ack.textContent='Sending answer…'}}
 function sendAnswer(){if(!pendingAnswer)return;send({type:'answer',pid,q:pendingAnswer.q,choice:pendingAnswer.choice})}
-function renderPlayerResult(){clearInterval(answerRetry);pendingAnswer=null;const q=QUESTIONS[state.questionIndex],me=state.players?.[pid]||{};shell(`<section class="joinPanel"><div class="card playerStatus"><div class="correctHero">${me.lastCorrect?'✅':'💡'}</div><h2>${me.lastCorrect?'Correct!':'Next one!'}</h2><div class="playerScore">+${me.lastPoints||0}</div><p>Total <b>${me.score||0}</b> · Rank <b>#${myRank()}</b></p></div><div style="margin-top:12px">${qCard(q,true,me.lastChoice)}</div><div class="resultBox"><h3>${esc(q.answers[q.correctIndex])}</h3><p>${esc(q.explanation)}</p></div></section>`);runClock()}
+function renderPlayerResult(){clearInterval(answerRetry);pendingAnswer=null;const q=QUESTIONS[state.questionIndex],me=state.players?.[pid]||{},correct=q.answers[q.correctIndex];shell(`<section class="joinPanel"><div class="card playerStatus"><div class="correctHero">${me.lastCorrect?'✅':'💡'}</div><h2>${me.lastCorrect?'Correct!':'Next one!'}</h2><div class="playerScore">+${me.lastPoints||0}</div><p>Total <b>${me.score||0}</b> · Rank <b>#${myRank()}</b></p></div><div style="margin-top:12px">${qCard(q,true,me.lastChoice)}</div><div class="resultBox bilingualExplanation"><h3>${esc(correct.en)}${correct.zh!==correct.en?` / ${esc(correct.zh)}`:''}</h3><div class="en">${esc(q.explanationEn)}</div><div class="zh">${esc(q.explanationZh)}</div></div></section>`);runClock()}
 function renderPlayerLeaderboard(){shell(`<section class="card joinPanel playerStatus"><div class="eyebrow">CHECKPOINT</div><h2>You are #${myRank()}</h2><div class="playerScore">${state.players?.[pid]?.score||0}</div><div style="text-align:left">${leaderboardHTML(5)}</div><div class="timer" id="timer" style="margin-top:18px"><b id="timerText">6</b></div></section>`);runClock()}
 function renderPlayerFinal(){const me=state.players?.[pid]||{},r=myRank();shell(`<section class="card joinPanel playerStatus"><div class="medal">${r===1?'🥇':r===2?'🥈':r===3?'🥉':'🎓'}</div>${avatarHTML(me.avatar??selectedAvatar,'big')}<h2>#${r} · ${esc(me.name||playerName)}</h2><div class="playerScore">${me.score||0}</div><p>${me.correct||0} correct answers</p><div style="text-align:left">${leaderboardHTML(5)}</div></section>`);if(Number(r)<=3)confetti()}
 function renderEnded(){shell(`<section class="card joinPanel"><h2>Room ended</h2><p>Ask the host to open a new room.</p></section>`)}
 function runClock(){clearInterval(clockTimer);clockTimer=setInterval(updatePlayerDynamic,150);updatePlayerDynamic()}
-function updatePlayerDynamic(){if(!state?.deadline)return;const left=Math.max(0,state.deadline-Date.now()),t=document.getElementById('timerText'),ring=document.getElementById('timer');if(t)t.textContent=Math.ceil(left/1000);if(ring){const total=state.phase==='question'?QUESTIONS[state.questionIndex].timeLimit*1000:(state.phase==='leaderboard'?6000:5000);ring.style.setProperty('--timer',Math.max(0,left/total*100)+'%');ring.classList.toggle('urgent',left<5000&&state.phase==='question')}}
-function preview(){shell(`<section class="card"><h2>30 questions</h2><div class="previewGrid">${QUESTIONS.map(q=>`<article class="previewItem"><div class="visual">${visualSVG(q.visual,q.id)}</div><div class="previewText"><span class="category">${q.id} · ${esc(q.category)}</span><h3>${esc(q.question)}</h3><p><b>${esc(q.answers[q.correctIndex])}</b></p></div></article>`).join('')}</div></section>`)}
+function updatePlayerDynamic(){if(!state?.deadline)return;const left=Math.max(0,state.deadline-Date.now()),t=document.getElementById('timerText'),ring=document.getElementById('timer');if(t)t.textContent=Math.ceil(left/1000);if(ring){const total=state.durationMs|| (state.phase==='question'?QUESTIONS[state.questionIndex].timeLimit*1000:(state.phase==='leaderboard'?6000:5500));ring.style.setProperty('--timer',Math.max(0,left/total*100)+'%');ring.classList.toggle('urgent',left<5000&&state.phase==='question')}}
+function preview(){shell(`<section class="card"><div class="eyebrow">FINAL VERIFIED EDITION · 3 AUGUST 2026</div><h2>30 bilingual questions</h2><p>10 Chiang Mai & Thailand + 10 Architecture & Student Life + 10 PhD Research Methods.</p><div class="previewGrid">${QUESTIONS.map(q=>`<article class="previewItem"><div class="visual">${visualSVG(q.visual,q.id)}</div><div class="previewText"><span class="category">${q.id} · ${esc(q.categoryEn)}</span><h3>${esc(q.questionEn)}</h3><p style="color:var(--muted)">${esc(q.questionZh)}</p><p><b>${esc(q.answers[q.correctIndex].en)}</b></p></div></article>`).join('')}</div></section>`)}
 function boot(){if(!validateGame()){shell('<section class="card"><h2>Question data error</h2></section>');return}if(params.has('preview'))return preview();if(mode==='player')return initPlayer();if(room&&params.has('host'))return restoreHost();createHost()}
 boot();
-</script><div id="buildTag" style="position:fixed;right:6px;bottom:4px;font:10px system-ui;color:#6b7b8d;opacity:.55;z-index:9999">V8 HTTPS</div></body></html>
+</script><div id="buildTag" style="position:fixed;right:6px;bottom:4px;font:10px system-ui;color:#6b7b8d;opacity:.55;z-index:9999">V9 FINAL 30 · LOCAL QR</div></body></html>
