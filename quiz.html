@@ -1366,9 +1366,9 @@ function qrSvg(text,size=340){
   return `<svg viewBox="0 0 ${size} ${size}" role="img" aria-label="QR code to join"><rect width="${size}" height="${size}" fill="#fff"/><path d="${d}" fill="#082f6b"/></svg>`;
 }
 
-const LIVE_APP_ID='archcmu-vibequiz-live-v22';
+const LIVE_APP_ID='archcmu-vibequiz-live-v23';
 const PUBNUB_ORIGINS=['https://ps.pndsn.com','https://pubsub.pubnub.com'];
-const PN_SDK='ARCHCMU-VibeQuiz-22';
+const PN_SDK='ARCHCMU-VibeQuiz-23';
 const IDENTITIES=[{avatar:'🦉',name:'Oliver'},{avatar:'🦊',name:'Ruby'},{avatar:'🐼',name:'Noah'},{avatar:'🐯',name:'Leo'},{avatar:'🐸',name:'Lily'},{avatar:'🐙',name:'Oscar'},{avatar:'🐧',name:'Emma'},{avatar:'🦁',name:'Jack'},{avatar:'🐨',name:'Mia'},{avatar:'🐰',name:'Chloe'},{avatar:'🦄',name:'Grace'},{avatar:'🐲',name:'Ethan'},{avatar:'🦋',name:'Ava'},{avatar:'🦚',name:'Sophie'},{avatar:'🐝',name:'Ben'},{avatar:'🐬',name:'Lucas'},{avatar:'🦖',name:'Max'},{avatar:'🦜',name:'Ella'},{avatar:'🐳',name:'Henry'},{avatar:'🦦',name:'Zoe'},{avatar:'🦩',name:'Alice'},{avatar:'🐺',name:'Ryan'},{avatar:'🐮',name:'Daisy'},{avatar:'🐵',name:'Charlie'},{avatar:'🦔',name:'Ivy'},{avatar:'🐢',name:'Theo'},{avatar:'🦅',name:'Sky'},{avatar:'🐿️',name:'Hazel'},{avatar:'🐻',name:'Finn'},{avatar:'🦭',name:'Nora'}];
 const AVATARS=IDENTITIES.map(i=>i.avatar);
 const identityForAvatar=a=>IDENTITIES.find(i=>i.avatar===a)||null;
@@ -1379,7 +1379,10 @@ let role=params.has('host')?'host':params.has('join')?'player':'home';
 let joinError='';
 let room=(params.get('host')||params.get('join')||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
 let sessionKey=(params.get('s')||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,10);
-const IDENTITY_VERSION='22';
+let publishKey=(params.get('pub')||localStorage.getItem('vq_pub_key')||'').trim();
+let subscribeKey=(params.get('sub')||localStorage.getItem('vq_sub_key')||'').trim();
+function validRealtimeKeys(){return !!publishKey&&!!subscribeKey&&publishKey!=='demo'&&subscribeKey!=='demo'&&publishKey!=='myPublishKey'&&subscribeKey!=='mySubscribeKey'}
+const IDENTITY_VERSION='23';
 const IDENTITY_SESSION=`${IDENTITY_VERSION}:${room}:${sessionKey||'HOST'}`;
 if(sessionStorage.getItem('vq_identity_session')!==IDENTITY_SESSION){sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');sessionStorage.removeItem('vq_lastSubmitted');sessionStorage.setItem('vq_identity_version',IDENTITY_VERSION);sessionStorage.setItem('vq_identity_session',IDENTITY_SESSION)}
 let pid=params.get('pid')||sessionStorage.getItem('vq_pid')||randomId(15);if(!TEST_MODE)sessionStorage.setItem('vq_pid',pid);
@@ -1387,6 +1390,8 @@ let displayName=TEST_MODE?'':(sessionStorage.getItem('vq_name')||'');
 let avatar=TEST_MODE?'':(sessionStorage.getItem('vq_avatar')||'');
 let connected=false,brokerLabel='',hostTimer=null,uiTimer=null,state=null,hostAnswers={},lastSubmitted={};
 let pnChannel='',pnTimetoken='0',pnRegion='',pnStopped=false,pnLoopPromise=null,pnPublishQueue=Promise.resolve(),pnOriginIndex=0,pnController=null,pnStateTimer=null,pnOpened=false,localBus=null;
+let connectionVerified=false,hostSeen=role==='host',lastLiveMessageAt=0,lastStateAt=0,hostHandshakeTimer=null,drawRetryTimer=null,reconnectScheduled=false;
+const probeWaiters=new Map();
 let joinPending=false,joinFormMessage='';
 let randomDrawPending=false,randomDrawStartedAt=0,assignmentReveal=null,assignmentRevealUntil=0,randomDrawTimeout=null,assignmentTimer=null;
 const pnUUID=`archcmu-${role}-${pid}`;
@@ -1431,7 +1436,7 @@ function incomingSound(prev,next){
 function randomId(n=8){const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<n;i++)s+=chars[Math.floor(Math.random()*chars.length)];return s}
 function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function baseUrl(){return location.origin+location.pathname}
-function joinUrl(){return baseUrl()+'?join='+room+'&s='+encodeURIComponent(sessionKey)+'&v=22'+(TEST_MODE?'&test=1'+(FAST_MODE?'&fast=1':''):'')}
+function joinUrl(){const q=new URLSearchParams({join:room,s:sessionKey,v:'23'});if(publishKey)q.set('pub',publishKey);if(subscribeKey)q.set('sub',subscribeKey);if(TEST_MODE){q.set('test','1');if(FAST_MODE)q.set('fast','1')}return baseUrl()+'?'+q.toString()}
 function topic(suffix){return `archcmu-vibequiz-2026/${room}/${sessionKey||'NOSESSION'}/${suffix}`}
 function noticeTopic(id){return `archcmu-vibequiz-2026/${room}/${sessionKey||'NOSESSION'}/notice/${id}`}
 function sectionIndexForQuestion(i){return SECTIONS.findIndex(s=>Q[i]&&Q[i].section===s.name)}
@@ -1493,7 +1498,7 @@ function applyAssignedIdentity(name,assignedAvatar){
  const minSpin=1600,elapsed=randomDrawStartedAt?Date.now()-randomDrawStartedAt:minSpin;
  clearTimeout(assignmentTimer);
  assignmentTimer=setTimeout(()=>{
-   randomDrawPending=false;clearTimeout(randomDrawTimeout);joinPending=false;
+   clearInterval(drawRetryTimer);randomDrawPending=false;clearTimeout(randomDrawTimeout);joinPending=false;
    displayName=name;avatar=assignedAvatar;assignmentReveal={name,avatar:assignedAvatar};assignmentRevealUntil=Date.now()+2600;
    sessionStorage.setItem('vq_name',displayName);sessionStorage.setItem('vq_avatar',avatar);playSound('assigned');renderPlayer();
    setTimeout(()=>{assignmentReveal=null;renderPlayer()},2650)
@@ -1516,6 +1521,8 @@ function pnKindFromTopic(t){if(t===topic('events'))return 'events';if(t===topic(
 function pnTopicFromKind(k){if(k==='events')return topic('events');if(k==='state')return topic('state');if(k.startsWith('notice/'))return noticeTopic(k.slice(7));return ''}
 function pnDispatchWire(w){
  if(!w||w.app!==LIVE_APP_ID||w.room!==room||w.sessionKey!==sessionKey||!w.kind)return;
+ lastLiveMessageAt=Date.now();
+ if(w.kind==='probe'&&w.data&&w.data.id){const done=probeWaiters.get(w.data.id);if(done){probeWaiters.delete(w.data.id);done(true)}return}
  if(role==='host'&&w.kind!=='events')return;
  if(role==='player'&&w.kind!=='state'&&w.kind!==`notice/${pid}`)return;
  const t=pnTopicFromKind(w.kind);if(!t)return;
@@ -1524,7 +1531,7 @@ function pnDispatchWire(w){
 }
 function pnSubscribeURL(){
  const q=new URLSearchParams({tt:pnTimetoken,uuid:pnUUID,pnsdk:PN_SDK});if(pnRegion)q.set('tr',pnRegion);
- return `${pnOrigin()}/v2/subscribe/demo/${encodeURIComponent(pnChannel)}/0?${q}`
+ return `${pnOrigin()}/v2/subscribe/${encodeURIComponent(subscribeKey)}/${encodeURIComponent(pnChannel)}/0?${q}`
 }
 async function pnSubscribeOnce(){
  pnController=new AbortController();const initial=pnTimetoken==='0';
@@ -1543,7 +1550,7 @@ async function pnPublishNow(kind,data){
  let lastError;
  for(let attempt=0;attempt<PUBNUB_ORIGINS.length;attempt++){
    const origin=PUBNUB_ORIGINS[(pnOriginIndex+attempt)%PUBNUB_ORIGINS.length];
-   const url=`${origin}/publish/demo/demo/0/${encodeURIComponent(pnChannel)}/0/${payload}?store=0&uuid=${encodeURIComponent(pnUUID)}&pnsdk=${encodeURIComponent(PN_SDK)}`;
+   const url=`${origin}/publish/${encodeURIComponent(publishKey)}/${encodeURIComponent(subscribeKey)}/0/${encodeURIComponent(pnChannel)}/0/${payload}?store=0&uuid=${encodeURIComponent(pnUUID)}&pnsdk=${encodeURIComponent(PN_SDK)}`;
    try{const r=await fetch(url,{cache:'no-store',mode:'cors',credentials:'omit'});if(!r.ok)throw new Error(`Publish ${r.status}`);const result=await r.json();if(Array.isArray(result)&&result[0]!==1)throw new Error(result[1]||'Publish rejected');return result}catch(e){lastError=e}
  }
  throw lastError||new Error('Publish failed')
@@ -1553,33 +1560,51 @@ function pnPublishTopic(t,data){
  if(TEST_MODE&&localBus){const wire={app:LIVE_APP_ID,room,sessionKey,kind,data,at:Date.now()};localBus.postMessage(wire);return Promise.resolve(wire)}
  const task=()=>pnPublishNow(kind,data);
  pnPublishQueue=pnPublishQueue.then(task,task);
- return pnPublishQueue.catch(e=>{console.warn('Live publish failed',e);connected=false;brokerLabel='A live message could not be sent — retrying automatically…';render();return null})
+ return pnPublishQueue.catch(e=>{console.warn('Live publish failed',e);connected=false;connectionVerified=false;brokerLabel='A live message could not be sent — retrying automatically…';render();scheduleReconnect();return null})
 }
 function announceConnection(){
- if(role==='host'){publishState();if(!pnStateTimer)pnStateTimer=setInterval(()=>{if(connected&&state)publishState()},1500)}
- else {publishEvent({type:'state_request',pid});if(displayName)publishEvent({type:'join',pid,name:displayName,avatar});else if(randomDrawPending)publishEvent({type:'random_join',pid})}
+ if(role==='host'){hostSeen=true;publishState();if(!pnStateTimer)pnStateTimer=setInterval(()=>{if(connected&&connectionVerified&&state)publishState()},2000)}
+ else {
+   publishEvent({type:'state_request',pid});if(displayName)publishEvent({type:'join',pid,name:displayName,avatar});else if(randomDrawPending)publishEvent({type:'random_join',pid});
+   clearInterval(hostHandshakeTimer);hostHandshakeTimer=setInterval(()=>{if(!hostSeen||!state)publishEvent({type:'state_request',pid});else clearInterval(hostHandshakeTimer)},1200)
+ }
+}
+async function runLoopbackProbe(){
+ const id='probe-'+randomId(12);let timer;
+ const received=new Promise((resolve,reject)=>{probeWaiters.set(id,resolve);timer=setTimeout(()=>{probeWaiters.delete(id);reject(new Error('Two-way live test failed: the published test message did not return to this browser.'))},9000)});
+ await pnPublishNow('probe',{id,role,pid});
+ try{await received}finally{clearTimeout(timer)}
+ return true
+}
+function scheduleReconnect(){
+ if(pnStopped||reconnectScheduled)return;reconnectScheduled=true;
+ setTimeout(()=>{reconnectScheduled=false;if(!pnStopped)window.vqReconnect()},1400)
 }
 async function pnSubscribeLoop(){
  while(!pnStopped){
-   try{
-     await pnSubscribeOnce();
-     if(!pnOpened||!connected){pnOpened=true;connected=true;brokerLabel='Live room connected';render();announceConnection()}
-   }catch(e){
+   try{await pnSubscribeOnce()}
+   catch(e){
      if(pnStopped||e.name==='AbortError')break;
-     connected=false;brokerLabel='Connection interrupted — retrying automatically over HTTPS…';render();
-     pnOriginIndex=(pnOriginIndex+1)%PUBNUB_ORIGINS.length;pnTimetoken='0';pnRegion='';
-     await sleep(pnOriginIndex===0?1600:500)
+     connected=false;connectionVerified=false;brokerLabel='Connection interrupted — restarting the verified HTTPS connection…';render();scheduleReconnect();break
    }
  }
 }
 async function connectLiveService(){
- pnStopped=false;pnOpened=false;pnTimetoken='0';pnRegion='';pnOriginIndex=0;pnChannel=`archcmu-${room.toLowerCase()}-${(sessionKey||'nosession').toLowerCase()}-v22`;
- connected=false;brokerLabel=TEST_MODE?'Starting local verification room…':'Connecting through the HTTPS live service…';render();
+ pnStopped=false;pnOpened=false;pnTimetoken='0';pnRegion='';pnOriginIndex=0;connectionVerified=false;reconnectScheduled=false;pnChannel=`archcmu-${room.toLowerCase()}-${(sessionKey||'nosession').toLowerCase()}-v23`;
+ connected=false;brokerLabel=TEST_MODE?'Starting local verification room…':'Testing the live service in both directions…';render();
  clearTimeout(window.__vqConnectNotice);
- if(TEST_MODE){try{localBus?.close()}catch{};localBus=new BroadcastChannel(pnChannel);localBus.onmessage=e=>pnDispatchWire(e.data);connected=true;pnOpened=true;brokerLabel='Local verification room connected';render();announceConnection();return}
- window.__vqConnectNotice=setTimeout(()=>{if(!connected){brokerLabel='Still connecting. The page is automatically testing the backup HTTPS route. Keep it open.';render()}},9000);
- try{await pnSubscribeOnce();pnOpened=true;connected=true;brokerLabel='Live room connected';render();announceConnection()}catch(e){connected=false;brokerLabel='The first HTTPS route did not respond — switching to the backup route…';render();pnOriginIndex=1;pnTimetoken='0';pnRegion=''}
- pnLoopPromise=pnSubscribeLoop()
+ if(TEST_MODE){try{localBus?.close()}catch{};localBus=new BroadcastChannel(pnChannel);localBus.onmessage=e=>pnDispatchWire(e.data);connected=true;connectionVerified=true;pnOpened=true;hostSeen=role==='host';brokerLabel='Local verification room connected';render();announceConnection();return}
+ if(!validRealtimeKeys())throw new Error('Realtime service is not configured. The host must add a PubNub Publish Key and Subscribe Key before showing the QR code.')
+ window.__vqConnectNotice=setTimeout(()=>{if(!connectionVerified){brokerLabel='Still testing the live service. Do not ask participants to scan until this becomes VERIFIED LIVE.';render()}},7000);
+ try{
+   await pnSubscribeOnce();
+   pnLoopPromise=pnSubscribeLoop();
+   await sleep(180);
+   await runLoopbackProbe();
+   pnOpened=true;connectionVerified=true;connected=true;brokerLabel='VERIFIED LIVE · two-way synchronization passed';render();announceConnection()
+ }catch(e){
+   connected=false;connectionVerified=false;brokerLabel=e.message||'Live verification failed';render();throw e
+ }
 }
 function publishEvent(obj){if(!displayName&&!['join','state_request','random_join'].includes(obj.type))return;pnPublishTopic(topic('events'),{...obj,ts:Date.now()})}
 function publishState(){
@@ -1587,12 +1612,12 @@ function publishState(){
  normalizeUniquePlayers();state.serverNow=Date.now();pnPublishTopic(topic('state'),state);
  localStorage.setItem('vq_host_'+room,JSON.stringify(state));localStorage.setItem('vq_answers_'+room,JSON.stringify(hostAnswers))
 }
-window.addEventListener('beforeunload',()=>{pnStopped=true;try{pnController?.abort()}catch{};try{localBus?.close()}catch{};clearInterval(pnStateTimer)});
+window.addEventListener('beforeunload',()=>{pnStopped=true;try{pnController?.abort()}catch{};try{localBus?.close()}catch{};clearInterval(pnStateTimer);clearInterval(hostHandshakeTimer);clearInterval(drawRetryTimer)});
 function sendNotice(target,data){return pnPublishTopic(noticeTopic(target),{...data,pid:target,ts:Date.now()})}
 function onHostMessage(t,payload){
  if(t!==topic('events'))return;let m;try{m=JSON.parse(payload.toString())}catch{return}
  normalizeUniquePlayers();
- if(m.type==='state_request'){publishState();return}
+ if(m.type==='state_request'){if(m.pid)sendNotice(m.pid,{type:'host_online'});publishState();return}
  if(m.type==='random_join'&&m.pid){
    const existing=state.players[m.pid];
    if(existing){sendNotice(m.pid,{type:'random_assigned',avatar:existing.avatar,name:existing.name,reused:true});publishState();return}
@@ -1622,16 +1647,17 @@ function onPlayerMessage(t,payload){
  if(t===noticeTopic(pid)){
    try{
     const note=JSON.parse(payload.toString());
-    if(note.type==='room_full'){randomDrawPending=false;joinPending=false;joinFormMessage=`Room full — maximum ${note.max||MAX_PLAYERS} participants.`;displayName='';avatar='';sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');renderJoinForm(joinFormMessage)}
+    if(note.type==='room_full'){clearInterval(drawRetryTimer);randomDrawPending=false;joinPending=false;joinFormMessage=`Room full — maximum ${note.max||MAX_PLAYERS} participants.`;displayName='';avatar='';sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');renderJoinForm(joinFormMessage)}
+    else if(note.type==='host_online'){hostSeen=true;joinFormMessage='Host found. Synchronizing the live lobby…';render()}
     else if(note.type==='random_assigned'){applyAssignedIdentity(note.name,note.avatar)}
     else if(note.type==='joined'){randomDrawPending=false;joinPending=false;displayName=note.name;avatar=note.avatar;sessionStorage.setItem('vq_name',displayName);sessionStorage.setItem('vq_avatar',avatar);renderPlayer()}
-    else if(note.type==='identity_conflict'||note.type==='identity_invalid'){randomDrawPending=false;displayName='';avatar='';sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');joinFormMessage='Your previous character is no longer available. Tap the draw button to receive a new unique character.';renderJoinForm(joinFormMessage)}
+    else if(note.type==='identity_conflict'||note.type==='identity_invalid'){clearInterval(drawRetryTimer);randomDrawPending=false;displayName='';avatar='';sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');joinFormMessage='Your previous character is no longer available. Tap the draw button to receive a new unique character.';renderJoinForm(joinFormMessage)}
    }catch{}
    return
  }
  if(t!==topic('state'))return;
  try{
-  const incoming=JSON.parse(payload.toString());if(incoming.room!==room)return;const previous=state;if(incoming.phase==='lobby'){lastSubmitted={};sessionStorage.removeItem('vq_lastSubmitted')}state=incoming;connected=true;
+  const incoming=JSON.parse(payload.toString());if(incoming.room!==room)return;const previous=state;hostSeen=true;lastStateAt=Date.now();clearInterval(hostHandshakeTimer);if(incoming.phase==='lobby'){lastSubmitted={};sessionStorage.removeItem('vq_lastSubmitted')}state=incoming;connected=true;
   if(state.players?.[pid]){const assigned=state.players[pid];if(!displayName||randomDrawPending)applyAssignedIdentity(assigned.name,assigned.avatar);else{displayName=assigned.name;avatar=assigned.avatar;sessionStorage.setItem('vq_name',displayName);sessionStorage.setItem('vq_avatar',avatar)}}
   incomingSound(previous,incoming);render()
  }catch{}
@@ -1645,7 +1671,7 @@ function acceptAnswer(m){
  publishState();render();
 }
 
-function newHostState(){return {version:22,room,sessionKey,createdAt:Date.now(),phase:'lobby',phaseEndsAt:0,questionIndex:-1,questionStartedAt:0,sectionIndex:0,answerCount:0,players:{},rankBeforeQuestion:{},lastGains:{}}}
+function newHostState(){return {version:23,room,sessionKey,createdAt:Date.now(),phase:'lobby',phaseEndsAt:0,questionIndex:-1,questionStartedAt:0,sectionIndex:0,answerCount:0,players:{},rankBeforeQuestion:{},lastGains:{}}}
 function startQuiz(){if(!state||Object.keys(state.players).length===0)return;ensureAudio();hostAnswers={};for(const p of Object.values(state.players)){p.score=0;p.correct=0;p.answered=0}state.questionIndex=-1;state.lastGains={};enterSection(0)}
 function enterSection(si){state.sectionIndex=si;state.phase='section';state.phaseEndsAt=Date.now()+INTRO_SECONDS*1000;state.answerCount=0;state.lastGains={};publishState();render();playSound('section')}
 function startQuestion(qi){state.questionIndex=qi;state.sectionIndex=sectionIndexForQuestion(qi);state.rankBeforeQuestion=rankMap();state.lastGains={};state.phase='preview';state.questionStartedAt=0;state.phaseEndsAt=Date.now()+READ_SECONDS*1000;state.answerCount=0;hostAnswers[qi]={};lastTickMark='';publishState();render();playSound('preview')}
@@ -1668,7 +1694,14 @@ function nextAfterLeaderboard(){
 function hostTick(){if(role!=='host'||!state)return;const normalized=normalizeUniquePlayers();if(normalized)publishState();const now=Date.now();if(!state.phaseEndsAt||now<state.phaseEndsAt)return;if(state.phase==='section')startQuestion(state.questionIndex+1);else if(state.phase==='preview')beginAnswering();else if(state.phase==='question')revealQuestion();else if(state.phase==='reveal')nextAfterReveal();else if(state.phase==='leaderboard')nextAfterLeaderboard()}
 function resetQuiz(){if(!confirm('Reset the room and return to the lobby?'))return;state=newHostState();hostAnswers={};publishState();render()}
 function skipNow(){if(!state)return;if(state.phase==='section')startQuestion(state.questionIndex+1);else if(state.phase==='preview')beginAnswering();else if(state.phase==='question')revealQuestion();else if(state.phase==='reveal')nextAfterReveal();else if(state.phase==='leaderboard')nextAfterLeaderboard()}
-window.vqStart=startQuiz;window.vqReset=resetQuiz;window.vqSkip=skipNow;window.vqReconnect=async()=>{pnStopped=true;try{pnController?.abort()}catch{};try{localBus?.close()}catch{};clearInterval(pnStateTimer);pnStateTimer=null;await sleep(120);connectLiveService()};
+window.vqStart=startQuiz;window.vqReset=resetQuiz;window.vqSkip=skipNow;window.vqReconnect=async()=>{pnStopped=true;connected=false;connectionVerified=false;hostSeen=role==='host';try{pnController?.abort()}catch{};try{localBus?.close()}catch{};clearInterval(pnStateTimer);clearInterval(hostHandshakeTimer);clearInterval(drawRetryTimer);pnStateTimer=null;await sleep(160);connectLiveService().catch(()=>{})};
+
+function renderRealtimeSetup(reason=''){
+ role='host';
+ app.innerHTML=shell(`<div class="hero"><section class="panel heroCopy"><div class="eyebrow">One-time realtime setup</div><h2>Connect a reliable live service</h2><p class="lead">The previous file used PubNub's literal <b>demo</b> keys. PubNub states that those demo keys are rate-limited and are not suitable for an application. Paste your own Publish Key and Subscribe Key below. The page will then run a two-way self-test before it displays a usable QR code.</p>${reason?`<div class="offlineBanner">${esc(reason)}</div>`:''}<label class="field"><span>Publish Key</span><input id="pubKeyInput" autocomplete="off" placeholder="pub-c-..." value="${esc(publishKey)}"></label><label class="field"><span>Subscribe Key</span><input id="subKeyInput" autocomplete="off" placeholder="sub-c-..." value="${esc(subscribeKey)}"></label><div class="notice blue"><b>Do not paste the Secret Key.</b> Only the Publish Key and Subscribe Key belong in a browser app.</div><div class="actions"><button class="btn primary" onclick="window.saveRealtimeKeys()">Save Keys & Run Live Test</button><a class="btn soft" href="https://admin.pubnub.com/" target="_blank" rel="noopener">Open PubNub Portal</a><button class="btn soft" onclick="window.clearRealtimeKeys()">Clear</button></div></section><aside class="heroArt"><div class="heroIcon">↔</div><div></div><div class="heroCaption"><strong>The QR appears only after verification.</strong><span>The host page publishes a private test message and must receive it back. Participants then complete a second host handshake before the draw button becomes active.</span></div></aside></div>`)
+}
+window.saveRealtimeKeys=()=>{const p=(document.getElementById('pubKeyInput')?.value||'').trim(),skey=(document.getElementById('subKeyInput')?.value||'').trim();if(!p||!skey||p==='demo'||skey==='demo'){return renderRealtimeSetup('Please enter your own PubNub Publish Key and Subscribe Key. The literal demo keys cannot be used for a reliable 30-person room.')}publishKey=p;subscribeKey=skey;localStorage.setItem('vq_pub_key',p);localStorage.setItem('vq_sub_key',skey);const q=new URLSearchParams({host:room,s:sessionKey,v:'23'});location.href=baseUrl()+'?'+q.toString()};
+window.clearRealtimeKeys=()=>{localStorage.removeItem('vq_pub_key');localStorage.removeItem('vq_sub_key');publishKey='';subscribeKey='';renderRealtimeSetup('Saved realtime keys were removed.')};
 
 function render(){
  if(role==='home')return renderHome();
@@ -1685,7 +1718,7 @@ function renderHost(){
 }
 function renderHostLobby(){
  const players=sortedPlayers();
- app.innerHTML=shell(`<div class="hostGrid"><section class="panel"><div class="eyebrow">Host lobby</div><h2>Welcome to the Vibe Quiz</h2><p class="lead">Ask everyone to scan the QR code and spin for a randomly assigned character. Every avatar and English name is unique, the draw is controlled by the host, and this live session uses an isolated connection channel for up to 30 participants.</p>${!connected?`<div class="offlineBanner">${brokerLabel?esc(brokerLabel):'Connecting to the live room…'}<small style="display:block;margin-top:5px">This version uses standard HTTPS rather than blocked live sockets. Keep the page open; reconnection is automatic.</small></div>`:''}<div class="metrics"><div class="metric"><b>${players.length}/${MAX_PLAYERS}</b><span>Participants joined</span></div><div class="metric"><b>30</b><span>Questions</span></div><div class="metric"><b>7+15+9</b><span>Read + answer + ranking</span></div><div class="metric"><b>30</b><span>Maximum participants</span></div></div><h3 style="margin-top:22px">Participants</h3><div class="playerGrid">${players.length?players.map(p=>`<div class="playerCard"><div class="avatar">${esc(p.avatar)}</div><div><b>${esc(p.name)}</b><small>Ready</small></div></div>`).join(''):`<div class="notice blue">No one has joined yet.</div>`}</div><div class="actions"><button class="btn primary" onclick="vqStart()" ${players.length?'':'disabled'}>Start Round 1</button><button class="btn soft" onclick="window.vqReconnect()">Retry live connection</button></div></section><aside class="sidebar"><section class="panel center"><div class="eyebrow">Room code</div><div class="roomCode">${esc(room)}</div><div id="qr" class="qrBox"></div><div class="joinUrl">${esc(joinUrl())}</div></section><section class="panel"><h3>Automatic flow</h3><div class="notice">Section intro → 7-second host reading → 15-second answer window → 9-second correct answer, explanation and full live ranking. Extended checkpoint boards appear after Questions 10 and 20; Question 30 leads to the final celebration.</div></section></aside></div>`);
+ app.innerHTML=shell(`<div class="hostGrid"><section class="panel"><div class="eyebrow">Host lobby</div><h2>Welcome to the Vibe Quiz</h2><p class="lead">Ask everyone to scan the QR code and spin for a randomly assigned character. Every avatar and English name is unique, the draw is controlled by the host, and this live session uses an isolated connection channel for up to 30 participants.</p>${connected&&connectionVerified?`<div class="notice blue"><b>${esc(brokerLabel||'VERIFIED LIVE')}</b><small style="display:block;margin-top:5px">The two-way live test passed. Scanned phones can now synchronize with this host.</small></div>`:`<div class="offlineBanner">${brokerLabel?esc(brokerLabel):'Connecting to the live room…'}<small style="display:block;margin-top:5px">Do not show the QR until this changes to VERIFIED LIVE.</small></div>`}<div class="metrics"><div class="metric"><b>${players.length}/${MAX_PLAYERS}</b><span>Participants joined</span></div><div class="metric"><b>30</b><span>Questions</span></div><div class="metric"><b>7+15+9</b><span>Read + answer + ranking</span></div><div class="metric"><b>30</b><span>Maximum participants</span></div></div><h3 style="margin-top:22px">Participants</h3><div class="playerGrid">${players.length?players.map(p=>`<div class="playerCard"><div class="avatar">${esc(p.avatar)}</div><div><b>${esc(p.name)}</b><small>Ready</small></div></div>`).join(''):`<div class="notice blue">No one has joined yet.</div>`}</div><div class="actions"><button class="btn primary" onclick="vqStart()" ${players.length?'':'disabled'}>Start Round 1</button><button class="btn soft" onclick="window.vqReconnect()">Retry live connection</button></div></section><aside class="sidebar"><section class="panel center"><div class="eyebrow">Room code</div><div class="roomCode">${esc(room)}</div>${connected&&connectionVerified?`<div id="qr" class="qrBox"></div><div class="joinUrl">${esc(joinUrl())}</div>`:`<div class="offlineBanner" style="margin-top:16px"><b>QR locked</b><small style="display:block;margin-top:5px">It appears only after the two-way live test passes.</small></div>`}</section><section class="panel"><h3>Automatic flow</h3><div class="notice">Section intro → 7-second host reading → 15-second answer window → 9-second correct answer, explanation and full live ranking. Extended checkpoint boards appear after Questions 10 and 20; Question 30 leads to the final celebration.</div></section></aside></div>`);
  drawQR();
 }
 function drawQR(){
@@ -1750,14 +1783,15 @@ function wheelTokensHTML(){
  return sample.map((i,k)=>{const a=k*360/sample.length;return `<span class="wheelToken" style="transform:translate(-50%,-50%) rotate(${a}deg) translateY(-${radius}px) rotate(${-a}deg)">${i.avatar}</span>`}).join('')
 }
 function renderJoinForm(message=''){
- const available=availableIdentityCount(),ready=connected&&!!state,full=available<=0||Object.keys(state?.players||{}).length>=MAX_PLAYERS;
- const msg=message||joinFormMessage||(!connected?'Connecting to the live room…':!state?'Connected. Waiting for the host lobby…':'');
+ const available=availableIdentityCount(),ready=connected&&connectionVerified&&hostSeen&&!!state,full=available<=0||Object.keys(state?.players||{}).length>=MAX_PLAYERS;
+ const msg=message||joinFormMessage||(!connected?'Connecting to the live room…':!connectionVerified?'Testing two-way synchronization…':!hostSeen?'Live service connected. Looking for the host…':!state?'Host found. Synchronizing the lobby…':'');
  app.innerHTML=shell(`<div class="hero"><section class="panel heroCopy"><div class="eyebrow">Join room ${esc(room)}</div><h2>Draw your unique character</h2><p class="lead">Tap one button. The host system randomly draws one unused avatar and its matching English name. You cannot choose or change it, and no two participants can receive the same identity.</p>${msg?`<div class="${connected?'notice blue':'offlineBanner'}">${esc(msg)}</div>`:''}<div class="availabilityLine"><span>${ready?'Live character availability is synchronized':'The wheel activates after connection'}</span><b>${available} of ${IDENTITIES.length} remaining</b></div><div class="randomDrawStage"><div class="drawWheelWrap"><div class="drawPointer"></div><div class="drawWheel ${randomDrawPending?'spinning':''}">${wheelTokensHTML()}</div><div class="wheelHub"><div><span class="hubEmoji">${randomDrawPending?'🎲':'✦'}</span><small>${randomDrawPending?'DRAWING':'ONE TAP'}</small></div></div></div></div><div class="randomRules"><div class="randomRule"><b>Random</b>The host draws from unused identities</div><div class="randomRule"><b>Unique</b>No identity can be repeated</div><div class="randomRule"><b>Automatic</b>Your name and avatar appear together</div></div><button id="spinCharacterBtn" class="btn gold block" onclick="window.spinIdentity()" ${(!ready||full||randomDrawPending)?'disabled':''}>${full?'All 30 characters are assigned':randomDrawPending?'Drawing your unique character…':'Draw My Character'}</button><div class="notice blue" style="margin-top:14px"><b>No manual selection.</b> Tap once and the host system gives you one unused avatar and one matching English name.</div></section><aside class="heroArt"><div class="heroIcon">🎡</div><div></div><div class="heroCaption"><strong>30 people. 30 unique identities.</strong><span>The host assigns each character only once. Reloading on the same phone keeps the same identity.</span></div></aside></div>`)
 }
 window.spinIdentity=()=>{
  if(!connected||!state||randomDrawPending||displayName)return;
  ensureAudio();playSound('spin');randomDrawPending=true;randomDrawStartedAt=Date.now();joinFormMessage='Drawing one unused character for you…';renderJoinForm(joinFormMessage);publishEvent({type:'random_join',pid});
- clearTimeout(randomDrawTimeout);randomDrawTimeout=setTimeout(()=>{if(randomDrawPending&&!displayName){randomDrawPending=false;joinFormMessage='The draw took too long. Tap the draw button once more — your identity will still remain unique.';renderJoinForm(joinFormMessage)}},9000)
+ clearInterval(drawRetryTimer);drawRetryTimer=setInterval(()=>{if(randomDrawPending&&!displayName&&connected&&connectionVerified)publishEvent({type:'random_join',pid});else clearInterval(drawRetryTimer)},1200);
+ clearTimeout(randomDrawTimeout);randomDrawTimeout=setTimeout(()=>{if(randomDrawPending&&!displayName){clearInterval(drawRetryTimer);randomDrawPending=false;joinFormMessage='The host did not answer the draw request. Check that the host screen says VERIFIED LIVE, then tap once more.';renderJoinForm(joinFormMessage)}},10000)
 };
 function renderPlayer(){
  if(assignmentReveal&&Date.now()<assignmentRevealUntil){return app.innerHTML=shell(`<section class="panel assignmentReveal"><div class="eyebrow">Random draw complete</div><h2>Your random character is…</h2><div class="assignmentAvatar">${esc(assignmentReveal.avatar)}</div><div class="assignmentName">${esc(assignmentReveal.name)}</div><p class="lead" style="margin:14px auto 0">This unique identity is now locked to your phone. No other participant can receive it.</p><div class="notice blue" style="margin-top:18px">Joining the host lobby automatically…</div></section>`)}
@@ -1780,19 +1814,21 @@ async function boot(){
  if(role==='home')return renderHome();
  if(!room){role='home';return renderHome()}
  if(role==='player'&&!sessionKey){joinError='This join link is outdated. Please scan the QR code currently shown on the host screen.';return renderJoinForm(joinError)}
+ if(role==='player'&&!TEST_MODE&&!validRealtimeKeys()){joinError='This QR code is missing its verified realtime configuration. Please ask the host to complete the live setup and scan the new QR code.';return renderJoinForm(joinError)}
  if(role==='host'){
    const forceNew=params.get('new')==='1';
    if(forceNew){localStorage.removeItem('vq_host_'+room);localStorage.removeItem('vq_answers_'+room)}
    const saved=JSON.parse(localStorage.getItem('vq_host_'+room)||'null');
-   if(!forceNew&&saved&&saved.room===room&&saved.version===22){state=saved;sessionKey=saved.sessionKey||sessionKey||randomId(8)}
+   if(!forceNew&&saved&&saved.room===room&&saved.version===23){state=saved;sessionKey=saved.sessionKey||sessionKey||randomId(8)}
    else{sessionKey=forceNew?randomId(8):(sessionKey||randomId(8));state=newHostState()}
    state.sessionKey=sessionKey;normalizeUniquePlayers();hostAnswers=forceNew?{}:JSON.parse(localStorage.getItem('vq_answers_'+room)||'{}');
-   if(!TEST_MODE)history.replaceState({},'',baseUrl()+'?host='+room+'&s='+sessionKey+'&v=22');
-   render();try{await connectLiveService()}catch(e){brokerLabel=e.message;render()}hostTimer=setInterval(hostTick,180);uiTimer=setInterval(updateCountdowns,180)
+   if(!TEST_MODE)history.replaceState({},'',baseUrl()+'?host='+room+'&s='+sessionKey+'&v=23');
+   if(!TEST_MODE&&!validRealtimeKeys()){renderRealtimeSetup('Realtime synchronization has not been configured yet. Add your own PubNub key pair before participants scan.');return}
+   render();try{await connectLiveService()}catch(e){brokerLabel=e.message;renderHostLobby()}hostTimer=setInterval(hostTick,180);uiTimer=setInterval(updateCountdowns,180)
  }else{
    if(displayName)lastSubmitted=JSON.parse(sessionStorage.getItem('vq_lastSubmitted')||'{}');renderJoinForm('Connecting to the live room…');
    try{await connectLiveService();if(displayName)publishEvent({type:'join',pid,name:displayName,avatar});else publishEvent({type:'state_request',pid})}catch(e){joinFormMessage=e.message;renderJoinForm(joinFormMessage)}
-   setInterval(()=>{if(displayName){if(!state||!state.players||!state.players[pid])publishEvent({type:'join',pid,name:displayName,avatar});else publishEvent({type:'ping',pid})}else if(randomDrawPending)publishEvent({type:'random_join',pid});else publishEvent({type:'state_request',pid})},7000);uiTimer=setInterval(updateCountdowns,180)
+   setInterval(()=>{if(!connected||!connectionVerified)return;if(displayName){if(!state||!state.players||!state.players[pid])publishEvent({type:'join',pid,name:displayName,avatar});else publishEvent({type:'ping',pid})}else if(randomDrawPending)publishEvent({type:'random_join',pid});else if(!hostSeen||!state)publishEvent({type:'state_request',pid})},2500);uiTimer=setInterval(updateCountdowns,180)
  }
 }
 boot();
