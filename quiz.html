@@ -73,12 +73,57 @@ window.QUIZ_SECTIONS=[{"name":"Global Architectural History & Modern Design","sh
 <script>
 (()=>{
 'use strict';
+
+/* Built-in MQTT-over-WebSocket client.
+   This removes the external CDN dependency that previously left the lobby
+   stuck on “Loading live-room connection…”. */
+(function installBuiltInMQTT(){
+  if(window.mqtt&&window.mqtt.connect)return;
+  const TE=new TextEncoder(),TD=new TextDecoder();
+  const bytes=x=>x instanceof Uint8Array?x:TE.encode(String(x));
+  const concat=(...parts)=>{const n=parts.reduce((a,b)=>a+b.length,0),o=new Uint8Array(n);let k=0;for(const b of parts){o.set(b,k);k+=b.length}return o};
+  const str=s=>{const b=TE.encode(String(s));return concat(new Uint8Array([b.length>>8,b.length&255]),b)};
+  const remain=n=>{const a=[];do{let d=n%128;n=Math.floor(n/128);if(n>0)d|=128;a.push(d)}while(n>0);return new Uint8Array(a)};
+  const packet=(head,body)=>concat(new Uint8Array([head]),remain(body.length),body);
+  class Emitter{
+    constructor(){this.h={}}
+    on(t,f){(this.h[t]||(this.h[t]=[])).push(f);return this}
+    once(t,f){const w=(...a)=>{this.off(t,w);f(...a)};return this.on(t,w)}
+    off(t,f){if(this.h[t])this.h[t]=this.h[t].filter(x=>x!==f);return this}
+    emit(t,...a){for(const f of [...(this.h[t]||[])]){try{f(...a)}catch(e){console.error(e)}}return this}
+    removeAllListeners(t){if(t)delete this.h[t];else this.h={};return this}
+  }
+  class MiniMQTT extends Emitter{
+    constructor(url,opt={}){super();this.url=url;this.opt=opt;this.ws=null;this.connected=false;this.ended=false;this.pid=1;this.ping=null;this.retry=null;setTimeout(()=>this.open(),0)}
+    open(){
+      if(this.ended)return;
+      try{
+        const ws=new WebSocket(this.url,['mqtt']);this.ws=ws;ws.binaryType='arraybuffer';
+        ws.onopen=()=>{const vh=concat(str('MQTT'),new Uint8Array([4,2,(this.opt.keepalive||30)>>8,(this.opt.keepalive||30)&255]));const pl=str(this.opt.clientId||('archcmu_'+Math.random().toString(36).slice(2)));ws.send(packet(0x10,concat(vh,pl)))};
+        ws.onmessage=e=>this.parse(new Uint8Array(e.data));
+        ws.onerror=e=>this.emit('error',e instanceof Error?e:new Error('WebSocket error'));
+        ws.onclose=()=>{const was=this.connected;this.connected=false;clearInterval(this.ping);this.emit('close');if(!this.ended&&(this.opt.reconnectPeriod||0)>0){this.emit('reconnect');clearTimeout(this.retry);this.retry=setTimeout(()=>this.open(),this.opt.reconnectPeriod)}};
+      }catch(e){this.emit('error',e);if(!this.ended&&(this.opt.reconnectPeriod||0)>0){this.emit('reconnect');this.retry=setTimeout(()=>this.open(),this.opt.reconnectPeriod)}}
+    }
+    parse(a){
+      let i=0;
+      while(i<a.length){const head=a[i++];let mul=1,len=0,d=0;do{if(i>=a.length)return;d=a[i++];len+=(d&127)*mul;mul*=128}while(d&128);if(i+len>a.length)return;const b=a.subarray(i,i+len);i+=len;const type=head>>4;
+        if(type===2){if(b.length>=2&&b[1]===0){this.connected=true;this.emit('connect',{sessionPresent:!!b[0]});clearInterval(this.ping);this.ping=setInterval(()=>{if(this.connected&&this.ws?.readyState===1)this.ws.send(new Uint8Array([0xc0,0]))},Math.max(10000,(this.opt.keepalive||30)*500))}else this.emit('error',new Error('MQTT connection refused'))}
+        else if(type===3){if(b.length<2)continue;const tl=(b[0]<<8)|b[1];if(2+tl>b.length)continue;const topic=TD.decode(b.subarray(2,2+tl));let off=2+tl;const qos=(head>>1)&3;if(qos>0)off+=2;const text=TD.decode(b.subarray(off));this.emit('message',topic,{toString:()=>text})}
+      }
+    }
+    subscribe(topic,opt={},cb){if(!this.connected)return cb?.(new Error('Not connected'));const id=(this.pid++&65535)||1;const body=concat(new Uint8Array([id>>8,id&255]),str(topic),new Uint8Array([opt.qos||0]));this.ws.send(packet(0x82,body));cb?.(null,[{topic,qos:opt.qos||0}]);return this}
+    publish(topic,payload,opt={},cb){if(!this.connected)return cb?.(new Error('Not connected'));const body=concat(str(topic),bytes(payload));this.ws.send(packet(0x30|(opt.retain?1:0),body));cb?.();return this}
+    end(force=false,cb){this.ended=true;this.connected=false;clearInterval(this.ping);clearTimeout(this.retry);try{if(this.ws?.readyState===1&&!force)this.ws.send(new Uint8Array([0xe0,0]));this.ws?.close()}catch{}cb?.();return this}
+  }
+  window.mqtt={connect:(url,opt)=>new MiniMQTT(url,opt)};
+})();
 const Q=window.QUIZ_QUESTIONS||[];
 const SECTIONS=window.QUIZ_SECTIONS||[];
-const READ_SECONDS=7, ANSWER_SECONDS=15, REVEAL_SECONDS=9, INTRO_SECONDS=6, BOARD_SECONDS=10;
-const MQTT_SOURCES=['https://cdnjs.cloudflare.com/ajax/libs/mqtt/5.10.1/mqtt.min.js','https://cdn.jsdelivr.net/npm/mqtt@5.10.1/dist/mqtt.min.js','https://unpkg.com/mqtt@5.10.1/dist/mqtt.min.js','https://unpkg.com/mqtt/dist/mqtt.min.js'];
+const READ_SECONDS=7, ANSWER_SECONDS=15, REVEAL_SECONDS=9, INTRO_SECONDS=6, BOARD_SECONDS=10, MAX_PLAYERS=30;
+const MQTT_SOURCES=[];
 const BROKERS=['wss://broker.emqx.io:8084/mqtt','wss://broker.hivemq.com:8884/mqtt','wss://test.mosquitto.org:8081/mqtt','wss://mqtt.eclipseprojects.io:443/mqtt'];
-const IDENTITIES=[{avatar:'🦉',name:'Oliver'},{avatar:'🦊',name:'Ruby'},{avatar:'🐼',name:'Noah'},{avatar:'🐯',name:'Leo'},{avatar:'🐸',name:'Lily'},{avatar:'🐙',name:'Oscar'},{avatar:'🐧',name:'Emma'},{avatar:'🦁',name:'Jack'},{avatar:'🐨',name:'Mia'},{avatar:'🐰',name:'Chloe'},{avatar:'🦄',name:'Grace'},{avatar:'🐲',name:'Ethan'},{avatar:'🦋',name:'Ava'},{avatar:'🦚',name:'Sophie'},{avatar:'🐝',name:'Ben'},{avatar:'🐬',name:'Lucas'},{avatar:'🦖',name:'Max'},{avatar:'🦜',name:'Ella'},{avatar:'🐳',name:'Henry'},{avatar:'🦦',name:'Zoe'},{avatar:'🦩',name:'Alice'},{avatar:'🐺',name:'Ryan'},{avatar:'🐮',name:'Daisy'},{avatar:'🐵',name:'Charlie'}];
+const IDENTITIES=[{avatar:'🦉',name:'Oliver'},{avatar:'🦊',name:'Ruby'},{avatar:'🐼',name:'Noah'},{avatar:'🐯',name:'Leo'},{avatar:'🐸',name:'Lily'},{avatar:'🐙',name:'Oscar'},{avatar:'🐧',name:'Emma'},{avatar:'🦁',name:'Jack'},{avatar:'🐨',name:'Mia'},{avatar:'🐰',name:'Chloe'},{avatar:'🦄',name:'Grace'},{avatar:'🐲',name:'Ethan'},{avatar:'🦋',name:'Ava'},{avatar:'🦚',name:'Sophie'},{avatar:'🐝',name:'Ben'},{avatar:'🐬',name:'Lucas'},{avatar:'🦖',name:'Max'},{avatar:'🦜',name:'Ella'},{avatar:'🐳',name:'Henry'},{avatar:'🦦',name:'Zoe'},{avatar:'🦩',name:'Alice'},{avatar:'🐺',name:'Ryan'},{avatar:'🐮',name:'Daisy'},{avatar:'🐵',name:'Charlie'},{avatar:'🦔',name:'Ivy'},{avatar:'🐢',name:'Theo'},{avatar:'🦅',name:'Sky'},{avatar:'🐿️',name:'Hazel'},{avatar:'🐻',name:'Finn'},{avatar:'🦭',name:'Nora'}];
 const AVATARS=IDENTITIES.map(i=>i.avatar);
 const identityForAvatar=a=>IDENTITIES.find(i=>i.avatar===a)||null;
 const app=document.getElementById('app');
@@ -86,8 +131,9 @@ const DEFAULT_ROOM='ARCH26';
 const DEFAULT_JOIN_QR='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAIAAACZDnMXAAAHNUlEQVR4nO3dS44jNxBF0VdGz3pDXpaX4mV5Qz1OzzyjDRoRGaTqnHEhpZKECwL8fT3PE+B7+236DQDzhAAQAkAIgAgBECEAIgRAhACIEAARAiBCAEQIgAgBECEAIgRAhACIEAARAiBCAEQIgAgBECEAIgRAkh9VD/r5+x9Vj2r1668/W5+/+zms3s/qObvvv/s5u6o+/6r/a/f5p6n6f40IACEAhACIEAARAiBCAEQIgBSuI1jpnrdf2Z0Hrpr/3/373fnw7vdZ9Zyqz3/1ulPrKW75Pe8yIgCEABACIEIARAiACAEQIQDywjqCldP2t++qmv+fmudf6V7XUPW9n3ZewO2/ZyMCQAgAIQAiBECEAIgQABECIIPrCG7XvY+9e769ap//ytS6g6l5+NsZEQBCAAgBECEAIgRAhACIEACxjuAfp+2339V9jsDKaesO+H+MCAAhAIQAiBAAEQIgQgBECIAMriO4fd941T757vsOpp6/8qmfw+2/ZyMCQAgAIQAiBECEAIgQABECIC+sI7hlP3nVfn5//+9/X6V7XcDu697OiAAQAkAIgAgBECEAIgRAhABI4TqC2/djd7v93oTu7/e053+337MRASAEgBAAEQIgQgBECIAIAZDCdQRT+8NXqt7PdzsPv+qegu7X7X7OStXvp/t1dxkRAEIACAEQIQAiBECEAIgQAPmAew1W86tV+89X7/+0+epb3HL/Qvd9DVP3QawYEQBCAAgBECEAIgRAhACIEABJvp7naX2B7v38VfvnT9s33n2ewsrt6xe6/99bfs+7jAgAIQCEAIgQABECIEIARAiAHHivwe5zbjlnfurc/tP2vd9y30SVqt9z9/dlRAAIASAEQIQAiBAAEQIgQgCkcB3B1Dzwafvtp+bJu+eZq/6vqvsFVqZ+VyunrWtYMSIAhAAQAiBCAEQIgAgBECEA8sK9Brum7rfv/vtdp50j0O1T75u45dwEIwJACAAhACIEQIQAiBAAEQIghecR7Lplvv209QUrU/PYU/Pku/9v9/d12r0Vu4wIACEAhACIEAARAiBCAEQIgLxwHsHt+7c/9byDldP2ya/c8rmddp7CihEBIASAEAARAiBCAEQIgAgBkMHzCFam5tur5mlPm4c/bf3Fyi3rSk5bP+I8AqCMEABCAAgBECEAIgRAhADIC+cRVKmaR+2e3656Tve9Ayvd77N7fcct91mctm7CiAAQAkAIgAgBECEAIgRAhABI4XkEU/PzK93z3t3zulWfZ/f/e/vn0+2W9QVGBIAQAEIARAiACAEQIQAiBEAKzyPovn9+19R6ge798FWmzgWYOmdh12n3U1hHALQTAkAIACEAIgRAhACIEAAZXEfQfR5B9+tO7fOv4v3Xvu4t60dWjAgAIQCEAIgQABECIEIARAiAFN5rsFI1L+pc/drn37LuY9fU72Hlls/NiAAQAkAIgAgBECEAIgRAhABI4XkEK1Pz7VPn6nefd9D9nKm/X7nlHIFdU+dirBgRAEIACAEQIQAiBECEAIgQABm816BK97qAXZ967n2VqfUdp+m+V2KXEQEgBIAQABECIEIARAiACAGQF9YR3L4fftft8+Tdn3/V+9k1dX7ErqnfrREBIASAEAARAiBCAEQIgAgBkORH9wtUzYtW/f2nrkeYmveucto8fNXnfMv3YkQACAEgBECEAIgQABECIEIA5IV1BKftw+/eP78ydY7Ayu58e9X3eNr6hW5V30vV81eMCAAhAIQAiBAAEQIgQgBECIC8sI5gpXuff/dzps7tP22/ffe6g5WqcwG6z6HoXj9SxYgAEAJACIAIARAhACIEQIQASPL1PE/Jg7rP4V/png/vXu/Qvf986l6Gle82n3/LPRRGBIAQAEIARAiACAEQIQAiBEAK1xHcbmo+f/f5t+xvn3r/p60HueUeByMCQAgAIQAiBECEAIgQABECIIX3Gtw+v33a/QK7pubDTztXospp6wK6348RASAEgBAAEQIgQgBECIAIAZDCdQQrp827dj9n6hz+7vn27vsITru/4LTfrXsNgHZCAAgBIARAhACIEAARAiAvrCNYuWW+97T5/9PO7Z9av3DL83dfd+r7NSIAhAAQAiBCAEQIgAgBECEAMriO4BZT8/xT5yns3vswdV5DlarPp+r5U4wIACEAhACIEAARAiBCAEQIgFhH8J9258+71wtMneMwda/BSvf7nzK17sCIABACQAiACAEQIQAiBECEAMjgOoLT5m9Xquafb5nHXtl9n91/f9o+/9vPNTAiAIQAEAIgQgBECIAIARAhAPLCOoLT5ntXpu4R6H5O970Jp62nmDr3oftz7mZEAAgBIARAhACIEAARAiBCACT5ep5n+j0Aw4wIACEAhACIEAARAiBCAEQIgAgBECEAIgRAhACIEAARAiBCAEQIgAgBECEAIgRAhACIEAARAiBCAEQIgCR/A+OGr6zTJajQAAAAAElFTkSuQmCC';
 const params=new URLSearchParams(location.search);
 let role=params.has('host')?'host':params.has('join')?'player':'home';
+let joinError='';
 let room=(params.get('host')||params.get('join')||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
-const IDENTITY_VERSION='14';
+const IDENTITY_VERSION='16';
 if(sessionStorage.getItem('vq_identity_version')!==IDENTITY_VERSION){sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');sessionStorage.removeItem('vq_lastSubmitted');sessionStorage.setItem('vq_identity_version',IDENTITY_VERSION)}
 let pid=sessionStorage.getItem('vq_pid')||randomId(15);sessionStorage.setItem('vq_pid',pid);
 let displayName=sessionStorage.getItem('vq_name')||'';
@@ -134,6 +180,7 @@ function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt
 function baseUrl(){return location.origin+location.pathname}
 function joinUrl(){return baseUrl()+'?join='+room}
 function topic(suffix){return `archcmu-vibequiz-2026/${room}/${suffix}`}
+function noticeTopic(id){return `archcmu-vibequiz-2026/${room}/notice/${id}`}
 function sectionIndexForQuestion(i){return SECTIONS.findIndex(s=>Q[i]&&Q[i].section===s.name)}
 function sortedPlayers(){return Object.values((state&&state.players)||{}).sort((a,b)=>b.score-a.score||b.correct-a.correct||a.name.localeCompare(b.name))}
 function commonsUrl(name){return 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(name)+'?width=1400'}
@@ -164,33 +211,35 @@ function fullRevealRanking(highlightPid=''){
  const ps=sortedPlayers();return ps.map((p,i)=>{const n=i+1,m=rankMovement(p.id,n),gain=(state.lastGains&&state.lastGains[p.id])||0;return `<div class="revealRankRow ${p.id===highlightPid?'me':''} ${i===0?'top1':''}"><div class="rank">#${n}</div><div class="avatar">${esc(p.avatar)}</div><div class="rankPerson"><b>${esc(p.name)}</b><small><span>${p.correct} correct</span><span class="movement ${m.cls}">${m.text}</span><span class="gain ${gain?'':'zero'}">+${gain}</span></small></div><div class="rankScore"><b>${p.score}</b><small>points</small></div></div>`}).join('')||'<div class="notice blue">No scores yet.</div>'
 }
 
-function shell(content){return `<div class="shell"><header class="topbar"><div class="brand"><div class="brandMark">A</div><div><strong>ARCH CMU PhD Homeroom</strong><small>Live visual knowledge quiz</small></div></div><div class="topTools">${role!=='home'?`<div class="status ${connected?'live':''}"><span class="dot"></span>${connected?'Live':'Connecting'}</div>`:''}<button class="iconBtn soundBtn" onclick="window.vqToggleSound()" title="${soundOn?'Mute sound':'Turn sound on'}">${soundOn?'🔊':'🔇'}</button><button class="iconBtn" onclick="window.vqFull()">⛶</button><button class="iconBtn" onclick="window.vqHome()">⌂</button></div></header><main class="main">${content}</main><footer class="footer">ARCH CMU PhD Homeroom · 30 questions · 7s host reading + 15s answering + 9s answer reveal and ranking</footer></div>`}
+function shell(content){return `<div class="shell"><header class="topbar"><div class="brand"><div class="brandMark">A</div><div><strong>ARCH CMU PhD Homeroom</strong><small>Live visual knowledge quiz</small></div></div><div class="topTools">${role!=='home'?`<div class="status ${connected?'live':''}"><span class="dot"></span>${connected?'Live':'Connecting'}</div>`:''}<button class="iconBtn soundBtn" onclick="window.vqToggleSound()" title="${soundOn?'Mute sound':'Turn sound on'}">${soundOn?'🔊':'🔇'}</button><button class="iconBtn" onclick="window.vqFull()">⛶</button><button class="iconBtn" onclick="window.vqHome()">⌂</button></div></header><main class="main">${content}</main><footer class="footer">ARCH CMU PhD Homeroom · up to 30 participants · 30 questions · 7s reading + 15s answering + 9s ranking</footer></div>`}
 window.vqFull=()=>{document.documentElement.requestFullscreen?.().catch(()=>{})};window.vqHome=()=>{location.href=baseUrl()};
 
 function renderHome(){
  role='home';
- app.innerHTML=shell(`<div class="hero"><section class="panel heroCopy"><div class="eyebrow">PhD Homeroom · August 2026</div><h1>Architecture.<br>Culture.<br>Research.</h1><p class="lead">A fast, visual and social quiz for the ARCH CMU doctoral community. Choose an avatar, answer on your phone, and watch the live ranking change after every round.</p><div class="metrics"><div class="metric"><b>30</b><span>Questions</span></div><div class="metric"><b>5</b><span>Knowledge rounds</span></div><div class="metric"><b>7+15+9</b><span>Read + answer + ranking</span></div><div class="metric"><b>30</b><span>Live ranking reveals</span></div></div><div class="actions"><button class="btn primary" onclick="window.createRoom()">Create Live Room</button><button class="btn gold" onclick="document.getElementById('joinPanel').classList.toggle('hidden')">Join a Room</button></div><div id="joinPanel" class="hidden" style="max-width:420px;margin-top:15px"><label class="field"><span>Room code</span><input id="homeRoom" maxlength="6" placeholder="Example: ARCH26"></label><button class="btn soft block" onclick="window.joinRoomFromHome()">Continue</button></div></section><aside class="heroArt"><div class="heroIcon">⌂</div><div class="heroRounds">${SECTIONS.map((s,i)=>`<div class="heroRound"><b>${i+1}</b>${esc(s.short)}</div>`).join('')}</div><div class="heroCaption"><strong>Think fast. Learn together.</strong><span>Every question runs automatically: 7 seconds for the host to read, 15 seconds to answer, then 9 seconds for the correct answer and full live ranking.</span></div></aside></div>`)
+ app.innerHTML=shell(`<div class="hero"><section class="panel heroCopy"><div class="eyebrow">PhD Homeroom · August 2026</div><h1>Architecture.<br>Culture.<br>Research.</h1><p class="lead">A fast, visual and social quiz for the ARCH CMU doctoral community. Choose an avatar, answer on your phone, and watch the live ranking change after every round.</p><div class="metrics"><div class="metric"><b>30</b><span>Questions</span></div><div class="metric"><b>5</b><span>Knowledge rounds</span></div><div class="metric"><b>7+15+9</b><span>Read + answer + ranking</span></div><div class="metric"><b>30</b><span>Participant capacity</span></div></div><div class="actions"><button class="btn primary" onclick="window.createRoom()">Create Live Room</button><button class="btn gold" onclick="document.getElementById('joinPanel').classList.toggle('hidden')">Join a Room</button></div><div id="joinPanel" class="hidden" style="max-width:420px;margin-top:15px"><label class="field"><span>Room code</span><input id="homeRoom" maxlength="6" placeholder="Example: ARCH26"></label><button class="btn soft block" onclick="window.joinRoomFromHome()">Continue</button></div></section><aside class="heroArt"><div class="heroIcon">⌂</div><div class="heroRounds">${SECTIONS.map((s,i)=>`<div class="heroRound"><b>${i+1}</b>${esc(s.short)}</div>`).join('')}</div><div class="heroCaption"><strong>Think fast. Learn together.</strong><span>Every question runs automatically: 7 seconds for the host to read, 15 seconds to answer, then 9 seconds for the correct answer and full live ranking.</span></div></aside></div>`)
 }
 window.createRoom=()=>{room=DEFAULT_ROOM;location.href=baseUrl()+'?host='+room+'&new=1'};
 window.joinRoomFromHome=()=>{const v=(document.getElementById('homeRoom').value||'').toUpperCase().replace(/[^A-Z0-9]/g,'');if(v)location.href=baseUrl()+'?join='+v};
 
-function loadExternalScript(src,timeout=9000){return new Promise((resolve,reject)=>{const existing=[...document.scripts].find(s=>s.src===src);if(existing){if(window.mqtt)return resolve();existing.addEventListener('load',resolve,{once:true});existing.addEventListener('error',reject,{once:true});return}const s=document.createElement('script');s.src=src;s.async=true;const t=setTimeout(()=>{s.remove();reject(new Error('Script timeout'))},timeout);s.onload=()=>{clearTimeout(t);resolve()};s.onerror=()=>{clearTimeout(t);s.remove();reject(new Error('Script failed'))};document.head.appendChild(s)})}
-async function ensureMQTT(){if(window.mqtt)return;for(const src of MQTT_SOURCES){try{brokerLabel='Loading live-room connection…';render();await loadExternalScript(src);if(window.mqtt)return}catch(e){}}throw new Error('The live-room connection could not load. Check the internet connection and refresh.')}
+function loadExternalScript(){return Promise.resolve()}
+async function ensureMQTT(){if(window.mqtt&&window.mqtt.connect)return;throw new Error('Built-in live-room engine is unavailable. Please refresh the page.')}
 async function connectMQTT(){
  await ensureMQTT();
- for(const url of BROKERS){
-   try{
-     await new Promise((resolve,reject)=>{
-       const c=window.mqtt.connect(url,{clientId:`archcmu_${role}_${randomId(12)}`,clean:true,reconnectPeriod:1200,connectTimeout:6500,keepalive:30});
-       const timeout=setTimeout(()=>{try{c.end(true)}catch{};reject(new Error('Connection timeout'))},7000);
-       c.once('connect',()=>{clearTimeout(timeout);client=c;brokerLabel=url;connected=true;resolve()});
-       c.once('error',e=>{if(!connected){clearTimeout(timeout);try{c.end(true)}catch{};reject(e)}})
-     });
-     break;
-   }catch(e){}
- }
- if(!client)throw new Error('No live broker is currently reachable.');
- client.on('close',()=>{connected=false;render()});client.on('reconnect',()=>{connected=false;render()});client.on('connect',()=>{connected=true;subscribeAndAnnounce();render()});
+ connected=false;brokerLabel='Connecting to the fastest live server…';render();
+ const attempts=[];let settled=false,failures=0;
+ await new Promise((resolve,reject)=>{
+   BROKERS.forEach((url,index)=>{
+     const c=window.mqtt.connect(url,{clientId:`archcmu_${role}_${randomId(12)}`,clean:true,reconnectPeriod:0,connectTimeout:7000,keepalive:25});
+     const item={c,url,t:null,failed:false};attempts.push(item);
+     const fail=()=>{if(settled||item.failed)return;item.failed=true;clearTimeout(item.t);try{c.end(true)}catch{};failures++;if(failures>=BROKERS.length){settled=true;reject(new Error('No live server is reachable on this network. Try a mobile hotspot, then press Retry live connection.'))}};
+     item.t=setTimeout(fail,8500);
+     c.once('connect',()=>{if(settled){try{c.end(true)}catch{};return}settled=true;clearTimeout(item.t);c.opt.reconnectPeriod=1400;client=c;brokerLabel='Live room connected';connected=true;for(const other of attempts){if(other.c!==c){clearTimeout(other.t);try{other.c.end(true)}catch{}}}resolve()});
+     c.once('error',fail);
+   });
+ });
+ client.on('close',()=>{connected=false;brokerLabel='Connection interrupted — reconnecting…';render()});
+ client.on('reconnect',()=>{connected=false;brokerLabel='Reconnecting to the live room…';render()});
+ client.on('connect',()=>{connected=true;brokerLabel='Live room connected';subscribeAndAnnounce();render()});
  subscribeAndAnnounce();
 }
 function subscribeAndAnnounce(){
@@ -202,6 +251,7 @@ function subscribeAndAnnounce(){
    publishState();
  }else{
    client.subscribe(topic('state'),{qos:0});
+   client.subscribe(noticeTopic(pid),{qos:0});
    client.on('message',onPlayerMessage);
    publishEvent({type:'join',pid,name:displayName,avatar});
  }
@@ -217,6 +267,11 @@ function publishState(){
 function onHostMessage(t,payload){
  if(t!==topic('events'))return;let m;try{m=JSON.parse(payload.toString())}catch{return}
  if(m.type==='join'&&m.pid&&m.name){
+   const isNew=!state.players[m.pid];
+   if(isNew&&Object.keys(state.players).length>=MAX_PLAYERS){
+     if(client&&connected)client.publish(noticeTopic(m.pid),JSON.stringify({type:'room_full',max:MAX_PLAYERS,ts:Date.now()}),{qos:0});
+     return;
+   }
    const old=state.players[m.pid]||{};
    const baseName=String(m.name).slice(0,24),used=new Set(Object.values(state.players).filter(p=>p.id!==m.pid).map(p=>p.name));
    let finalName=old.name||baseName;if(!old.name&&used.has(finalName)){let n=2;while(used.has(baseName+' '+n))n++;finalName=baseName+' '+n}
@@ -227,6 +282,10 @@ function onHostMessage(t,payload){
  if(m.type==='answer')acceptAnswer(m);
 }
 function onPlayerMessage(t,payload){
+ if(t===noticeTopic(pid)){
+   try{const note=JSON.parse(payload.toString());if(note.type==='room_full'){joinError=`Room full — maximum ${note.max||MAX_PLAYERS} participants.`;displayName='';sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');renderJoinForm(joinError)}}catch{}
+   return;
+ }
  if(t!==topic('state'))return;try{const incoming=JSON.parse(payload.toString());if(incoming.room!==room)return;const previous=state;if(incoming.phase==='lobby'){lastSubmitted={};sessionStorage.removeItem('vq_lastSubmitted')}state=incoming;connected=true;incomingSound(previous,incoming);render()}catch{}
 }
 function acceptAnswer(m){
@@ -238,7 +297,7 @@ function acceptAnswer(m){
  publishState();render();
 }
 
-function newHostState(){return {version:14,room,createdAt:Date.now(),phase:'lobby',phaseEndsAt:0,questionIndex:-1,questionStartedAt:0,sectionIndex:0,answerCount:0,players:{},rankBeforeQuestion:{},lastGains:{}}}
+function newHostState(){return {version:16,room,createdAt:Date.now(),phase:'lobby',phaseEndsAt:0,questionIndex:-1,questionStartedAt:0,sectionIndex:0,answerCount:0,players:{},rankBeforeQuestion:{},lastGains:{}}}
 function startQuiz(){if(!state||Object.keys(state.players).length===0)return;ensureAudio();hostAnswers={};for(const p of Object.values(state.players)){p.score=0;p.correct=0;p.answered=0}state.questionIndex=-1;state.lastGains={};enterSection(0)}
 function enterSection(si){state.sectionIndex=si;state.phase='section';state.phaseEndsAt=Date.now()+INTRO_SECONDS*1000;state.answerCount=0;state.lastGains={};publishState();render();playSound('section')}
 function startQuestion(qi){state.questionIndex=qi;state.sectionIndex=sectionIndexForQuestion(qi);state.rankBeforeQuestion=rankMap();state.lastGains={};state.phase='preview';state.questionStartedAt=0;state.phaseEndsAt=Date.now()+READ_SECONDS*1000;state.answerCount=0;hostAnswers[qi]={};lastTickMark='';publishState();render();playSound('preview')}
@@ -278,7 +337,7 @@ function renderHost(){
 }
 function renderHostLobby(){
  const players=sortedPlayers();
- app.innerHTML=shell(`<div class="hostGrid"><section class="panel"><div class="eyebrow">Host lobby</div><h2>Welcome to the Vibe Quiz</h2><p class="lead">Ask everyone to scan the QR code, tap an avatar with an automatic English name. Start when the participant list is ready.</p>${!connected?`<div class="offlineBanner">${brokerLabel?esc(brokerLabel):'Connecting to the live room…'}</div>`:''}<div class="metrics"><div class="metric"><b>${players.length}</b><span>Players joined</span></div><div class="metric"><b>30</b><span>Questions</span></div><div class="metric"><b>7+15+9</b><span>Read + answer + ranking</span></div><div class="metric"><b>10</b><span>Questions per checkpoint</span></div></div><h3 style="margin-top:22px">Participants</h3><div class="playerGrid">${players.length?players.map(p=>`<div class="playerCard"><div class="avatar">${esc(p.avatar)}</div><div><b>${esc(p.name)}</b><small>Ready</small></div></div>`).join(''):`<div class="notice blue">No one has joined yet.</div>`}</div><div class="actions"><button class="btn primary" onclick="vqStart()" ${players.length?'':'disabled'}>Start Round 1</button><button class="btn soft" onclick="location.reload()">Refresh connection</button></div></section><aside class="sidebar"><section class="panel center"><div class="eyebrow">Room code</div><div class="roomCode">${esc(room)}</div><div id="qr" class="qrBox"></div><div class="joinUrl">${esc(joinUrl())}</div></section><section class="panel"><h3>Automatic flow</h3><div class="notice">Section intro → 7-second host reading → 15-second answer window → 9-second correct answer, explanation and full live ranking. Extended checkpoint boards appear after Questions 10 and 20; Question 30 leads to the final celebration.</div></section></aside></div>`);
+ app.innerHTML=shell(`<div class="hostGrid"><section class="panel"><div class="eyebrow">Host lobby</div><h2>Welcome to the Vibe Quiz</h2><p class="lead">Ask everyone to scan the QR code and tap an avatar with an automatic English name. This room supports up to 30 participants.</p>${!connected?`<div class="offlineBanner">${brokerLabel?esc(brokerLabel):'Connecting to the live room…'}<small style="display:block;margin-top:5px">The page now uses a built-in connection engine. If campus Wi-Fi blocks live sockets, switch the host computer to a phone hotspot.</small></div>`:''}<div class="metrics"><div class="metric"><b>${players.length}/${MAX_PLAYERS}</b><span>Participants joined</span></div><div class="metric"><b>30</b><span>Questions</span></div><div class="metric"><b>7+15+9</b><span>Read + answer + ranking</span></div><div class="metric"><b>30</b><span>Maximum participants</span></div></div><h3 style="margin-top:22px">Participants</h3><div class="playerGrid">${players.length?players.map(p=>`<div class="playerCard"><div class="avatar">${esc(p.avatar)}</div><div><b>${esc(p.name)}</b><small>Ready</small></div></div>`).join(''):`<div class="notice blue">No one has joined yet.</div>`}</div><div class="actions"><button class="btn primary" onclick="vqStart()" ${players.length?'':'disabled'}>Start Round 1</button><button class="btn soft" onclick="location.reload()">Retry live connection</button></div></section><aside class="sidebar"><section class="panel center"><div class="eyebrow">Room code</div><div class="roomCode">${esc(room)}</div><div id="qr" class="qrBox"></div><div class="joinUrl">${esc(joinUrl())}</div></section><section class="panel"><h3>Automatic flow</h3><div class="notice">Section intro → 7-second host reading → 15-second answer window → 9-second correct answer, explanation and full live ranking. Extended checkpoint boards appear after Questions 10 and 20; Question 30 leads to the final celebration.</div></section></aside></div>`);
  drawQR();
 }
 function drawQR(){
@@ -345,14 +404,14 @@ function renderFinal(isHost){
 }
 function renderJoinForm(message=''){
  const chosen=identityForAvatar(selectedAvatar);
- app.innerHTML=shell(`<div class="hero"><section class="panel heroCopy"><div class="eyebrow">Join room ${esc(room)}</div><h2>Tap one avatar to join</h2><p class="lead">Each avatar already has an English name. Choose one identity—no typing is needed.</p>${message?`<div class="offlineBanner">${esc(message)}</div>`:''}<div class="field"><span>Choose your quiz identity</span><div class="avatarGrid">${IDENTITIES.map(i=>`<button class="avatarBtn ${i.avatar===selectedAvatar?'selected':''}" onclick="window.pickAvatar('${i.avatar}')"><span class="avatarEmoji">${i.avatar}</span><span class="avatarName">${esc(i.name)}</span></button>`).join('')}</div></div>${chosen?`<div class="selectedIdentity"><div class="bigChoice">${chosen.avatar}</div><div><b>${esc(chosen.name)}</b><small>This name and avatar will appear on the live ranking.</small></div></div>`:`<div class="notice blue">Choose one avatar to activate the Join button.</div>`}<button class="btn primary block" onclick="window.confirmJoin()" ${chosen?'':'disabled'}>Join as ${chosen?esc(chosen.name):'—'}</button></section><aside class="heroArt"><div class="heroIcon">${esc(selectedAvatar||'✦')}</div><div></div><div class="heroCaption"><strong>${chosen?esc(chosen.name):'Choose an identity'}</strong><span>One tap assigns both your avatar and English name.</span></div></aside></div>`)
+ app.innerHTML=shell(`<div class="hero"><section class="panel heroCopy"><div class="eyebrow">Join room ${esc(room)}</div><h2>Tap one avatar to join</h2><p class="lead">Each avatar already has an English name. Choose one identity—no typing is needed. The room accepts up to <b>30 participants</b>.</p>${message?`<div class="offlineBanner">${esc(message)}</div>`:''}<div class="field"><span>Choose your quiz identity</span><div class="avatarGrid">${IDENTITIES.map(i=>`<button class="avatarBtn ${i.avatar===selectedAvatar?'selected':''}" onclick="window.pickAvatar('${i.avatar}')"><span class="avatarEmoji">${i.avatar}</span><span class="avatarName">${esc(i.name)}</span></button>`).join('')}</div></div>${chosen?`<div class="selectedIdentity"><div class="bigChoice">${chosen.avatar}</div><div><b>${esc(chosen.name)}</b><small>This name and avatar will appear on the live ranking.</small></div></div>`:`<div class="notice blue">Choose one avatar to activate the Join button.</div>`}<button class="btn primary block" onclick="window.confirmJoin()" ${chosen?'':'disabled'}>Join as ${chosen?esc(chosen.name):'—'}</button></section><aside class="heroArt"><div class="heroIcon">${esc(selectedAvatar||'✦')}</div><div></div><div class="heroCaption"><strong>${chosen?esc(chosen.name):'Choose an identity'}</strong><span>One tap assigns both your avatar and English name.</span></div></aside></div>`)
 }
 window.pickAvatar=a=>{const i=identityForAvatar(a);if(!i)return;ensureAudio();playSound('click');selectedAvatar=i.avatar;selectedIdentityName=i.name;renderJoinForm()};
 window.confirmJoin=async()=>{ensureAudio();const chosen=identityForAvatar(selectedAvatar);if(!chosen)return renderJoinForm('Please choose one avatar.');displayName=chosen.name;avatar=chosen.avatar;selectedIdentityName=chosen.name;sessionStorage.setItem('vq_name',displayName);sessionStorage.setItem('vq_avatar',avatar);sessionStorage.setItem('vq_identity_version',IDENTITY_VERSION);lastSubmitted=JSON.parse(sessionStorage.getItem('vq_lastSubmitted')||'{}');app.innerHTML=shell(`<section class="panel center"><div class="bigIcon">${esc(avatar)}</div><h2>Joining as ${esc(displayName)}…</h2><p class="lead" style="margin:auto">Keep this page open during the quiz.</p></section>`);try{await connectMQTT();publishEvent({type:'join',pid,name:displayName,avatar});setInterval(()=>publishEvent({type:'ping',pid}),12000)}catch(e){renderJoinForm(e.message)}};
 function renderPlayer(){
  if(!displayName)return renderJoinForm();
  if(!state)return app.innerHTML=shell(`<section class="panel center"><h2>Waiting for the host</h2><p class="lead" style="margin:auto">Connected to room <b>${esc(room)}</b>. The lobby will appear when the host is online.</p><div class="avatar big" style="margin:22px auto">${esc(avatar)}</div></section>`);
- if(state.phase==='lobby')return app.innerHTML=shell(`<section class="panel center"><div class="avatar big" style="margin:0 auto 14px">${esc(avatar)}</div><div class="eyebrow">Room ${esc(room)}</div><h2>You are in!</h2><p class="lead" style="margin:0 auto 18px">Welcome, <b>${esc(displayName)}</b>. The host will start the first round soon.</p><div class="notice blue">First, the host has 7 seconds to read each question. Then you have 15 seconds to answer. After every question, the correct answer and the complete live ranking appear immediately. Extended checkpoints follow Questions 10 and 20.</div></section>`);
+ if(state.phase==='lobby')return app.innerHTML=shell(`<section class="panel center"><div class="avatar big" style="margin:0 auto 14px">${esc(avatar)}</div><div class="eyebrow">Room ${esc(room)}</div><h2>You are in!</h2><p class="lead" style="margin:0 auto 18px">Welcome, <b>${esc(displayName)}</b>. The host will start the first round soon.</p><div class="notice blue">First, the host has 7 seconds to read each question. Then you have 15 seconds to answer. After every question, the correct answer and the complete live ranking appear immediately. Extended checkpoints follow Questions 10 and 20. This room supports up to 30 participants.</div></section>`);
  if(state.phase==='section')return renderSection(false);
  if(state.phase==='preview'||state.phase==='question'||state.phase==='reveal')return renderQuestion(false);
  if(state.phase==='leaderboard')return renderLeaderboard(false,false);
@@ -369,7 +428,7 @@ async function boot(){
  if(role==='home')return renderHome();
  if(!room){role='home';return renderHome()}
  if(role==='host'){
-   const forceNew=params.get('new')==='1';if(forceNew){localStorage.removeItem('vq_host_'+room);localStorage.removeItem('vq_answers_'+room);history.replaceState({},'',baseUrl()+'?host='+room)}const saved=JSON.parse(localStorage.getItem('vq_host_'+room)||'null');state=!forceNew&&saved&&saved.room===room&&saved.version===14?saved:newHostState();hostAnswers=forceNew?{}:JSON.parse(localStorage.getItem('vq_answers_'+room)||'{}');render();try{await connectMQTT()}catch(e){brokerLabel=e.message;render()}hostTimer=setInterval(hostTick,180);uiTimer=setInterval(updateCountdowns,180)
+   const forceNew=params.get('new')==='1';if(forceNew){localStorage.removeItem('vq_host_'+room);localStorage.removeItem('vq_answers_'+room);history.replaceState({},'',baseUrl()+'?host='+room)}const saved=JSON.parse(localStorage.getItem('vq_host_'+room)||'null');state=!forceNew&&saved&&saved.room===room&&saved.version===16?saved:newHostState();hostAnswers=forceNew?{}:JSON.parse(localStorage.getItem('vq_answers_'+room)||'{}');render();try{await connectMQTT()}catch(e){brokerLabel=e.message;render()}hostTimer=setInterval(hostTick,180);uiTimer=setInterval(updateCountdowns,180)
  }else{
    if(displayName){lastSubmitted=JSON.parse(sessionStorage.getItem('vq_lastSubmitted')||'{}');render();try{await connectMQTT();setInterval(()=>publishEvent({type:'ping',pid}),12000)}catch(e){renderJoinForm(e.message)}}else renderJoinForm();uiTimer=setInterval(updateCountdowns,180)
  }
