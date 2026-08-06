@@ -20,7 +20,7 @@ button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allow
 .heroArt{min-height:540px;border-radius:25px;overflow:hidden;position:relative;background:linear-gradient(145deg,#0a376f,#287bbd);display:flex;flex-direction:column;justify-content:space-between;color:#fff;padding:28px}.heroArt:before,.heroArt:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.18);border-radius:50%}.heroArt:before{width:500px;height:500px;right:-190px;top:-180px}.heroArt:after{width:350px;height:350px;left:-160px;bottom:-150px}.heroIcon{position:relative;z-index:1;font-size:clamp(90px,13vw,170px);font-weight:950;line-height:1}.heroRounds{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.heroRound{padding:11px 8px;border-radius:14px;background:rgba(255,255,255,.12);text-align:center;font-size:11px;font-weight:850}.heroRound b{display:block;font-size:19px;margin-bottom:2px}.heroCaption{position:relative;z-index:1}.heroCaption strong{display:block;font-size:30px;margin-bottom:7px}.heroCaption span{opacity:.78;line-height:1.5}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:#f3f8fd;border:1px solid var(--line)}.metric b{display:block;font-size:27px;color:var(--navy)}.metric span{font-size:12px;color:var(--muted)}
 .hostGrid{display:grid;grid-template-columns:minmax(0,1fr) 355px;gap:18px}.sidebar{display:flex;flex-direction:column;gap:13px}.roomCode{font-size:clamp(52px,8vw,94px);font-weight:950;letter-spacing:.08em;text-align:center;color:var(--navy)}.qrBox{min-height:260px;display:grid;place-items:center;border:1px dashed #aac1db;border-radius:23px;background:#fff;padding:16px}.qrBox canvas{max-width:235px!important;width:100%!important;height:auto!important}.joinUrl{font-size:11px;color:var(--muted);word-break:break-all;text-align:center;margin-top:8px}.notice{padding:13px 15px;border-radius:15px;background:#fff6da;border:1px solid #f2d384;line-height:1.5}.notice.blue{background:#edf6ff;border-color:#cbdff4}.toolGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.avatarGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:12px 0}.avatarBtn{border:2px solid transparent;border-radius:15px;min-height:82px;padding:9px 6px;display:grid;place-items:center;align-content:center;gap:3px;background:#f1f6fb;color:var(--ink)}.avatarBtn .avatarEmoji{font-size:29px;line-height:1}.avatarBtn .avatarName{font-size:12px;font-weight:900;line-height:1.1}.avatarBtn.selected{border-color:var(--gold);background:#fff7d9;box-shadow:0 0 0 4px rgba(242,174,27,.16)}.selectedIdentity{display:flex;align-items:center;gap:12px;padding:13px 15px;margin:12px 0 15px;border-radius:16px;background:#edf5ff;border:1px solid #cfe1f5}.selectedIdentity .bigChoice{font-size:34px}.selectedIdentity b{display:block}.selectedIdentity small{color:var(--muted)}.playerGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px}.playerCard{display:flex;align-items:center;gap:9px;padding:11px;border:1px solid var(--line);border-radius:15px;background:#fff}.avatar{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:#edf5fd;font-size:24px;flex:0 0 auto}.avatar.big{width:72px;height:72px;border-radius:22px;font-size:40px}.playerCard b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.playerCard small{color:var(--muted)}
+.avatarGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:12px 0}.avatarBtn{border:2px solid transparent;border-radius:15px;min-height:82px;padding:9px 6px;display:grid;place-items:center;align-content:center;gap:3px;background:#f1f6fb;color:var(--ink)}.avatarBtn .avatarEmoji{font-size:29px;line-height:1}.avatarBtn .avatarName{font-size:12px;font-weight:900;line-height:1.1}.avatarBtn.selected{border-color:var(--gold);background:#fff7d9;box-shadow:0 0 0 4px rgba(242,174,27,.16)}.avatarBtn.taken{position:relative;opacity:.42;filter:grayscale(.75);cursor:not-allowed;background:#e8edf3}.avatarBtn.taken:after{content:'TAKEN';position:absolute;inset:auto 5px 5px;padding:2px 5px;border-radius:999px;background:#7b8797;color:#fff;font-size:8px;font-weight:950;letter-spacing:.08em}.avatarBtn.reserving{border-color:var(--blue);box-shadow:0 0 0 4px rgba(20,88,166,.12)}.availabilityLine{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:-2px 0 10px;color:var(--muted);font-size:12px}.availabilityLine b{color:var(--green)}.selectedIdentity{display:flex;align-items:center;gap:12px;padding:13px 15px;margin:12px 0 15px;border-radius:16px;background:#edf5ff;border:1px solid #cfe1f5}.selectedIdentity .bigChoice{font-size:34px}.selectedIdentity b{display:block}.selectedIdentity small{color:var(--muted)}.playerGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px}.playerCard{display:flex;align-items:center;gap:9px;padding:11px;border:1px solid var(--line);border-radius:15px;background:#fff}.avatar{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:#edf5fd;font-size:24px;flex:0 0 auto}.avatar.big{width:72px;height:72px;border-radius:22px;font-size:40px}.playerCard b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.playerCard small{color:var(--muted)}
 .sectionIntro{min-height:670px;display:grid;grid-template-columns:1fr .8fr;gap:22px;align-items:center;overflow:hidden;position:relative}.sectionIntro:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(236,245,253,.9));z-index:0}.sectionCopy,.sectionVisual{position:relative;z-index:1}.sectionNumber{font-size:13px;text-transform:uppercase;letter-spacing:.18em;font-weight:950;color:var(--blue)}.sectionIcon{font-size:clamp(100px,16vw,210px);font-weight:950;color:var(--section-accent);text-align:center;filter:drop-shadow(0 20px 25px rgba(10,55,111,.12))}.countdownPill{display:inline-flex;align-items:center;gap:9px;padding:11px 15px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:900}.pulseDot{width:10px;height:10px;border-radius:50%;background:var(--section-accent);animation:pulse 1s infinite}
 .questionLayout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:17px}.questionCard{padding:0;overflow:hidden}.visualStage{height:300px;position:relative;overflow:hidden;background:linear-gradient(145deg,var(--accent,#1769aa),#0a376f);color:#fff;display:flex;align-items:center;justify-content:center}.visualStage:before{content:"";position:absolute;width:360px;height:360px;border:1px solid rgba(255,255,255,.25);border-radius:50%;right:-100px;top:-130px}.visualStage:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(255,255,255,.2);border-radius:36%;left:-90px;bottom:-130px;transform:rotate(22deg)}.visualIcon{position:relative;z-index:1;font-size:clamp(80px,13vw,155px);font-weight:950;line-height:1;text-shadow:0 15px 25px rgba(0,0,0,.18)}.visualLabel{position:absolute;z-index:2;left:22px;bottom:19px;font-weight:900;font-size:18px}.visualLines{position:absolute;z-index:1;inset:26px;opacity:.24;background:repeating-linear-gradient(90deg,transparent 0 58px,rgba(255,255,255,.5) 59px 60px),repeating-linear-gradient(0deg,transparent 0 58px,rgba(255,255,255,.35) 59px 60px)}.questionBody{padding:22px}.questionMeta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.category{display:inline-flex;padding:7px 11px;border-radius:999px;background:#eaf3fc;color:var(--navy);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.difficulty{padding:7px 10px;border-radius:999px;background:#fff5d6;color:#9d6a00;font-size:11px;font-weight:900}.questionTitle{font-size:clamp(27px,4vw,46px);line-height:1.08;letter-spacing:-.035em;margin:15px 0 18px}.options{display:grid;grid-template-columns:1fr 1fr;gap:11px}.option{border:0;border-radius:18px;min-height:82px;padding:16px;color:#fff;font-weight:900;text-align:left;display:flex;align-items:center;gap:11px;transition:transform .14s,filter .14s,opacity .14s}.option:nth-child(1){background:#c94c4c}.option:nth-child(2){background:#2775b8}.option:nth-child(3){background:#d09318}.option:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.04)}.letter{width:35px;height:35px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.2);flex:0 0 auto}.option.selected{outline:6px solid rgba(242,174,27,.62)}.option.correct{outline:7px solid #5ee6a1;filter:brightness(1.04)}.option.wrong{opacity:.34;filter:grayscale(.7)}.option.chosenWrong{outline:6px solid #ff8e8e}
 .timerCard{text-align:center}.timer{width:125px;height:125px;border-radius:50%;display:grid;place-items:center;margin:7px auto 13px;background:#fff;border:13px solid var(--gold);font-size:38px;font-weight:950;color:var(--navy)}.timer.urgent{color:var(--red);border-color:var(--red);animation:pulse .7s infinite}.progress{height:12px;border-radius:999px;overflow:hidden;background:#dfe9f3}.progress>div{height:100%;background:linear-gradient(90deg,var(--gold),#ffd978);transition:width .17s linear}.answerCount{font-size:54px;font-weight:950;color:var(--navy)}.miniMe{display:flex;align-items:center;gap:10px;padding:11px;border-radius:15px;background:#f3f8fd;border:1px solid var(--line);margin-top:12px;text-align:left}.miniMe .avatar{width:48px;height:48px}.ownScore{margin-left:auto;font-weight:950;color:var(--blue)}
@@ -74,71 +74,34 @@ window.QUIZ_SECTIONS=[{"name":"Global Architectural History & Modern Design","sh
 (()=>{
 'use strict';
 
-/* Built-in MQTT-over-WebSocket client.
-   This removes the external CDN dependency that previously left the lobby
-   stuck on “Loading live-room connection…”. */
-(function installBuiltInMQTT(){
-  if(window.mqtt&&window.mqtt.connect)return;
-  const TE=new TextEncoder(),TD=new TextDecoder();
-  const bytes=x=>x instanceof Uint8Array?x:TE.encode(String(x));
-  const concat=(...parts)=>{const n=parts.reduce((a,b)=>a+b.length,0),o=new Uint8Array(n);let k=0;for(const b of parts){o.set(b,k);k+=b.length}return o};
-  const str=s=>{const b=TE.encode(String(s));return concat(new Uint8Array([b.length>>8,b.length&255]),b)};
-  const remain=n=>{const a=[];do{let d=n%128;n=Math.floor(n/128);if(n>0)d|=128;a.push(d)}while(n>0);return new Uint8Array(a)};
-  const packet=(head,body)=>concat(new Uint8Array([head]),remain(body.length),body);
-  class Emitter{
-    constructor(){this.h={}}
-    on(t,f){(this.h[t]||(this.h[t]=[])).push(f);return this}
-    once(t,f){const w=(...a)=>{this.off(t,w);f(...a)};return this.on(t,w)}
-    off(t,f){if(this.h[t])this.h[t]=this.h[t].filter(x=>x!==f);return this}
-    emit(t,...a){for(const f of [...(this.h[t]||[])]){try{f(...a)}catch(e){console.error(e)}}return this}
-    removeAllListeners(t){if(t)delete this.h[t];else this.h={};return this}
-  }
-  class MiniMQTT extends Emitter{
-    constructor(url,opt={}){super();this.url=url;this.opt=opt;this.ws=null;this.connected=false;this.ended=false;this.pid=1;this.ping=null;this.retry=null;setTimeout(()=>this.open(),0)}
-    open(){
-      if(this.ended)return;
-      try{
-        const ws=new WebSocket(this.url,['mqtt']);this.ws=ws;ws.binaryType='arraybuffer';
-        ws.onopen=()=>{const vh=concat(str('MQTT'),new Uint8Array([4,2,(this.opt.keepalive||30)>>8,(this.opt.keepalive||30)&255]));const pl=str(this.opt.clientId||('archcmu_'+Math.random().toString(36).slice(2)));ws.send(packet(0x10,concat(vh,pl)))};
-        ws.onmessage=e=>this.parse(new Uint8Array(e.data));
-        ws.onerror=e=>this.emit('error',e instanceof Error?e:new Error('WebSocket error'));
-        ws.onclose=()=>{const was=this.connected;this.connected=false;clearInterval(this.ping);this.emit('close');if(!this.ended&&(this.opt.reconnectPeriod||0)>0){this.emit('reconnect');clearTimeout(this.retry);this.retry=setTimeout(()=>this.open(),this.opt.reconnectPeriod)}};
-      }catch(e){this.emit('error',e);if(!this.ended&&(this.opt.reconnectPeriod||0)>0){this.emit('reconnect');this.retry=setTimeout(()=>this.open(),this.opt.reconnectPeriod)}}
-    }
-    parse(a){
-      let i=0;
-      while(i<a.length){const head=a[i++];let mul=1,len=0,d=0;do{if(i>=a.length)return;d=a[i++];len+=(d&127)*mul;mul*=128}while(d&128);if(i+len>a.length)return;const b=a.subarray(i,i+len);i+=len;const type=head>>4;
-        if(type===2){if(b.length>=2&&b[1]===0){this.connected=true;this.emit('connect',{sessionPresent:!!b[0]});clearInterval(this.ping);this.ping=setInterval(()=>{if(this.connected&&this.ws?.readyState===1)this.ws.send(new Uint8Array([0xc0,0]))},Math.max(10000,(this.opt.keepalive||30)*500))}else this.emit('error',new Error('MQTT connection refused'))}
-        else if(type===3){if(b.length<2)continue;const tl=(b[0]<<8)|b[1];if(2+tl>b.length)continue;const topic=TD.decode(b.subarray(2,2+tl));let off=2+tl;const qos=(head>>1)&3;if(qos>0)off+=2;const text=TD.decode(b.subarray(off));this.emit('message',topic,{toString:()=>text})}
-      }
-    }
-    subscribe(topic,opt={},cb){if(!this.connected)return cb?.(new Error('Not connected'));const id=(this.pid++&65535)||1;const body=concat(new Uint8Array([id>>8,id&255]),str(topic),new Uint8Array([opt.qos||0]));this.ws.send(packet(0x82,body));cb?.(null,[{topic,qos:opt.qos||0}]);return this}
-    publish(topic,payload,opt={},cb){if(!this.connected)return cb?.(new Error('Not connected'));const body=concat(str(topic),bytes(payload));this.ws.send(packet(0x30|(opt.retain?1:0),body));cb?.();return this}
-    end(force=false,cb){this.ended=true;this.connected=false;clearInterval(this.ping);clearTimeout(this.retry);try{if(this.ws?.readyState===1&&!force)this.ws.send(new Uint8Array([0xe0,0]));this.ws?.close()}catch{}cb?.();return this}
-  }
-  window.mqtt={connect:(url,opt)=>new MiniMQTT(url,opt)};
-})();
+const EARLY_PARAMS=new URLSearchParams(location.search);
+const TEST_MODE=EARLY_PARAMS.get('test')==='1', FAST_MODE=TEST_MODE&&EARLY_PARAMS.get('fast')==='1';
 const Q=window.QUIZ_QUESTIONS||[];
 const SECTIONS=window.QUIZ_SECTIONS||[];
-const READ_SECONDS=7, ANSWER_SECONDS=15, REVEAL_SECONDS=9, INTRO_SECONDS=6, BOARD_SECONDS=10, MAX_PLAYERS=30;
-const MQTT_SOURCES=[];
-const BROKERS=['wss://broker.emqx.io:8084/mqtt','wss://broker.hivemq.com:8884/mqtt','wss://test.mosquitto.org:8081/mqtt','wss://mqtt.eclipseprojects.io:443/mqtt'];
+const READ_SECONDS=FAST_MODE?5:7, ANSWER_SECONDS=FAST_MODE?5:15, REVEAL_SECONDS=FAST_MODE?5:9, INTRO_SECONDS=FAST_MODE?5:6, BOARD_SECONDS=FAST_MODE?5:10, MAX_PLAYERS=30;
+// Cross-device play uses HTTPS long-polling. Test mode uses BroadcastChannel for deterministic QA.
+const LIVE_APP_ID='archcmu-vibequiz-live-v20';
+const PUBNUB_ORIGINS=['https://ps.pndsn.com','https://pubsub.pubnub.com'];
+const PN_SDK='ARCHCMU-VibeQuiz-20';
 const IDENTITIES=[{avatar:'🦉',name:'Oliver'},{avatar:'🦊',name:'Ruby'},{avatar:'🐼',name:'Noah'},{avatar:'🐯',name:'Leo'},{avatar:'🐸',name:'Lily'},{avatar:'🐙',name:'Oscar'},{avatar:'🐧',name:'Emma'},{avatar:'🦁',name:'Jack'},{avatar:'🐨',name:'Mia'},{avatar:'🐰',name:'Chloe'},{avatar:'🦄',name:'Grace'},{avatar:'🐲',name:'Ethan'},{avatar:'🦋',name:'Ava'},{avatar:'🦚',name:'Sophie'},{avatar:'🐝',name:'Ben'},{avatar:'🐬',name:'Lucas'},{avatar:'🦖',name:'Max'},{avatar:'🦜',name:'Ella'},{avatar:'🐳',name:'Henry'},{avatar:'🦦',name:'Zoe'},{avatar:'🦩',name:'Alice'},{avatar:'🐺',name:'Ryan'},{avatar:'🐮',name:'Daisy'},{avatar:'🐵',name:'Charlie'},{avatar:'🦔',name:'Ivy'},{avatar:'🐢',name:'Theo'},{avatar:'🦅',name:'Sky'},{avatar:'🐿️',name:'Hazel'},{avatar:'🐻',name:'Finn'},{avatar:'🦭',name:'Nora'}];
 const AVATARS=IDENTITIES.map(i=>i.avatar);
 const identityForAvatar=a=>IDENTITIES.find(i=>i.avatar===a)||null;
 const app=document.getElementById('app');
 const DEFAULT_ROOM='ARCH26';
 const DEFAULT_JOIN_QR='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAIAAACZDnMXAAAHNUlEQVR4nO3dS44jNxBF0VdGz3pDXpaX4mV5Qz1OzzyjDRoRGaTqnHEhpZKECwL8fT3PE+B7+236DQDzhAAQAkAIgAgBECEAIgRAhACIEAARAiBCAEQIgAgBECEAIgRAhACIEAARAiBCAEQIgAgBECEAIgRAkh9VD/r5+x9Vj2r1668/W5+/+zms3s/qObvvv/s5u6o+/6r/a/f5p6n6f40IACEAhACIEAARAiBCAEQIgBSuI1jpnrdf2Z0Hrpr/3/373fnw7vdZ9Zyqz3/1ulPrKW75Pe8yIgCEABACIEIARAiACAEQIQDywjqCldP2t++qmv+fmudf6V7XUPW9n3ZewO2/ZyMCQAgAIQAiBECEAIgQABECIIPrCG7XvY+9e769ap//ytS6g6l5+NsZEQBCAAgBECEAIgRAhACIEACxjuAfp+2339V9jsDKaesO+H+MCAAhAIQAiBAAEQIgQgBECIAMriO4fd941T757vsOpp6/8qmfw+2/ZyMCQAgAIQAiBECEAIgQABECIC+sI7hlP3nVfn5//+9/X6V7XcDu697OiAAQAkAIgAgBECEAIgRAhABI4TqC2/djd7v93oTu7/e053+337MRASAEgBAAEQIgQgBECIAIAZDCdQRT+8NXqt7PdzsPv+qegu7X7X7OStXvp/t1dxkRAEIACAEQIQAiBECEAIgQAPmAew1W86tV+89X7/+0+epb3HL/Qvd9DVP3QawYEQBCAAgBECEAIgRAhACIEABJvp7naX2B7v38VfvnT9s33n2ewsrt6xe6/99bfs+7jAgAIQCEAIgQABECIEIARAiAHHivwe5zbjlnfurc/tP2vd9y30SVqt9z9/dlRAAIASAEQIQAiBAAEQIgQgCkcB3B1Dzwafvtp+bJu+eZq/6vqvsFVqZ+VyunrWtYMSIAhAAQAiBCAEQIgAgBECEA8sK9Brum7rfv/vtdp50j0O1T75u45dwEIwJACAAhACIEQIQAiBAAEQIghecR7Lplvv209QUrU/PYU/Pku/9v9/d12r0Vu4wIACEAhACIEAARAiBCAEQIgLxwHsHt+7c/9byDldP2ya/c8rmddp7CihEBIASAEAARAiBCAEQIgAgBkMHzCFam5tur5mlPm4c/bf3Fyi3rSk5bP+I8AqCMEABCAAgBECEAIgRAhADIC+cRVKmaR+2e3656Tve9Ayvd77N7fcct91mctm7CiAAQAkAIgAgBECEAIgRAhABI4XkEU/PzK93z3t3zulWfZ/f/e/vn0+2W9QVGBIAQAEIARAiACAEQIQAiBEAKzyPovn9+19R6ge798FWmzgWYOmdh12n3U1hHALQTAkAIACEAIgRAhACIEAAZXEfQfR5B9+tO7fOv4v3Xvu4t60dWjAgAIQCEAIgQABECIEIARAiAFN5rsFI1L+pc/drn37LuY9fU72Hlls/NiAAQAkAIgAgBECEAIgRAhABI4XkEK1Pz7VPn6nefd9D9nKm/X7nlHIFdU+dirBgRAEIACAEQIQAiBECEAIgQABm816BK97qAXZ967n2VqfUdp+m+V2KXEQEgBIAQABECIEIARAiACAGQF9YR3L4fftft8+Tdn3/V+9k1dX7ErqnfrREBIASAEAARAiBCAEQIgAgBkORH9wtUzYtW/f2nrkeYmveucto8fNXnfMv3YkQACAEgBECEAIgQABECIEIA5IV1BKftw+/eP78ydY7Ayu58e9X3eNr6hW5V30vV81eMCAAhAIQAiBAAEQIgQgBECIC8sI5gpXuff/dzps7tP22/ffe6g5WqcwG6z6HoXj9SxYgAEAJACIAIARAhACIEQIQASPL1PE/Jg7rP4V/png/vXu/Qvf986l6Gle82n3/LPRRGBIAQAEIARAiACAEQIQAiBEAK1xHcbmo+f/f5t+xvn3r/p60HueUeByMCQAgAIQAiBECEAIgQABECIIX3Gtw+v33a/QK7pubDTztXospp6wK6348RASAEgBAAEQIgQgBECIAIAZDCdQQrp827dj9n6hz+7vn27vsITru/4LTfrXsNgHZCAAgBIARAhACIEAARAiAvrCNYuWW+97T5/9PO7Z9av3DL83dfd+r7NSIAhAAQAiBCAEQIgAgBECEAMriO4BZT8/xT5yns3vswdV5DlarPp+r5U4wIACEAhACIEAARAiBCAEQIgFhH8J9258+71wtMneMwda/BSvf7nzK17sCIABACQAiACAEQIQAiBECEAMjgOoLT5m9Xquafb5nHXtl9n91/f9o+/9vPNTAiAIQAEAIgQgBECIAIARAhAPLCOoLT5ntXpu4R6H5O970Jp62nmDr3oftz7mZEAAgBIARAhACIEAARAiBCACT5ep5n+j0Aw4wIACEAhACIEAARAiBCAEQIgAgBECEAIgRAhACIEAARAiBCAEQIgAgBECEAIgRAhACIEAARAiBCAEQIgCR/A+OGr6zTJajQAAAAAElFTkSuQmCC';
-const params=new URLSearchParams(location.search);
+const params=EARLY_PARAMS;
 let role=params.has('host')?'host':params.has('join')?'player':'home';
 let joinError='';
 let room=(params.get('host')||params.get('join')||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
-const IDENTITY_VERSION='16';
+const IDENTITY_VERSION='20';
 if(sessionStorage.getItem('vq_identity_version')!==IDENTITY_VERSION){sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');sessionStorage.removeItem('vq_lastSubmitted');sessionStorage.setItem('vq_identity_version',IDENTITY_VERSION)}
-let pid=sessionStorage.getItem('vq_pid')||randomId(15);sessionStorage.setItem('vq_pid',pid);
-let displayName=sessionStorage.getItem('vq_name')||'';
-let avatar=sessionStorage.getItem('vq_avatar')||'';
-let client=null,connected=false,brokerLabel='',hostTimer=null,uiTimer=null,state=null,hostAnswers={},lastSubmitted={};
+let pid=params.get('pid')||sessionStorage.getItem('vq_pid')||randomId(15);if(!TEST_MODE)sessionStorage.setItem('vq_pid',pid);
+let displayName=TEST_MODE?'':(sessionStorage.getItem('vq_name')||'');
+let avatar=TEST_MODE?'':(sessionStorage.getItem('vq_avatar')||'');
+let connected=false,brokerLabel='',hostTimer=null,uiTimer=null,state=null,hostAnswers={},lastSubmitted={};
+let pnChannel='',pnTimetoken='0',pnRegion='',pnStopped=false,pnLoopPromise=null,pnPublishQueue=Promise.resolve(),pnOriginIndex=0,pnController=null,pnStateTimer=null,pnOpened=false,localBus=null;
+let claimedAvatar='',claimPending=false,joinPending=false,joinFormMessage='',claimKeepAlive=null;
+const pnUUID=`archcmu-${role}-${pid}`;
 let selectedAvatar=avatar, selectedIdentityName=(identityForAvatar(avatar)||{}).name||'', selectedChoice=null;
 let audioCtx=null,lastTickMark='',lastIncomingSoundKey='',finalCelebrationKey='';
 let soundOn=localStorage.getItem('vq_sound_'+role)!=='off' && (role!=='player'||localStorage.getItem('vq_sound_player')==='on');
@@ -178,7 +141,7 @@ function incomingSound(prev,next){
 function randomId(n=8){const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<n;i++)s+=chars[Math.floor(Math.random()*chars.length)];return s}
 function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function baseUrl(){return location.origin+location.pathname}
-function joinUrl(){return baseUrl()+'?join='+room}
+function joinUrl(){return baseUrl()+'?join='+room+(TEST_MODE?'&test=1'+(FAST_MODE?'&fast=1':''):'')}
 function topic(suffix){return `archcmu-vibequiz-2026/${room}/${suffix}`}
 function noticeTopic(id){return `archcmu-vibequiz-2026/${room}/notice/${id}`}
 function sectionIndexForQuestion(i){return SECTIONS.findIndex(s=>Q[i]&&Q[i].section===s.name)}
@@ -211,6 +174,18 @@ function fullRevealRanking(highlightPid=''){
  const ps=sortedPlayers();return ps.map((p,i)=>{const n=i+1,m=rankMovement(p.id,n),gain=(state.lastGains&&state.lastGains[p.id])||0;return `<div class="revealRankRow ${p.id===highlightPid?'me':''} ${i===0?'top1':''}"><div class="rank">#${n}</div><div class="avatar">${esc(p.avatar)}</div><div class="rankPerson"><b>${esc(p.name)}</b><small><span>${p.correct} correct</span><span class="movement ${m.cls}">${m.text}</span><span class="gain ${gain?'':'zero'}">+${gain}</span></small></div><div class="rankScore"><b>${p.score}</b><small>points</small></div></div>`}).join('')||'<div class="notice blue">No scores yet.</div>'
 }
 
+function purgeClaimsLocal(){
+ if(!state)return;state.avatarClaims=state.avatarClaims||{};const now=Date.now();
+ for(const [a,c] of Object.entries(state.avatarClaims)){if(!c||c.expiresAt<=now||state.players?.[c.pid])delete state.avatarClaims[a]}
+}
+function avatarTakenByOther(a){
+ if(!a)return false;purgeClaimsLocal();
+ const used=Object.values(state?.players||{}).some(p=>p.id!==pid&&p.avatar===a);
+ const claim=state?.avatarClaims?.[a];
+ return used||!!(claim&&claim.pid!==pid&&claim.expiresAt>Date.now())
+}
+function availableAvatarCount(){return IDENTITIES.filter(i=>!avatarTakenByOther(i.avatar)).length}
+function releaseMyClaim(){if(claimedAvatar||selectedAvatar)publishEvent({type:'avatar_release',pid,avatar:claimedAvatar||selectedAvatar});claimedAvatar='';claimPending=false}
 function shell(content){return `<div class="shell"><header class="topbar"><div class="brand"><div class="brandMark">A</div><div><strong>ARCH CMU PhD Homeroom</strong><small>Live visual knowledge quiz</small></div></div><div class="topTools">${role!=='home'?`<div class="status ${connected?'live':''}"><span class="dot"></span>${connected?'Live':'Connecting'}</div>`:''}<button class="iconBtn soundBtn" onclick="window.vqToggleSound()" title="${soundOn?'Mute sound':'Turn sound on'}">${soundOn?'🔊':'🔇'}</button><button class="iconBtn" onclick="window.vqFull()">⛶</button><button class="iconBtn" onclick="window.vqHome()">⌂</button></div></header><main class="main">${content}</main><footer class="footer">ARCH CMU PhD Homeroom · up to 30 participants · 30 questions · 7s reading + 15s answering + 9s ranking</footer></div>`}
 window.vqFull=()=>{document.documentElement.requestFullscreen?.().catch(()=>{})};window.vqHome=()=>{location.href=baseUrl()};
 
@@ -222,71 +197,134 @@ window.createRoom=()=>{room=DEFAULT_ROOM;location.href=baseUrl()+'?host='+room+'
 window.joinRoomFromHome=()=>{const v=(document.getElementById('homeRoom').value||'').toUpperCase().replace(/[^A-Z0-9]/g,'');if(v)location.href=baseUrl()+'?join='+v};
 
 function loadExternalScript(){return Promise.resolve()}
-async function ensureMQTT(){if(window.mqtt&&window.mqtt.connect)return;throw new Error('Built-in live-room engine is unavailable. Please refresh the page.')}
-async function connectMQTT(){
- await ensureMQTT();
- connected=false;brokerLabel='Connecting to the fastest live server…';render();
- const attempts=[];let settled=false,failures=0;
- await new Promise((resolve,reject)=>{
-   BROKERS.forEach((url,index)=>{
-     const c=window.mqtt.connect(url,{clientId:`archcmu_${role}_${randomId(12)}`,clean:true,reconnectPeriod:0,connectTimeout:7000,keepalive:25});
-     const item={c,url,t:null,failed:false};attempts.push(item);
-     const fail=()=>{if(settled||item.failed)return;item.failed=true;clearTimeout(item.t);try{c.end(true)}catch{};failures++;if(failures>=BROKERS.length){settled=true;reject(new Error('No live server is reachable on this network. Try a mobile hotspot, then press Retry live connection.'))}};
-     item.t=setTimeout(fail,8500);
-     c.once('connect',()=>{if(settled){try{c.end(true)}catch{};return}settled=true;clearTimeout(item.t);c.opt.reconnectPeriod=1400;client=c;brokerLabel='Live room connected';connected=true;for(const other of attempts){if(other.c!==c){clearTimeout(other.t);try{other.c.end(true)}catch{}}}resolve()});
-     c.once('error',fail);
-   });
- });
- client.on('close',()=>{connected=false;brokerLabel='Connection interrupted — reconnecting…';render()});
- client.on('reconnect',()=>{connected=false;brokerLabel='Reconnecting to the live room…';render()});
- client.on('connect',()=>{connected=true;brokerLabel='Live room connected';subscribeAndAnnounce();render()});
- subscribeAndAnnounce();
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function pnOrigin(){return PUBNUB_ORIGINS[pnOriginIndex%PUBNUB_ORIGINS.length]}
+function pnKindFromTopic(t){if(t===topic('events'))return 'events';if(t===topic('state'))return 'state';const prefix=`archcmu-vibequiz-2026/${room}/notice/`;if(t.startsWith(prefix))return 'notice/'+t.slice(prefix.length);return ''}
+function pnTopicFromKind(k){if(k==='events')return topic('events');if(k==='state')return topic('state');if(k.startsWith('notice/'))return noticeTopic(k.slice(7));return ''}
+function pnDispatchWire(w){
+ if(!w||w.app!==LIVE_APP_ID||w.room!==room||!w.kind)return;
+ if(role==='host'&&w.kind!=='events')return;
+ if(role==='player'&&w.kind!=='state'&&w.kind!==`notice/${pid}`)return;
+ const t=pnTopicFromKind(w.kind);if(!t)return;
+ const payload={toString:()=>typeof w.data==='string'?w.data:JSON.stringify(w.data)};
+ if(role==='host')onHostMessage(t,payload);else onPlayerMessage(t,payload)
 }
-function subscribeAndAnnounce(){
- if(!client||!connected)return;
- client.removeAllListeners('message');
- if(role==='host'){
-   client.subscribe(topic('events'),{qos:0});
-   client.on('message',onHostMessage);
-   publishState();
- }else{
-   client.subscribe(topic('state'),{qos:0});
-   client.subscribe(noticeTopic(pid),{qos:0});
-   client.on('message',onPlayerMessage);
-   publishEvent({type:'join',pid,name:displayName,avatar});
+function pnSubscribeURL(){
+ const q=new URLSearchParams({tt:pnTimetoken,uuid:pnUUID,pnsdk:PN_SDK});if(pnRegion)q.set('tr',pnRegion);
+ return `${pnOrigin()}/v2/subscribe/demo/${encodeURIComponent(pnChannel)}/0?${q}`
+}
+async function pnSubscribeOnce(){
+ pnController=new AbortController();const initial=pnTimetoken==='0';
+ const timeout=setTimeout(()=>{try{pnController.abort(new DOMException('Live service timeout','TimeoutError'))}catch{}},initial?12000:45000);
+ try{
+  const res=await fetch(pnSubscribeURL(),{cache:'no-store',signal:pnController.signal,mode:'cors',credentials:'omit'});
+  if(!res.ok)throw new Error(`Live service ${res.status}`);
+  const data=await res.json();
+  if(data&&data.t&&data.t.t){pnTimetoken=String(data.t.t);pnRegion=data.t.r==null?'':String(data.t.r)}
+  for(const item of (data&&Array.isArray(data.m)?data.m:[])){if(item&&item.d!==undefined)pnDispatchWire(item.d)}
+ }finally{clearTimeout(timeout)}
+}
+async function pnPublishNow(kind,data){
+ const wire={app:LIVE_APP_ID,room,kind,data,at:Date.now()};
+ const payload=encodeURIComponent(JSON.stringify(wire));
+ let lastError;
+ for(let attempt=0;attempt<PUBNUB_ORIGINS.length;attempt++){
+   const origin=PUBNUB_ORIGINS[(pnOriginIndex+attempt)%PUBNUB_ORIGINS.length];
+   const url=`${origin}/publish/demo/demo/0/${encodeURIComponent(pnChannel)}/0/${payload}?store=0&uuid=${encodeURIComponent(pnUUID)}&pnsdk=${encodeURIComponent(PN_SDK)}`;
+   try{const r=await fetch(url,{cache:'no-store',mode:'cors',credentials:'omit'});if(!r.ok)throw new Error(`Publish ${r.status}`);const result=await r.json();if(Array.isArray(result)&&result[0]!==1)throw new Error(result[1]||'Publish rejected');return result}catch(e){lastError=e}
+ }
+ throw lastError||new Error('Publish failed')
+}
+function pnPublishTopic(t,data){
+ const kind=pnKindFromTopic(t);if(!kind)return Promise.resolve();
+ if(TEST_MODE&&localBus){const wire={app:LIVE_APP_ID,room,kind,data,at:Date.now()};localBus.postMessage(wire);return Promise.resolve(wire)}
+ const task=()=>pnPublishNow(kind,data);
+ pnPublishQueue=pnPublishQueue.then(task,task);
+ return pnPublishQueue.catch(e=>{console.warn('Live publish failed',e);connected=false;brokerLabel='A live message could not be sent — retrying automatically…';render();return null})
+}
+function announceConnection(){
+ if(role==='host'){publishState();if(!pnStateTimer)pnStateTimer=setInterval(()=>{if(connected&&state)publishState()},1500)}
+ else {publishEvent({type:'state_request',pid});if(displayName)publishEvent({type:'join',pid,name:displayName,avatar});if(selectedAvatar)publishEvent({type:'avatar_claim',pid,avatar:selectedAvatar})}
+}
+async function pnSubscribeLoop(){
+ while(!pnStopped){
+   try{
+     await pnSubscribeOnce();
+     if(!pnOpened||!connected){pnOpened=true;connected=true;brokerLabel='Live room connected';render();announceConnection()}
+   }catch(e){
+     if(pnStopped||e.name==='AbortError')break;
+     connected=false;brokerLabel='Connection interrupted — retrying automatically over HTTPS…';render();
+     pnOriginIndex=(pnOriginIndex+1)%PUBNUB_ORIGINS.length;pnTimetoken='0';pnRegion='';
+     await sleep(pnOriginIndex===0?1600:500)
+   }
  }
 }
-function publishEvent(obj){if(client&&connected)client.publish(topic('events'),JSON.stringify({...obj,ts:Date.now()}),{qos:0})}
-function publishState(){
- if(!client||!connected||role!=='host'||!state)return;
- state.serverNow=Date.now();
- client.publish(topic('state'),JSON.stringify(state),{qos:0,retain:true});
- localStorage.setItem('vq_host_'+room,JSON.stringify(state));
- localStorage.setItem('vq_answers_'+room,JSON.stringify(hostAnswers));
+async function connectMQTT(){
+ pnStopped=false;pnOpened=false;pnTimetoken='0';pnRegion='';pnOriginIndex=0;pnChannel=`archcmu-${room.toLowerCase()}-v20`;
+ connected=false;brokerLabel=TEST_MODE?'Starting local verification room…':'Connecting through the HTTPS live service…';render();
+ clearTimeout(window.__vqConnectNotice);
+ if(TEST_MODE){try{localBus?.close()}catch{};localBus=new BroadcastChannel(pnChannel);localBus.onmessage=e=>pnDispatchWire(e.data);connected=true;pnOpened=true;brokerLabel='Local verification room connected';render();announceConnection();return}
+ window.__vqConnectNotice=setTimeout(()=>{if(!connected){brokerLabel='Still connecting. The page is automatically testing the backup HTTPS route. Keep it open.';render()}},9000);
+ try{await pnSubscribeOnce();pnOpened=true;connected=true;brokerLabel='Live room connected';render();announceConnection()}catch(e){connected=false;brokerLabel='The first HTTPS route did not respond — switching to the backup route…';render();pnOriginIndex=1;pnTimetoken='0';pnRegion=''}
+ pnLoopPromise=pnSubscribeLoop()
 }
+function publishEvent(obj){if(!displayName&&!['join','state_request','avatar_claim','avatar_release'].includes(obj.type))return;pnPublishTopic(topic('events'),{...obj,ts:Date.now()})}
+function publishState(){
+ if(role!=='host'||!state)return;
+ state.serverNow=Date.now();pnPublishTopic(topic('state'),state);
+ localStorage.setItem('vq_host_'+room,JSON.stringify(state));localStorage.setItem('vq_answers_'+room,JSON.stringify(hostAnswers))
+}
+window.addEventListener('beforeunload',()=>{if(role==='player'&&!displayName)releaseMyClaim();pnStopped=true;try{pnController?.abort()}catch{};try{localBus?.close()}catch{};clearInterval(pnStateTimer);clearInterval(claimKeepAlive)});
+function purgeAvatarClaims(){
+ state.avatarClaims=state.avatarClaims||{};const now=Date.now();let changed=false;
+ for(const [a,c] of Object.entries(state.avatarClaims)){if(!c||c.expiresAt<=now||state.players?.[c.pid]){delete state.avatarClaims[a];changed=true}}
+ return changed
+}
+function avatarOwnedByOther(a,requestPid){return Object.values(state.players||{}).some(p=>p.id!==requestPid&&p.avatar===a)}
+function claimOwnedByOther(a,requestPid){const c=state.avatarClaims?.[a];return !!(c&&c.pid!==requestPid&&c.expiresAt>Date.now())}
+function sendNotice(target,data){return pnPublishTopic(noticeTopic(target),{...data,pid:target,ts:Date.now()})}
 function onHostMessage(t,payload){
  if(t!==topic('events'))return;let m;try{m=JSON.parse(payload.toString())}catch{return}
- if(m.type==='join'&&m.pid&&m.name){
-   const isNew=!state.players[m.pid];
-   if(isNew&&Object.keys(state.players).length>=MAX_PLAYERS){
-     if(client&&connected)client.publish(noticeTopic(m.pid),JSON.stringify({type:'room_full',max:MAX_PLAYERS,ts:Date.now()}),{qos:0});
-     return;
-   }
-   const old=state.players[m.pid]||{};
-   const baseName=String(m.name).slice(0,24),used=new Set(Object.values(state.players).filter(p=>p.id!==m.pid).map(p=>p.name));
-   let finalName=old.name||baseName;if(!old.name&&used.has(finalName)){let n=2;while(used.has(baseName+' '+n))n++;finalName=baseName+' '+n}
-   state.players[m.pid]={id:m.pid,name:finalName,avatar:m.avatar||'🙂',score:old.score||0,correct:old.correct||0,answered:old.answered||0,lastSeen:Date.now()};
-   publishState();render();
+ purgeAvatarClaims();
+ if(m.type==='state_request'){publishState();return}
+ if(m.type==='avatar_release'&&m.pid){for(const [a,c] of Object.entries(state.avatarClaims||{})){if(c.pid===m.pid)delete state.avatarClaims[a]}publishState();return}
+ if(m.type==='avatar_claim'&&m.pid&&m.avatar){
+   const ident=identityForAvatar(m.avatar);if(!ident){sendNotice(m.pid,{type:'invalid_identity'});return}
+   if(avatarOwnedByOther(m.avatar,m.pid)||claimOwnedByOther(m.avatar,m.pid)){sendNotice(m.pid,{type:'avatar_taken',avatar:m.avatar});publishState();return}
+   for(const [a,c] of Object.entries(state.avatarClaims||{})){if(c.pid===m.pid&&a!==m.avatar)delete state.avatarClaims[a]}
+   state.avatarClaims[m.avatar]={pid:m.pid,expiresAt:Date.now()+45000};sendNotice(m.pid,{type:'avatar_claimed',avatar:m.avatar,name:ident.name});publishState();return
  }
- if(m.type==='ping'&&state.players[m.pid])state.players[m.pid].lastSeen=Date.now();
- if(m.type==='answer')acceptAnswer(m);
+ if(m.type==='join'&&m.pid&&m.avatar){
+   const ident=identityForAvatar(m.avatar);if(!ident){sendNotice(m.pid,{type:'invalid_identity'});return}
+   const isNew=!state.players[m.pid];
+   if(isNew&&Object.keys(state.players).length>=MAX_PLAYERS){sendNotice(m.pid,{type:'room_full',max:MAX_PLAYERS});return}
+   if(avatarOwnedByOther(m.avatar,m.pid)||claimOwnedByOther(m.avatar,m.pid)){sendNotice(m.pid,{type:'avatar_taken',avatar:m.avatar});publishState();return}
+   const old=state.players[m.pid]||{};
+   state.players[m.pid]={id:m.pid,name:ident.name,avatar:ident.avatar,score:old.score||0,correct:old.correct||0,answered:old.answered||0,lastSeen:Date.now()};
+   for(const [a,c] of Object.entries(state.avatarClaims||{})){if(c.pid===m.pid||a===m.avatar)delete state.avatarClaims[a]}
+   sendNotice(m.pid,{type:'joined',avatar:ident.avatar,name:ident.name});publishState();render();return
+ }
+ if(m.type==='ping'&&state.players[m.pid]){state.players[m.pid].lastSeen=Date.now();return}
+ if(m.type==='answer')acceptAnswer(m)
 }
 function onPlayerMessage(t,payload){
  if(t===noticeTopic(pid)){
-   try{const note=JSON.parse(payload.toString());if(note.type==='room_full'){joinError=`Room full — maximum ${note.max||MAX_PLAYERS} participants.`;displayName='';sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');renderJoinForm(joinError)}}catch{}
-   return;
+   try{
+    const note=JSON.parse(payload.toString());
+    if(note.type==='room_full'){joinPending=false;joinFormMessage=`Room full — maximum ${note.max||MAX_PLAYERS} participants.`;displayName='';avatar='';sessionStorage.removeItem('vq_name');sessionStorage.removeItem('vq_avatar');renderJoinForm(joinFormMessage)}
+    else if(note.type==='avatar_taken'){joinPending=false;claimPending=false;claimedAvatar='';if(selectedAvatar===note.avatar)selectedAvatar='';joinFormMessage='That avatar has just been selected by someone else. Please choose another available identity.';renderJoinForm(joinFormMessage)}
+    else if(note.type==='avatar_claimed'){claimPending=false;claimedAvatar=note.avatar;selectedAvatar=note.avatar;selectedIdentityName=note.name||identityForAvatar(note.avatar)?.name||'';joinFormMessage='Avatar reserved for you. Tap Join to enter the room.';renderJoinForm(joinFormMessage)}
+    else if(note.type==='joined'){joinPending=false;claimedAvatar='';displayName=note.name;avatar=note.avatar;sessionStorage.setItem('vq_name',displayName);sessionStorage.setItem('vq_avatar',avatar);renderPlayer()}
+    else if(note.type==='invalid_identity'){claimPending=false;claimedAvatar='';selectedAvatar='';joinFormMessage='Please select one of the available identities.';renderJoinForm(joinFormMessage)}
+   }catch{}
+   return
  }
- if(t!==topic('state'))return;try{const incoming=JSON.parse(payload.toString());if(incoming.room!==room)return;const previous=state;if(incoming.phase==='lobby'){lastSubmitted={};sessionStorage.removeItem('vq_lastSubmitted')}state=incoming;connected=true;incomingSound(previous,incoming);render()}catch{}
+ if(t!==topic('state'))return;
+ try{
+  const incoming=JSON.parse(payload.toString());if(incoming.room!==room)return;const previous=state;if(incoming.phase==='lobby'){lastSubmitted={};sessionStorage.removeItem('vq_lastSubmitted')}state=incoming;connected=true;
+  if(state.players?.[pid]){displayName=state.players[pid].name;avatar=state.players[pid].avatar;sessionStorage.setItem('vq_name',displayName);sessionStorage.setItem('vq_avatar',avatar)}
+  incomingSound(previous,incoming);render()
+ }catch{}
 }
 function acceptAnswer(m){
  if(!state||state.phase!=='question'||m.questionIndex!==state.questionIndex||!state.players[m.pid])return;
@@ -297,7 +335,7 @@ function acceptAnswer(m){
  publishState();render();
 }
 
-function newHostState(){return {version:16,room,createdAt:Date.now(),phase:'lobby',phaseEndsAt:0,questionIndex:-1,questionStartedAt:0,sectionIndex:0,answerCount:0,players:{},rankBeforeQuestion:{},lastGains:{}}}
+function newHostState(){return {version:20,room,createdAt:Date.now(),phase:'lobby',phaseEndsAt:0,questionIndex:-1,questionStartedAt:0,sectionIndex:0,answerCount:0,players:{},avatarClaims:{},rankBeforeQuestion:{},lastGains:{}}}
 function startQuiz(){if(!state||Object.keys(state.players).length===0)return;ensureAudio();hostAnswers={};for(const p of Object.values(state.players)){p.score=0;p.correct=0;p.answered=0}state.questionIndex=-1;state.lastGains={};enterSection(0)}
 function enterSection(si){state.sectionIndex=si;state.phase='section';state.phaseEndsAt=Date.now()+INTRO_SECONDS*1000;state.answerCount=0;state.lastGains={};publishState();render();playSound('section')}
 function startQuestion(qi){state.questionIndex=qi;state.sectionIndex=sectionIndexForQuestion(qi);state.rankBeforeQuestion=rankMap();state.lastGains={};state.phase='preview';state.questionStartedAt=0;state.phaseEndsAt=Date.now()+READ_SECONDS*1000;state.answerCount=0;hostAnswers[qi]={};lastTickMark='';publishState();render();playSound('preview')}
@@ -317,10 +355,10 @@ function nextAfterLeaderboard(){
  const next=state.questionIndex+1;if(next>=Q.length){enterFinal();return}
  const nextSection=sectionIndexForQuestion(next);if(nextSection!==state.sectionIndex)enterSection(nextSection);else startQuestion(next)
 }
-function hostTick(){if(role!=='host'||!state)return;const now=Date.now();if(!state.phaseEndsAt||now<state.phaseEndsAt)return;if(state.phase==='section')startQuestion(state.questionIndex+1);else if(state.phase==='preview')beginAnswering();else if(state.phase==='question')revealQuestion();else if(state.phase==='reveal')nextAfterReveal();else if(state.phase==='leaderboard')nextAfterLeaderboard()}
+function hostTick(){if(role!=='host'||!state)return;const claimsChanged=purgeAvatarClaims();if(claimsChanged)publishState();const now=Date.now();if(!state.phaseEndsAt||now<state.phaseEndsAt)return;if(state.phase==='section')startQuestion(state.questionIndex+1);else if(state.phase==='preview')beginAnswering();else if(state.phase==='question')revealQuestion();else if(state.phase==='reveal')nextAfterReveal();else if(state.phase==='leaderboard')nextAfterLeaderboard()}
 function resetQuiz(){if(!confirm('Reset the room and return to the lobby?'))return;state=newHostState();hostAnswers={};publishState();render()}
 function skipNow(){if(!state)return;if(state.phase==='section')startQuestion(state.questionIndex+1);else if(state.phase==='preview')beginAnswering();else if(state.phase==='question')revealQuestion();else if(state.phase==='reveal')nextAfterReveal();else if(state.phase==='leaderboard')nextAfterLeaderboard()}
-window.vqStart=startQuiz;window.vqReset=resetQuiz;window.vqSkip=skipNow;
+window.vqStart=startQuiz;window.vqReset=resetQuiz;window.vqSkip=skipNow;window.vqReconnect=async()=>{pnStopped=true;try{pnController?.abort()}catch{};try{localBus?.close()}catch{};clearInterval(pnStateTimer);pnStateTimer=null;await sleep(120);connectMQTT()};
 
 function render(){
  if(role==='home')return renderHome();
@@ -337,7 +375,7 @@ function renderHost(){
 }
 function renderHostLobby(){
  const players=sortedPlayers();
- app.innerHTML=shell(`<div class="hostGrid"><section class="panel"><div class="eyebrow">Host lobby</div><h2>Welcome to the Vibe Quiz</h2><p class="lead">Ask everyone to scan the QR code and tap an avatar with an automatic English name. This room supports up to 30 participants.</p>${!connected?`<div class="offlineBanner">${brokerLabel?esc(brokerLabel):'Connecting to the live room…'}<small style="display:block;margin-top:5px">The page now uses a built-in connection engine. If campus Wi-Fi blocks live sockets, switch the host computer to a phone hotspot.</small></div>`:''}<div class="metrics"><div class="metric"><b>${players.length}/${MAX_PLAYERS}</b><span>Participants joined</span></div><div class="metric"><b>30</b><span>Questions</span></div><div class="metric"><b>7+15+9</b><span>Read + answer + ranking</span></div><div class="metric"><b>30</b><span>Maximum participants</span></div></div><h3 style="margin-top:22px">Participants</h3><div class="playerGrid">${players.length?players.map(p=>`<div class="playerCard"><div class="avatar">${esc(p.avatar)}</div><div><b>${esc(p.name)}</b><small>Ready</small></div></div>`).join(''):`<div class="notice blue">No one has joined yet.</div>`}</div><div class="actions"><button class="btn primary" onclick="vqStart()" ${players.length?'':'disabled'}>Start Round 1</button><button class="btn soft" onclick="location.reload()">Retry live connection</button></div></section><aside class="sidebar"><section class="panel center"><div class="eyebrow">Room code</div><div class="roomCode">${esc(room)}</div><div id="qr" class="qrBox"></div><div class="joinUrl">${esc(joinUrl())}</div></section><section class="panel"><h3>Automatic flow</h3><div class="notice">Section intro → 7-second host reading → 15-second answer window → 9-second correct answer, explanation and full live ranking. Extended checkpoint boards appear after Questions 10 and 20; Question 30 leads to the final celebration.</div></section></aside></div>`);
+ app.innerHTML=shell(`<div class="hostGrid"><section class="panel"><div class="eyebrow">Host lobby</div><h2>Welcome to the Vibe Quiz</h2><p class="lead">Ask everyone to scan the QR code and tap an avatar with an automatic English name. This room supports up to 30 participants.</p>${!connected?`<div class="offlineBanner">${brokerLabel?esc(brokerLabel):'Connecting to the live room…'}<small style="display:block;margin-top:5px">This version uses standard HTTPS rather than blocked live sockets. Keep the page open; reconnection is automatic.</small></div>`:''}<div class="metrics"><div class="metric"><b>${players.length}/${MAX_PLAYERS}</b><span>Participants joined</span></div><div class="metric"><b>30</b><span>Questions</span></div><div class="metric"><b>7+15+9</b><span>Read + answer + ranking</span></div><div class="metric"><b>30</b><span>Maximum participants</span></div></div><h3 style="margin-top:22px">Participants</h3><div class="playerGrid">${players.length?players.map(p=>`<div class="playerCard"><div class="avatar">${esc(p.avatar)}</div><div><b>${esc(p.name)}</b><small>Ready</small></div></div>`).join(''):`<div class="notice blue">No one has joined yet.</div>`}</div><div class="actions"><button class="btn primary" onclick="vqStart()" ${players.length?'':'disabled'}>Start Round 1</button><button class="btn soft" onclick="window.vqReconnect()">Retry live connection</button></div></section><aside class="sidebar"><section class="panel center"><div class="eyebrow">Room code</div><div class="roomCode">${esc(room)}</div><div id="qr" class="qrBox"></div><div class="joinUrl">${esc(joinUrl())}</div></section><section class="panel"><h3>Automatic flow</h3><div class="notice">Section intro → 7-second host reading → 15-second answer window → 9-second correct answer, explanation and full live ranking. Extended checkpoint boards appear after Questions 10 and 20; Question 30 leads to the final celebration.</div></section></aside></div>`);
  drawQR();
 }
 function drawQR(){
@@ -403,11 +441,22 @@ function renderFinal(isHost){
  app.innerHTML=shell(`<section class="panel leaderWrap"><div class="leaderHead"><div class="celebrationRibbon">🎉 Quiz complete · 30 questions</div><div class="celebrationStars">✦ ✦ ✦</div><h1 class="celebrationTitle">Congratulations!</h1><h2>Final Results</h2><p class="lead" style="margin:0 auto">Thank you for bringing your knowledge, speed and ARCH CMU spirit to all five rounds.</p></div><div class="podium">${slots.map((p,i)=>`<div class="podiumBox ${cls[i]}"><div class="medal">${med[i]}</div>${p?`<div class="avatar big">${esc(p.avatar)}</div><b>${esc(p.name)}</b><span>${p.score} points · ${p.correct} correct</span>`:'<b>—</b>'}</div>`).join('')}</div>${top[0]?`<div class="winnerCallout">🏆 <b>${esc(top[0].name)}</b> finishes in first place with <b>${top[0].score} points</b>. Congratulations to every participant!</div>`:''}<div class="finalStandings"><h3>Complete Final Ranking</h3><div class="leaderboard">${ps.map((p,i)=>`<div class="rankRow"><div class="rank">#${i+1}</div><div class="avatar">${esc(p.avatar)}</div><div><b>${esc(p.name)}</b><small>${p.correct} correct answers</small></div><div class="score">${p.score} pts</div></div>`).join('')||'<div class="notice blue">No final scores available.</div>'}</div></div><div class="actions" style="justify-content:center;margin-top:24px">${isHost?`<button class="btn primary" onclick="vqReset()">Return to Lobby</button>`:''}<button class="btn soft" onclick="location.href='${baseUrl()}'">Home</button></div></section>`)
 }
 function renderJoinForm(message=''){
- const chosen=identityForAvatar(selectedAvatar);
- app.innerHTML=shell(`<div class="hero"><section class="panel heroCopy"><div class="eyebrow">Join room ${esc(room)}</div><h2>Tap one avatar to join</h2><p class="lead">Each avatar already has an English name. Choose one identity—no typing is needed. The room accepts up to <b>30 participants</b>.</p>${message?`<div class="offlineBanner">${esc(message)}</div>`:''}<div class="field"><span>Choose your quiz identity</span><div class="avatarGrid">${IDENTITIES.map(i=>`<button class="avatarBtn ${i.avatar===selectedAvatar?'selected':''}" onclick="window.pickAvatar('${i.avatar}')"><span class="avatarEmoji">${i.avatar}</span><span class="avatarName">${esc(i.name)}</span></button>`).join('')}</div></div>${chosen?`<div class="selectedIdentity"><div class="bigChoice">${chosen.avatar}</div><div><b>${esc(chosen.name)}</b><small>This name and avatar will appear on the live ranking.</small></div></div>`:`<div class="notice blue">Choose one avatar to activate the Join button.</div>`}<button class="btn primary block" onclick="window.confirmJoin()" ${chosen?'':'disabled'}>Join as ${chosen?esc(chosen.name):'—'}</button></section><aside class="heroArt"><div class="heroIcon">${esc(selectedAvatar||'✦')}</div><div></div><div class="heroCaption"><strong>${chosen?esc(chosen.name):'Choose an identity'}</strong><span>One tap assigns both your avatar and English name.</span></div></aside></div>`)
+ purgeClaimsLocal();
+ if(selectedAvatar&&avatarTakenByOther(selectedAvatar)){selectedAvatar='';claimedAvatar='';claimPending=false}
+ const chosen=identityForAvatar(selectedAvatar),available=availableAvatarCount();
+ const ready=connected&&!!state;const canJoin=ready&&chosen&&claimedAvatar===selectedAvatar&&!avatarTakenByOther(selectedAvatar)&&!joinPending;
+ const msg=message||joinFormMessage||(!connected?'Connecting to the live room…':!state?'Connected. Waiting for the host lobby…':'');
+ app.innerHTML=shell(`<div class="hero"><section class="panel heroCopy"><div class="eyebrow">Join room ${esc(room)}</div><h2>Choose one available avatar</h2><p class="lead">Each identity can be used by only one participant. Once someone joins, that avatar becomes unavailable to everyone else.</p>${msg?`<div class="${connected?'notice blue':'offlineBanner'}">${esc(msg)}</div>`:''}<div class="availabilityLine"><span>${ready?'Live availability is synchronized':'Availability will appear after connection'}</span><b>${available} of ${IDENTITIES.length} available</b></div><div class="field"><span>Tap an available identity</span><div class="avatarGrid">${IDENTITIES.map(i=>{const taken=avatarTakenByOther(i.avatar),mine=i.avatar===selectedAvatar,reserving=mine&&claimPending;return `<button class="avatarBtn ${mine?'selected':''} ${taken?'taken':''} ${reserving?'reserving':''}" ${(!ready||taken)?'disabled':''} onclick="window.pickAvatar('${i.avatar}')"><span class="avatarEmoji">${i.avatar}</span><span class="avatarName">${esc(i.name)}</span></button>`}).join('')}</div></div>${chosen?`<div class="selectedIdentity"><div class="bigChoice">${chosen.avatar}</div><div><b>${esc(chosen.name)}</b><small>${claimedAvatar===selectedAvatar?'Reserved for you':'Checking live availability…'}</small></div></div>`:`<div class="notice blue">Choose one available avatar. No typing is needed.</div>`}<button class="btn primary block" onclick="window.confirmJoin()" ${canJoin?'':'disabled'}>${joinPending?'Joining…':claimedAvatar===selectedAvatar&&chosen?'Join as '+esc(chosen.name):claimPending?'Reserving avatar…':'Select an available avatar'}</button></section><aside class="heroArt"><div class="heroIcon">${esc(selectedAvatar||'✦')}</div><div></div><div class="heroCaption"><strong>${chosen?esc(chosen.name):'Choose an identity'}</strong><span>One avatar, one participant. Taken identities are locked automatically.</span></div></aside></div>`)
 }
-window.pickAvatar=a=>{const i=identityForAvatar(a);if(!i)return;ensureAudio();playSound('click');selectedAvatar=i.avatar;selectedIdentityName=i.name;renderJoinForm()};
-window.confirmJoin=async()=>{ensureAudio();const chosen=identityForAvatar(selectedAvatar);if(!chosen)return renderJoinForm('Please choose one avatar.');displayName=chosen.name;avatar=chosen.avatar;selectedIdentityName=chosen.name;sessionStorage.setItem('vq_name',displayName);sessionStorage.setItem('vq_avatar',avatar);sessionStorage.setItem('vq_identity_version',IDENTITY_VERSION);lastSubmitted=JSON.parse(sessionStorage.getItem('vq_lastSubmitted')||'{}');app.innerHTML=shell(`<section class="panel center"><div class="bigIcon">${esc(avatar)}</div><h2>Joining as ${esc(displayName)}…</h2><p class="lead" style="margin:auto">Keep this page open during the quiz.</p></section>`);try{await connectMQTT();publishEvent({type:'join',pid,name:displayName,avatar});setInterval(()=>publishEvent({type:'ping',pid}),12000)}catch(e){renderJoinForm(e.message)}};
+window.pickAvatar=a=>{
+ const i=identityForAvatar(a);if(!i||!connected||!state||avatarTakenByOther(a))return;
+ ensureAudio();playSound('click');selectedAvatar=i.avatar;selectedIdentityName=i.name;claimedAvatar='';claimPending=true;joinFormMessage='Checking live availability…';renderJoinForm(joinFormMessage);publishEvent({type:'avatar_claim',pid,avatar:i.avatar});
+ clearInterval(claimKeepAlive);claimKeepAlive=setInterval(()=>{if(!displayName&&selectedAvatar)publishEvent({type:'avatar_claim',pid,avatar:selectedAvatar})},12000)
+};
+window.confirmJoin=()=>{
+ ensureAudio();const chosen=identityForAvatar(selectedAvatar);if(!chosen||claimedAvatar!==selectedAvatar||avatarTakenByOther(selectedAvatar))return renderJoinForm('Please choose an available avatar and wait for confirmation.');
+ joinPending=true;joinFormMessage='Joining the live room…';renderJoinForm(joinFormMessage);publishEvent({type:'join',pid,name:chosen.name,avatar:chosen.avatar})
+};
 function renderPlayer(){
  if(!displayName)return renderJoinForm();
  if(!state)return app.innerHTML=shell(`<section class="panel center"><h2>Waiting for the host</h2><p class="lead" style="margin:auto">Connected to room <b>${esc(room)}</b>. The lobby will appear when the host is online.</p><div class="avatar big" style="margin:22px auto">${esc(avatar)}</div></section>`);
@@ -424,13 +473,15 @@ function updateCountdowns(){
  if(state&&state.phase==='leaderboard'){const lead=document.querySelector('.leaderHead .lead');if(lead){const r=Math.max(0,Math.ceil((state.phaseEndsAt-Date.now())/1000));lead.innerHTML=`Scores combine accuracy and response speed. The quiz continues automatically in ${r} seconds.`}}
 }
 async function boot(){
- preloadImages();
+ if(!TEST_MODE)preloadImages();
  if(role==='home')return renderHome();
  if(!room){role='home';return renderHome()}
  if(role==='host'){
-   const forceNew=params.get('new')==='1';if(forceNew){localStorage.removeItem('vq_host_'+room);localStorage.removeItem('vq_answers_'+room);history.replaceState({},'',baseUrl()+'?host='+room)}const saved=JSON.parse(localStorage.getItem('vq_host_'+room)||'null');state=!forceNew&&saved&&saved.room===room&&saved.version===16?saved:newHostState();hostAnswers=forceNew?{}:JSON.parse(localStorage.getItem('vq_answers_'+room)||'{}');render();try{await connectMQTT()}catch(e){brokerLabel=e.message;render()}hostTimer=setInterval(hostTick,180);uiTimer=setInterval(updateCountdowns,180)
+   const forceNew=params.get('new')==='1';if(forceNew){localStorage.removeItem('vq_host_'+room);localStorage.removeItem('vq_answers_'+room);if(!TEST_MODE)history.replaceState({},'',baseUrl()+'?host='+room)}const saved=JSON.parse(localStorage.getItem('vq_host_'+room)||'null');state=!forceNew&&saved&&saved.room===room&&saved.version===20?saved:newHostState();hostAnswers=forceNew?{}:JSON.parse(localStorage.getItem('vq_answers_'+room)||'{}');render();try{await connectMQTT()}catch(e){brokerLabel=e.message;render()}hostTimer=setInterval(hostTick,180);uiTimer=setInterval(updateCountdowns,180)
  }else{
-   if(displayName){lastSubmitted=JSON.parse(sessionStorage.getItem('vq_lastSubmitted')||'{}');render();try{await connectMQTT();setInterval(()=>publishEvent({type:'ping',pid}),12000)}catch(e){renderJoinForm(e.message)}}else renderJoinForm();uiTimer=setInterval(updateCountdowns,180)
+   if(displayName)lastSubmitted=JSON.parse(sessionStorage.getItem('vq_lastSubmitted')||'{}');renderJoinForm('Connecting to the live room…');
+   try{await connectMQTT();if(displayName)publishEvent({type:'join',pid,name:displayName,avatar});else publishEvent({type:'state_request',pid})}catch(e){joinFormMessage=e.message;renderJoinForm(joinFormMessage)}
+   setInterval(()=>{if(displayName){if(!state||!state.players||!state.players[pid])publishEvent({type:'join',pid,name:displayName,avatar});else publishEvent({type:'ping',pid})}else if(selectedAvatar)publishEvent({type:'avatar_claim',pid,avatar:selectedAvatar});else publishEvent({type:'state_request',pid})},7000);uiTimer=setInterval(updateCountdowns,180)
  }
 }
 boot();
